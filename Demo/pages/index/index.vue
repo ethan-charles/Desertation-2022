@@ -1,21 +1,30 @@
 <template>	
-		<view class="page">
-			<view v-if="index == 0">
+		<view >
+			<view v-if="index == 0" class="homepage">
 				<view class="title">Food Master</view>
 				<image src="../../static/text1.png" class="textimage"></image>
 				<view class="buttonbox">
-					<button class="cssbuttons-io-button">
+					<button @click="gofood()" class="cssbuttons-io-button">
 					<span>Upload Food</span>
 					</button>
-					<button class="cssbuttons-io-button">
+					<button @click="godish()" class="cssbuttons-io-button">
 					<span>Upload Dishes</span>
 					</button>
 				</view>
 			</view>
-			<view v-if="index == 1" class="inputbox">
-				<input class="input" name="text" placeholder="Search..." type="search">
+			<view v-if="index == 1" class="searchpage">
+				<view class="searchbox">
+				        <d-search-log 
+				        :color_border="color_border"
+				        :color_text="color_border"
+				        :search_list_hot="search_list_hot"
+				        :store_key="store_key"
+				        @onClickDelAllApi="onClickDelAll"
+				        @onSearchNameApi="onSearchName"
+				        ></d-search-log>
+				</view>
 			</view>
-			<view v-if="index == 2">
+			<view v-if="index == 2" class="formpage">
 				<form class="form">
 				    <p id="heading">Login</p>
 				    <div class="field">
@@ -31,7 +40,7 @@
 				      <input placeholder="Password" class="input-field" type="password">
 				    </div>
 				    <div class="btn">
-				    <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				    <button class="button1">Login</button>
 				    <button class="button2">Sign Up</button>
 				    </div>
 				    <button class="button3">Forgot Password</button>
@@ -49,12 +58,18 @@
 
 <script>
 	import MagicNavigationBar from "@/uni_modules/jorbin-MagicNavigationBar/components/jorbin-MagicNavigationBar/jorbin-MagicNavigationBar.vue"
+	import dSearchLog from '@/uni_modules/d-search-log/components/d-search-log/d-search-log.vue'
+
 	export default {
 		components:{
-			MagicNavigationBar
+			MagicNavigationBar,
+			"dSearchLog": dSearchLog
 		},
 		data() {
 			return {
+				color_border:"#000000",
+				                search_list_hot:[],
+				                store_key:'search_list',
 				index: 0,
 				items:[
 					{
@@ -77,19 +92,35 @@
 			}
 		},
 		onLoad() {
-
+			 this.search_list_hot = [
+			                'beef','noodles','pancake','Beans on toast','Chicken tikka masala'
+			            ]
 		},
 		methods: {
 			onTab(index,item){
 				console.log(index,item);
 				this.index=index;
 			},
+			onClickDelAll() {
+			                console.log('[父级接收事件]：删除全部搜索记录')
+			            },
+			            onSearchName(e) {
+			                console.log('[父级接收事件]：点击搜索:'+e)
+			            },
+			gofood() {
+				
+			},
+			godish() {
+				uni.navigateTo({
+					url: '/pages/upload/upload'
+				});
+			}
 		}
 	}
 </script>
 
 <style>
-	.page{
+	.homepage{
 		height: 100vh;
 		width: 100vw;
 		background: url('../../static/background.jpg') no-repeat center center;
@@ -145,34 +176,31 @@
 	.cssbuttons-io-button:active {
 	 box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
 	}
-	.inputbox {
-		align-self: center;
+	.searchpage{
+		background: linear-gradient(117deg,#fffbf0,#31CB7B);
+		height: 100vh;
+		width: 100vw;
+		background-size: auto;
+		display: flex;
+		flex-direction: column;
+	}
+	.searchbox{
 		margin-top: 1em;
 	}
-	.input {
-	  width: 600rpx;
-	  background-color: #f5f5f5;
-	  color: #242424;
-	  padding: .15rem .5rem;
-	  min-height: 40px;
-	  border-radius: 4px;
-	  outline: none;
-	  border: none;
-	  line-height: 1.15;
-	  box-shadow: 0px 10px 20px -18px;
+	.my-theme-bg {
+	        background: linear-gradient(117deg,#60DF9D,#31CB7B);
+	        color:#fff;
+	}
+	.formpage {
+		background: linear-gradient(117deg,#ffffff,#000000);
+		height: 100vh;
+		width: 100vw;
+		background-size: auto;
+		display: flex;
+		flex-direction: column;
 	}
 	
-	input:focus {
-	  border-bottom: 2px solid #5b5fc7;
-	  border-radius: 4px 4px 2px 2px;
-	}
-	
-	input:active {
-	  outline: 1px solid lightgrey;
-	}
 	.form {
-	  display: flex;
-	  flex-direction: column;
 	  margin-top: 5em;
 	  gap: 10px;
 	  padding-left: 2em;
@@ -222,23 +250,23 @@
 	  display: flex;
 	  justify-content: center;
 	  flex-direction: row;
-	  margin-top: 2.5em;
+	  margin-top: 2em;
 	}
 	
 	.button1 {
 	  padding: 0.5em;
 	  padding-left: 1.1em;
 	  padding-right: 1.1em;
-	  border-radius: 5px;
+	  border-radius: 10px;
 	  margin-right: 0.5em;
 	  border: none;
 	  outline: none;
 	  transition: .4s ease-in-out;
-	  background-color: #252525;
+	  background-color: #171717;
 	  color: white;
 	}
 	
-	.button1:hover {
+	.button1:active {
 	  background-color: black;
 	  color: white;
 	}
@@ -251,11 +279,11 @@
 	  border: none;
 	  outline: none;
 	  transition: .4s ease-in-out;
-	  background-color: #252525;
+	  background-color: #171717;
 	  color: white;
 	}
 	
-	.button2:hover {
+	.button2:active {
 	  background-color: black;
 	  color: white;
 	}
@@ -267,12 +295,12 @@
 	  border: none;
 	  outline: none;
 	  transition: .4s ease-in-out;
-	  background-color: #252525;
+	  background-color: #171717;
 	  color: white;
 	}
 	
-	.button3:hover {
-	  background-color: red;
+	.button3:active {
+	  background-color: gray;
 	  color: white;
 	}
 </style>
