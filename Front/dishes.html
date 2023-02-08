@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<form action="" method="post" id="uploadF">
+    <p>Upload your file：</p>
+    <p><input type="file" name="file" id="uploadFile" value=""/></p>
+    <div id="loading"></div>
+    
+</form>
+
+<script>
+    $('#uploadFile').change(function() {
+		var form = document.getElementById("uploadF");
+		var formData = new FormData(form);
+		formData.append('testName', '我是传送文件标识')
+		console.log(formData.get('file'));
+        $('#loading').show(form);
+		$.ajax({    
+			type: "post",
+			url: 'http://localhost:8080/upload',
+			data: formData,
+			processData: false,//告诉jq不要处理发送的数据
+			contentType: false,//告诉jq不要设置content-Type请求头
+			success: function(res) {
+                console.log(res)
+            }
+        });
+    })
+</script>
+</body>
+
+</html>
