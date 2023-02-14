@@ -35,7 +35,7 @@
 				type:String
 			},
 			indicatorBackgroundColor:{
-				default:"green",
+				default:"#55aa00",
 				type:String
 			},
 			screenBackgroundColor:{

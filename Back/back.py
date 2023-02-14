@@ -10,7 +10,7 @@ def submit():
     #如果获取的数据为空
     name = str(img) + '.jpg'
     print(name)
-    food = "fish" + "apple"
+    food = "fish" + "+" + "apple"
     if name==None:
         return "error!"
     else:

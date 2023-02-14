@@ -137,8 +137,8 @@
 		    0 0 10px #0ebeff,
 		    0 0 20px #0ebeff,
 		    0 0 50px #0ebeff,
-		    0 0 100px #0ebeff,
-		    0 0 200px #0ebeff
+		    0 0 100px #55aa00,
+		    0 0 200px #55aa00
 	}
 	.textimage {
 		display: block;
@@ -158,7 +158,7 @@
 	 padding: 0.8em 1.5em 0.8em 1.2em;
 	 color: white;
 	 background: #ad5389;
-	 background: linear-gradient(0deg, rgba(90, 105, 208, 1.0) 0%, rgba(114, 254, 243, 1.0) 100%);
+	 background: linear-gradient(0deg, rgba(85, 170, 0, 1.0) 0%, rgba(114, 254, 243, 1.0) 100%);
 	 border: none;
 	 box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
 	 letter-spacing: 0.05em;
@@ -177,7 +177,7 @@
 	 box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
 	}
 	.searchpage{
-		background: linear-gradient(117deg,#fffbf0,#31CB7B);
+		background: linear-gradient(117deg,#72fef3,#55aa00);
 		height: 100vh;
 		width: 100vw;
 		background-size: auto;
@@ -192,7 +192,7 @@
 	        color:#fff;
 	}
 	.formpage {
-		background: linear-gradient(117deg,#ffffff,#000000);
+		background: linear-gradient(117deg,#3e3e3e,#000000);
 		height: 100vh;
 		width: 100vw;
 		background-size: auto;
