@@ -5,7 +5,7 @@
 				<image src="../../static/text1.png" class="textimage"></image>
 				<view class="buttonbox">
 					<button @click="gofood()" class="cssbuttons-io-button">
-					<span>Upload Food</span>
+					<span>Upload Ingredient</span>
 					</button>
 					<button @click="godish()" class="cssbuttons-io-button">
 					<span>Upload Dishes</span>

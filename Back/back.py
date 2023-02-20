@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, jsonify
+from brisque import BRISQUE
+
 #创建Flask对象app并初始化
 app = Flask(__name__)
 
@@ -10,6 +12,9 @@ def submit():
     #如果获取的数据为空
     name = str(img) + '.jpg'
     print(name)
+    obj = BRISQUE(url=False)
+    obj.score(img)
+
     food = "fish" + "+" + "apple"
     if name==None:
         return "error!"
