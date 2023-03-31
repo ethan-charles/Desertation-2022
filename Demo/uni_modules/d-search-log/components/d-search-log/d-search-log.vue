@@ -3,10 +3,10 @@
 		
 		<view class="dSLComVueTop">
 			<view class="dSLComVueTopLeft">
-				<image src="/static/icon_img/search.png" class="dSLComVueTopLeftImg" style="width: 30rpx;height: 30rpx;flex: none;"></image>
+				<image src="/static/search.png" class="dSLComVueTopLeftImg" style="width: 30rpx;height: 30rpx;flex: none;"></image>
 				<input  class="dSLComVueTopLeftInput" v-model="search_input" type="text" :placeholder="placeholder" @blur="onClickInput" />
 				<view class="dSLComVueTopLeftDel" v-if="search_input" @click="onClickDel">
-					<image src="/static/icon_img/del.png" class="dSLComVueTopLeftDelImg" style="width: 35rpx;height: 35rpx;flex: none;" ></image>
+					<image src="/static/del.png" class="dSLComVueTopLeftDelImg" style="width: 35rpx;height: 35rpx;flex: none;" ></image>
 				</view>
 			</view>
 			<view class="dSLComVueTopRight">
@@ -18,7 +18,7 @@
 			<view class="dSLComVueTitle" >
 				<text>Search History</text>
 				<view style="width: 100rpx;height: 60rpx;display: flex;align-items: center;justify-content: flex-end;" @click="onClickDelAll">
-					<image src="/static/icon_img/del2.png" style="width: 30rpx;height: 30rpx;margin-right: 35rpx;"></image>
+					<image src="/static/del2.png" style="width: 30rpx;height: 30rpx;margin-right: 35rpx;"></image>
 				</view>
 			</view>
 			
@@ -32,7 +32,7 @@
 			<view class="dSLComVueTitle" v-if="search_list_hot.length>0" style="margin-top: 20rpx;">
 				<text>Hot search</text>
 				<view style="width: 100rpx;height: 60rpx;display: flex;align-items: center;justify-content: flex-end;" @click="onClickShowHot">
-					<image :src="is_hot_show?'/static/icon_img/yan_open.png':'/static/icon_img/yan_close.png'" style="width: 30rpx;height: 30rpx;margin-right: 35rpx;"></image>
+					<image :src="is_hot_show?'/static/yan_open.png':'/static/yan_close.png'" style="width: 30rpx;height: 30rpx;margin-right: 35rpx;"></image>
 				</view>
 			</view>
 			

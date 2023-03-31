@@ -1,0 +1,170 @@
+
+.homepage{
+	height: 100vh;
+	width: 100vw;
+	background: url('https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg') no-repeat center center;
+	background-size: auto;
+	display: flex;
+	flex-direction: column;
+}
+.title{
+	margin-top: 5%;
+	font-size: 20vw;
+	text-align: center;
+	color: #fff;
+	text-shadow: 
+	    0 0 10px #0ebeff,
+	    0 0 20px #0ebeff,
+	    0 0 50px #0ebeff,
+	    0 0 100px #55aa00,
+	    0 0 200px #55aa00
+}
+.textimage {
+	display: block;
+	margin: 0 auto;
+	margin-top: -100rpx;
+	margin-bottom: -100rpx;
+	height: 200px;
+	width: 100%;
+}
+.cssbuttons-io-button {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: inherit;
+ font-weight: 500;
+ font-size: 20px;
+ padding: 0.8em 1.5em 0.8em 1.2em;
+ color: white;
+ background: #ad5389;
+ background: linear-gradient(0deg, rgba(85, 170, 0, 1.0) 0%, rgba(114, 254, 243, 1.0) 100%);
+ border: none;
+ box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+ letter-spacing: 0.05em;
+ border-radius: 20em;
+ margin-top: 0.8em;
+}
+.buttonbox {
+	width: 70%;
+	opacity: 93%;
+	margin-left: 15%;
+}
+.cssbuttons-io-button:active {
+ box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+}
+.searchpage{
+	background: linear-gradient(117deg,#72fef3,#55aa00);
+	height: 100vh;
+	width: 100vw;
+	background-size: auto;
+	display: flex;
+	flex-direction: column;
+}
+.searchbox{
+	margin-top: 1em;
+}
+.my-theme-bg {
+        background: linear-gradient(117deg,#60DF9D,#31CB7B);
+        color:#fff;
+}
+.formpage {
+	background: linear-gradient(117deg,#3e3e3e,#000000);
+	height: 100vh;
+	width: 100vw;
+	background-size: auto;
+	display: flex;
+	flex-direction: column;
+}
+.form {
+  margin-top: 5em;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  border-radius: 25px;
+  transition: .4s ease-in-out;
+}
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+}
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+}
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2em;
+}
+.button1 {
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 10px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #171717;
+  color: white;
+}
+.button1:active {
+  background-color: black;
+  color: white;
+}
+.button2 {
+  padding: 0.5em;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #171717;
+  color: white;
+}
+.button2:active {
+  background-color: black;
+  color: white;
+}
+.button3 {
+  margin-bottom: 3em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-color: #171717;
+  color: white;
+}
+.button3:active {
+  background-color: gray;
+  color: white;
+}
+

@@ -1,0 +1,16 @@
+
+.recipePage{
+	display: flex;
+	flex-direction: column;
+}
+.title {
+	text-align: center;
+	
+	font-size: 60rpx;
+	font-weight: bold;
+	color: #333;
+	text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
+	height: 20%;
+	box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22);
+}
+

@@ -1,5 +1,5 @@
 {
-    "name" : "底部导航栏示例",
+    "name" : "Dissertation",
     "appid" : "__UNI__71D9E5B",
     "description" : "",
     "versionName" : "1.0.0",
@@ -52,7 +52,8 @@
     "mp-weixin" : {
         "appid" : "",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "postcss" : true
         },
         "usingComponents" : true
     },

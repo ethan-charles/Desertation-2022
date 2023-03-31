@@ -1,0 +1,1 @@
+<view class="recipePage"><view class="title">Recipe Details</view><view>{{''+food+''}}</view><block wx:for="{{recipes}}" wx:for-item="recipe" wx:for-index="index"><view>{{''+index+": "+recipe+''}}</view></block></view>

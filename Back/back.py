@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 from brisque import BRISQUE
+from PIL import Image
 
+import matplotlib.pyplot as plt
+import os
 #创建Flask对象app并初始化
 app = Flask(__name__)
 
@@ -10,10 +13,19 @@ app = Flask(__name__)
 def submit():
     img = request.files.get('file')
     #如果获取的数据为空
+
+    image = Image.open(img)
+    # print(image.mode)
+    plt.imshow(image)
+    plt.axis('off')
+    plt.show()
+
+
+
+
+
     name = str(img) + '.jpg'
     print(name)
-    obj = BRISQUE(url=False)
-    obj.score(img)
 
     food = "fish" + "+" + "apple"
     if name==None:

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/recipe/recipe",
+    "pages/index/index",
+    "pages/upload/upload"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "demo",
+    "navigationBarBackgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

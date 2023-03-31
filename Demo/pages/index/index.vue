@@ -123,7 +123,7 @@
 	.homepage{
 		height: 100vh;
 		width: 100vw;
-		background: url('../../static/background.jpg') no-repeat center center;
+		background: url('https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg') no-repeat center center;
 		background-size: auto;
 		display: flex;
 		flex-direction: column;
@@ -168,9 +168,9 @@
 	}
 	
 	.buttonbox {
-		width: 60%;
+		width: 70%;
 		opacity: 93%;
-		margin-left: 20%;
+		margin-left: 15%;
 	}
 	
 	.cssbuttons-io-button:active {
