@@ -98,10 +98,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniDataCheckbox: function () {
+      return Promise.all(/*! import() | uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox.vue */ 80))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = JSON.stringify(_vm.checkbox2)
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -154,19 +186,59 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      food: "aaaaa,aaaaaaaa,aaa,a",
-      recipes: ["-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender."]
+      foodlist: "111,222,333",
+      recipelist: "-aaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbb-fdddddddddd-sssssssssssssss-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender.-Add noodles and water and cook until noodles are tender.-Add soy sauce and pepper.",
+      food: [],
+      recipes: [],
+      checkbox1: [],
+      checkbox2: [],
+      process1: [],
+      process2: []
     };
   },
-  // onLoad() {
-  // this.food = uni.getStorageSync('food')
-  // let recipeList = uni.getStorageSync('recipe')
-  // this.recipes = recipeList.split('-')
-  // this.recipes.shift()
-  // },
+  onLoad: function onLoad() {
+    //get recipe from memory
+    // this.food = uni.getStorageSync('food')
+    // let recipeList = uni.getStorageSync('recipe')
+    // this.recipes = recipeList.split('-')
+    // this.recipes.shift()
+
+    var that = this;
+    that.recipes = that.recipelist.split('-');
+    that.food = that.foodlist.split(',');
+    that.recipes.shift();
+    var stepnum = that.recipes.length;
+    var foodnum = that.food.length;
+    var step;
+    for (var i = 0; i < foodnum; i++) {
+      that.process1[i] = {
+        text: that.food[i],
+        value: i
+      };
+    }
+    for (var i = 0; i < stepnum; i++) {
+      step = i + 1;
+      that.process2[i] = {
+        text: step + ". " + that.recipes[i],
+        value: i
+      };
+    }
+  },
   methods: {}
 };
 exports.default = _default;
