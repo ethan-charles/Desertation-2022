@@ -1556,7 +1556,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8913,7 +8913,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8934,14 +8934,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9037,7 +9037,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"Dissertation","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9606,7 +9606,15 @@ function normalizeComponent (
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
 /*!*******************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/static/home.png ***!
   \*******************************************************/
@@ -9616,7 +9624,7 @@ function normalizeComponent (
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 40 */
+/* 48 */
 /*!*********************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/static/search.png ***!
   \*********************************************************/
@@ -9626,7 +9634,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 41 */
+/* 49 */
 /*!*******************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/static/user.png ***!
   \*******************************************************/
@@ -9636,14 +9644,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAFLUlEQVR4nO3dC5ajOAwFUGb2v+eec6Y/lVQTB4KNZeneDVQh6WFDCNkAAAAAAAAAAAAAAAAAAAAAAAAggH804XY/Lv5BPbuRYo91NQxH6eMgCtvXXYFo0dOOFLOPCMHYo78XKeDnooZijz5/SOHOWykYe/T8BMU6bvVgPNL3gxTqmEzheKT/byhQW9ZgfGcOXlCYfVWC8cgs7FCUv1UMxyMz8UAxnlUPx2/m4heF+CIcz8rPxqYIf8wMx5EezPr/ys9H9QLcPXg96+1ByBtUPvg7Buyu+o4+lrJzIiBjzKzrqOMqOStVA1JhiEYcY7l5qRiQSoMjJBdVC0jvgVmlflWP+7JKATEkfWtQYnaqBMRgfOlVixKz82+A/2ElGYai1zGUePKgwlnAGXOfuhyQfQUxBK9Vf4riEFus9zIPUo9jS73Vytz8Ho1zE+O4lLWygrxWaQtiu/VC1sJ4/+1n1O0bKwiPrCTfZAyIs+A86S7YrSDPhEMNnmQLiO+Vz5eqB1aQL86cX9TiFwHhlfIh2ZIF5MrSbhj6SrPNsoIIR0v52ggINGQJiLtX43y6iqToSfUVpPwWgrbqAYEmAeGIsitthoB8ute1vRpv+esQKwg0CAg0CAg0VA2I64/zStbMCgINAgINAgINAgINAsJoS39YuHpAPMXLUKsHxO1ahrLFYrSlT2ICAg0CAg0CAg0CAg1VA+L28Hkla2YFgQYBgYYMAfFhIcNUXkFchxxX9sUYtljQICDQUD0gtlnvla5RloC4UI8nRU+qryBb9TPkG+VrIyDQkG1r4mfY+ilfy80KAm3ZAnLlzFV+v/1ALX6xgtBbqq2qgDxz5lSDJ1kvTK82ueoFu7p9YwXZV/EsauXYkTUgbtme0yMcKWtuBXnNGZX0Z1pnxvfUqKHCVsQAvKY2b9hiHZNxu2ULeUCVi9lew5ChXj2DkX5+Kt3tMRhqcFqlLVbPhq64PbGl+kC1zwtGDEn0GlY85m4qfqBWZWBGrRilZsYzR31FqOfIrVS5ean8SEa2QRp9jVFyVqo/s3THhevoGmc4hrCqB2SbcHfnas1X+3+XJiA/uQW6r/x8lC/AAyF5Vn42NkXYJSjm4g+F2Fc5JGbigWL8zQryU/nZ2BThfwJxjM9BChGKazyLlZBQ9Of7IAkIxj1SzpLvWtNbqpny8weMkmK2sgREMOJaesZWD4hgrGPJWfPyAe621MytGJCVw9G73mox2EoBWWkYsn/1tpfw87dCQKI3epWTTOQ6hq1hxVfWXOXO3xgh6xq52ZEa6A3v9whX50rvczrLg5zzhKl9tCGY3RyP/z+b2Y8QvYg0ELOaIRTHzOjP9N5EGY6SxV9UqdcOVbxfLxh93Nm3aT2bPSx3FVkoxkndw5mD45WZuaTs56wB8qLlvFL11lvIGSFNj+8eJr9dUcvy/b5zqPziUU1L9/2u4RIOlvzpu1UDIhhrWi4kd/wMtHDw23K9W+3nwYQjh2Xm4o4VpBfhyGOZ7+aPHLpe/7Rg5BZ6TkYNn3BwRth5ibzFEg6mGzGEPc4GwlFPyFVkpYt0cgt5UowYEKtHXenfanJ1mRQOtkhzFGkFEQ7CcQ1CRGFOllECYvWgp26frFtBiCrESbNnQPyoDelEWEFsr3hl+mzYYkGDgECDgECDgECDgECDgECDgECDgEDD7MfdfUjIEdPmygoCDb0DYkVghDNzFf476Uf/QWHijHQ/wfZq3ygYXGGuAAAAAAAAAAAAAAAAAAAAAAAAqGXbtv8AZTWk9UE0Fx4AAAAASUVORK5CYII="
 
 /***/ }),
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -9659,27 +9659,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /* 62 */,
 /* 63 */,
 /* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */
+/* 65 */
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -9694,20 +9674,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 86));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 88));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 89));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 90));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 92));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 93));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 69));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 70));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 72));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 73));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
 var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 22);
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 95));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 75));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -10160,7 +10140,7 @@ var k = "development" === "development",
   O = true;
 var x = "";
 try {
-  x = (__webpack_require__(/*! uni-stat-config */ 96).default || __webpack_require__(/*! uni-stat-config */ 96)).appid;
+  x = (__webpack_require__(/*! uni-stat-config */ 76).default || __webpack_require__(/*! uni-stat-config */ 76)).appid;
 } catch (e) {}
 var R = {};
 function U(e) {
@@ -16801,7 +16781,7 @@ exports.default = Us;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3), __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
-/* 86 */
+/* 66 */
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -16810,11 +16790,11 @@ exports.default = Us;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 87)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 67)();
 module.exports = runtime;
 
 /***/ }),
-/* 87 */
+/* 67 */
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -17135,7 +17115,7 @@ function _regeneratorRuntime() {
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 88 */
+/* 68 */
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -17175,7 +17155,7 @@ function _asyncToGenerator(fn) {
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 89 */
+/* 69 */
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -17202,7 +17182,7 @@ function _inherits(subClass, superClass) {
 module.exports = _inherits, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 90 */
+/* 70 */
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -17210,7 +17190,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 91);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 71);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -17222,7 +17202,7 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 91 */
+/* 71 */
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -17238,7 +17218,7 @@ function _assertThisInitialized(self) {
 module.exports = _assertThisInitialized, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 92 */
+/* 72 */
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -17254,16 +17234,16 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 93 */
+/* 73 */
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 92);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 72);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 94);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 74);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -17294,7 +17274,7 @@ function _wrapNativeSuper(Class) {
 module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 94 */
+/* 74 */
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -17307,7 +17287,7 @@ function _isNativeFunction(fn) {
 module.exports = _isNativeFunction, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 95 */
+/* 75 */
 /*!*******************************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/pages.json?{"type":"origin-pages-json"} ***!
   \*******************************************************************************/
@@ -17352,7 +17332,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 96 */
+/* 76 */
 /*!******************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/pages.json?{"type":"stat"} ***!
   \******************************************************************/
@@ -17372,6 +17352,1046 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/uni-icons/components/uni-icons/icons.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  "id": "2852637",
+  "name": "uniui图标库",
+  "font_family": "uniicons",
+  "css_prefix_text": "uniui-",
+  "description": "",
+  "glyphs": [{
+    "icon_id": "25027049",
+    "name": "yanse",
+    "font_class": "color",
+    "unicode": "e6cf",
+    "unicode_decimal": 59087
+  }, {
+    "icon_id": "25027048",
+    "name": "wallet",
+    "font_class": "wallet",
+    "unicode": "e6b1",
+    "unicode_decimal": 59057
+  }, {
+    "icon_id": "25015720",
+    "name": "settings-filled",
+    "font_class": "settings-filled",
+    "unicode": "e6ce",
+    "unicode_decimal": 59086
+  }, {
+    "icon_id": "25015434",
+    "name": "shimingrenzheng-filled",
+    "font_class": "auth-filled",
+    "unicode": "e6cc",
+    "unicode_decimal": 59084
+  }, {
+    "icon_id": "24934246",
+    "name": "shop-filled",
+    "font_class": "shop-filled",
+    "unicode": "e6cd",
+    "unicode_decimal": 59085
+  }, {
+    "icon_id": "24934159",
+    "name": "staff-filled-01",
+    "font_class": "staff-filled",
+    "unicode": "e6cb",
+    "unicode_decimal": 59083
+  }, {
+    "icon_id": "24932461",
+    "name": "VIP-filled",
+    "font_class": "vip-filled",
+    "unicode": "e6c6",
+    "unicode_decimal": 59078
+  }, {
+    "icon_id": "24932462",
+    "name": "plus_circle_fill",
+    "font_class": "plus-filled",
+    "unicode": "e6c7",
+    "unicode_decimal": 59079
+  }, {
+    "icon_id": "24932463",
+    "name": "folder_add-filled",
+    "font_class": "folder-add-filled",
+    "unicode": "e6c8",
+    "unicode_decimal": 59080
+  }, {
+    "icon_id": "24932464",
+    "name": "yanse-filled",
+    "font_class": "color-filled",
+    "unicode": "e6c9",
+    "unicode_decimal": 59081
+  }, {
+    "icon_id": "24932465",
+    "name": "tune-filled",
+    "font_class": "tune-filled",
+    "unicode": "e6ca",
+    "unicode_decimal": 59082
+  }, {
+    "icon_id": "24932455",
+    "name": "a-rilidaka-filled",
+    "font_class": "calendar-filled",
+    "unicode": "e6c0",
+    "unicode_decimal": 59072
+  }, {
+    "icon_id": "24932456",
+    "name": "notification-filled",
+    "font_class": "notification-filled",
+    "unicode": "e6c1",
+    "unicode_decimal": 59073
+  }, {
+    "icon_id": "24932457",
+    "name": "wallet-filled",
+    "font_class": "wallet-filled",
+    "unicode": "e6c2",
+    "unicode_decimal": 59074
+  }, {
+    "icon_id": "24932458",
+    "name": "paihangbang-filled",
+    "font_class": "medal-filled",
+    "unicode": "e6c3",
+    "unicode_decimal": 59075
+  }, {
+    "icon_id": "24932459",
+    "name": "gift-filled",
+    "font_class": "gift-filled",
+    "unicode": "e6c4",
+    "unicode_decimal": 59076
+  }, {
+    "icon_id": "24932460",
+    "name": "fire-filled",
+    "font_class": "fire-filled",
+    "unicode": "e6c5",
+    "unicode_decimal": 59077
+  }, {
+    "icon_id": "24928001",
+    "name": "refreshempty",
+    "font_class": "refreshempty",
+    "unicode": "e6bf",
+    "unicode_decimal": 59071
+  }, {
+    "icon_id": "24926853",
+    "name": "location-ellipse",
+    "font_class": "location-filled",
+    "unicode": "e6af",
+    "unicode_decimal": 59055
+  }, {
+    "icon_id": "24926735",
+    "name": "person-filled",
+    "font_class": "person-filled",
+    "unicode": "e69d",
+    "unicode_decimal": 59037
+  }, {
+    "icon_id": "24926703",
+    "name": "personadd-filled",
+    "font_class": "personadd-filled",
+    "unicode": "e698",
+    "unicode_decimal": 59032
+  }, {
+    "icon_id": "24923351",
+    "name": "back",
+    "font_class": "back",
+    "unicode": "e6b9",
+    "unicode_decimal": 59065
+  }, {
+    "icon_id": "24923352",
+    "name": "forward",
+    "font_class": "forward",
+    "unicode": "e6ba",
+    "unicode_decimal": 59066
+  }, {
+    "icon_id": "24923353",
+    "name": "arrowthinright",
+    "font_class": "arrow-right",
+    "unicode": "e6bb",
+    "unicode_decimal": 59067
+  }, {
+    "icon_id": "24923353",
+    "name": "arrowthinright",
+    "font_class": "arrowthinright",
+    "unicode": "e6bb",
+    "unicode_decimal": 59067
+  }, {
+    "icon_id": "24923354",
+    "name": "arrowthinleft",
+    "font_class": "arrow-left",
+    "unicode": "e6bc",
+    "unicode_decimal": 59068
+  }, {
+    "icon_id": "24923354",
+    "name": "arrowthinleft",
+    "font_class": "arrowthinleft",
+    "unicode": "e6bc",
+    "unicode_decimal": 59068
+  }, {
+    "icon_id": "24923355",
+    "name": "arrowthinup",
+    "font_class": "arrow-up",
+    "unicode": "e6bd",
+    "unicode_decimal": 59069
+  }, {
+    "icon_id": "24923355",
+    "name": "arrowthinup",
+    "font_class": "arrowthinup",
+    "unicode": "e6bd",
+    "unicode_decimal": 59069
+  }, {
+    "icon_id": "24923356",
+    "name": "arrowthindown",
+    "font_class": "arrow-down",
+    "unicode": "e6be",
+    "unicode_decimal": 59070
+  }, {
+    "icon_id": "24923356",
+    "name": "arrowthindown",
+    "font_class": "arrowthindown",
+    "unicode": "e6be",
+    "unicode_decimal": 59070
+  }, {
+    "icon_id": "24923349",
+    "name": "arrowdown",
+    "font_class": "bottom",
+    "unicode": "e6b8",
+    "unicode_decimal": 59064
+  }, {
+    "icon_id": "24923349",
+    "name": "arrowdown",
+    "font_class": "arrowdown",
+    "unicode": "e6b8",
+    "unicode_decimal": 59064
+  }, {
+    "icon_id": "24923346",
+    "name": "arrowright",
+    "font_class": "right",
+    "unicode": "e6b5",
+    "unicode_decimal": 59061
+  }, {
+    "icon_id": "24923346",
+    "name": "arrowright",
+    "font_class": "arrowright",
+    "unicode": "e6b5",
+    "unicode_decimal": 59061
+  }, {
+    "icon_id": "24923347",
+    "name": "arrowup",
+    "font_class": "top",
+    "unicode": "e6b6",
+    "unicode_decimal": 59062
+  }, {
+    "icon_id": "24923347",
+    "name": "arrowup",
+    "font_class": "arrowup",
+    "unicode": "e6b6",
+    "unicode_decimal": 59062
+  }, {
+    "icon_id": "24923348",
+    "name": "arrowleft",
+    "font_class": "left",
+    "unicode": "e6b7",
+    "unicode_decimal": 59063
+  }, {
+    "icon_id": "24923348",
+    "name": "arrowleft",
+    "font_class": "arrowleft",
+    "unicode": "e6b7",
+    "unicode_decimal": 59063
+  }, {
+    "icon_id": "24923334",
+    "name": "eye",
+    "font_class": "eye",
+    "unicode": "e651",
+    "unicode_decimal": 58961
+  }, {
+    "icon_id": "24923335",
+    "name": "eye-filled",
+    "font_class": "eye-filled",
+    "unicode": "e66a",
+    "unicode_decimal": 58986
+  }, {
+    "icon_id": "24923336",
+    "name": "eye-slash",
+    "font_class": "eye-slash",
+    "unicode": "e6b3",
+    "unicode_decimal": 59059
+  }, {
+    "icon_id": "24923337",
+    "name": "eye-slash-filled",
+    "font_class": "eye-slash-filled",
+    "unicode": "e6b4",
+    "unicode_decimal": 59060
+  }, {
+    "icon_id": "24923305",
+    "name": "info-filled",
+    "font_class": "info-filled",
+    "unicode": "e649",
+    "unicode_decimal": 58953
+  }, {
+    "icon_id": "24923299",
+    "name": "reload-01",
+    "font_class": "reload",
+    "unicode": "e6b2",
+    "unicode_decimal": 59058
+  }, {
+    "icon_id": "24923195",
+    "name": "mic_slash_fill",
+    "font_class": "micoff-filled",
+    "unicode": "e6b0",
+    "unicode_decimal": 59056
+  }, {
+    "icon_id": "24923165",
+    "name": "map-pin-ellipse",
+    "font_class": "map-pin-ellipse",
+    "unicode": "e6ac",
+    "unicode_decimal": 59052
+  }, {
+    "icon_id": "24923166",
+    "name": "map-pin",
+    "font_class": "map-pin",
+    "unicode": "e6ad",
+    "unicode_decimal": 59053
+  }, {
+    "icon_id": "24923167",
+    "name": "location",
+    "font_class": "location",
+    "unicode": "e6ae",
+    "unicode_decimal": 59054
+  }, {
+    "icon_id": "24923064",
+    "name": "starhalf",
+    "font_class": "starhalf",
+    "unicode": "e683",
+    "unicode_decimal": 59011
+  }, {
+    "icon_id": "24923065",
+    "name": "star",
+    "font_class": "star",
+    "unicode": "e688",
+    "unicode_decimal": 59016
+  }, {
+    "icon_id": "24923066",
+    "name": "star-filled",
+    "font_class": "star-filled",
+    "unicode": "e68f",
+    "unicode_decimal": 59023
+  }, {
+    "icon_id": "24899646",
+    "name": "a-rilidaka",
+    "font_class": "calendar",
+    "unicode": "e6a0",
+    "unicode_decimal": 59040
+  }, {
+    "icon_id": "24899647",
+    "name": "fire",
+    "font_class": "fire",
+    "unicode": "e6a1",
+    "unicode_decimal": 59041
+  }, {
+    "icon_id": "24899648",
+    "name": "paihangbang",
+    "font_class": "medal",
+    "unicode": "e6a2",
+    "unicode_decimal": 59042
+  }, {
+    "icon_id": "24899649",
+    "name": "font",
+    "font_class": "font",
+    "unicode": "e6a3",
+    "unicode_decimal": 59043
+  }, {
+    "icon_id": "24899650",
+    "name": "gift",
+    "font_class": "gift",
+    "unicode": "e6a4",
+    "unicode_decimal": 59044
+  }, {
+    "icon_id": "24899651",
+    "name": "link",
+    "font_class": "link",
+    "unicode": "e6a5",
+    "unicode_decimal": 59045
+  }, {
+    "icon_id": "24899652",
+    "name": "notification",
+    "font_class": "notification",
+    "unicode": "e6a6",
+    "unicode_decimal": 59046
+  }, {
+    "icon_id": "24899653",
+    "name": "staff",
+    "font_class": "staff",
+    "unicode": "e6a7",
+    "unicode_decimal": 59047
+  }, {
+    "icon_id": "24899654",
+    "name": "VIP",
+    "font_class": "vip",
+    "unicode": "e6a8",
+    "unicode_decimal": 59048
+  }, {
+    "icon_id": "24899655",
+    "name": "folder_add",
+    "font_class": "folder-add",
+    "unicode": "e6a9",
+    "unicode_decimal": 59049
+  }, {
+    "icon_id": "24899656",
+    "name": "tune",
+    "font_class": "tune",
+    "unicode": "e6aa",
+    "unicode_decimal": 59050
+  }, {
+    "icon_id": "24899657",
+    "name": "shimingrenzheng",
+    "font_class": "auth",
+    "unicode": "e6ab",
+    "unicode_decimal": 59051
+  }, {
+    "icon_id": "24899565",
+    "name": "person",
+    "font_class": "person",
+    "unicode": "e699",
+    "unicode_decimal": 59033
+  }, {
+    "icon_id": "24899566",
+    "name": "email-filled",
+    "font_class": "email-filled",
+    "unicode": "e69a",
+    "unicode_decimal": 59034
+  }, {
+    "icon_id": "24899567",
+    "name": "phone-filled",
+    "font_class": "phone-filled",
+    "unicode": "e69b",
+    "unicode_decimal": 59035
+  }, {
+    "icon_id": "24899568",
+    "name": "phone",
+    "font_class": "phone",
+    "unicode": "e69c",
+    "unicode_decimal": 59036
+  }, {
+    "icon_id": "24899570",
+    "name": "email",
+    "font_class": "email",
+    "unicode": "e69e",
+    "unicode_decimal": 59038
+  }, {
+    "icon_id": "24899571",
+    "name": "personadd",
+    "font_class": "personadd",
+    "unicode": "e69f",
+    "unicode_decimal": 59039
+  }, {
+    "icon_id": "24899558",
+    "name": "chatboxes-filled",
+    "font_class": "chatboxes-filled",
+    "unicode": "e692",
+    "unicode_decimal": 59026
+  }, {
+    "icon_id": "24899559",
+    "name": "contact",
+    "font_class": "contact",
+    "unicode": "e693",
+    "unicode_decimal": 59027
+  }, {
+    "icon_id": "24899560",
+    "name": "chatbubble-filled",
+    "font_class": "chatbubble-filled",
+    "unicode": "e694",
+    "unicode_decimal": 59028
+  }, {
+    "icon_id": "24899561",
+    "name": "contact-filled",
+    "font_class": "contact-filled",
+    "unicode": "e695",
+    "unicode_decimal": 59029
+  }, {
+    "icon_id": "24899562",
+    "name": "chatboxes",
+    "font_class": "chatboxes",
+    "unicode": "e696",
+    "unicode_decimal": 59030
+  }, {
+    "icon_id": "24899563",
+    "name": "chatbubble",
+    "font_class": "chatbubble",
+    "unicode": "e697",
+    "unicode_decimal": 59031
+  }, {
+    "icon_id": "24881290",
+    "name": "upload-filled",
+    "font_class": "upload-filled",
+    "unicode": "e68e",
+    "unicode_decimal": 59022
+  }, {
+    "icon_id": "24881292",
+    "name": "upload",
+    "font_class": "upload",
+    "unicode": "e690",
+    "unicode_decimal": 59024
+  }, {
+    "icon_id": "24881293",
+    "name": "weixin",
+    "font_class": "weixin",
+    "unicode": "e691",
+    "unicode_decimal": 59025
+  }, {
+    "icon_id": "24881274",
+    "name": "compose",
+    "font_class": "compose",
+    "unicode": "e67f",
+    "unicode_decimal": 59007
+  }, {
+    "icon_id": "24881275",
+    "name": "qq",
+    "font_class": "qq",
+    "unicode": "e680",
+    "unicode_decimal": 59008
+  }, {
+    "icon_id": "24881276",
+    "name": "download-filled",
+    "font_class": "download-filled",
+    "unicode": "e681",
+    "unicode_decimal": 59009
+  }, {
+    "icon_id": "24881277",
+    "name": "pengyouquan",
+    "font_class": "pyq",
+    "unicode": "e682",
+    "unicode_decimal": 59010
+  }, {
+    "icon_id": "24881279",
+    "name": "sound",
+    "font_class": "sound",
+    "unicode": "e684",
+    "unicode_decimal": 59012
+  }, {
+    "icon_id": "24881280",
+    "name": "trash-filled",
+    "font_class": "trash-filled",
+    "unicode": "e685",
+    "unicode_decimal": 59013
+  }, {
+    "icon_id": "24881281",
+    "name": "sound-filled",
+    "font_class": "sound-filled",
+    "unicode": "e686",
+    "unicode_decimal": 59014
+  }, {
+    "icon_id": "24881282",
+    "name": "trash",
+    "font_class": "trash",
+    "unicode": "e687",
+    "unicode_decimal": 59015
+  }, {
+    "icon_id": "24881284",
+    "name": "videocam-filled",
+    "font_class": "videocam-filled",
+    "unicode": "e689",
+    "unicode_decimal": 59017
+  }, {
+    "icon_id": "24881285",
+    "name": "spinner-cycle",
+    "font_class": "spinner-cycle",
+    "unicode": "e68a",
+    "unicode_decimal": 59018
+  }, {
+    "icon_id": "24881286",
+    "name": "weibo",
+    "font_class": "weibo",
+    "unicode": "e68b",
+    "unicode_decimal": 59019
+  }, {
+    "icon_id": "24881288",
+    "name": "videocam",
+    "font_class": "videocam",
+    "unicode": "e68c",
+    "unicode_decimal": 59020
+  }, {
+    "icon_id": "24881289",
+    "name": "download",
+    "font_class": "download",
+    "unicode": "e68d",
+    "unicode_decimal": 59021
+  }, {
+    "icon_id": "24879601",
+    "name": "help",
+    "font_class": "help",
+    "unicode": "e679",
+    "unicode_decimal": 59001
+  }, {
+    "icon_id": "24879602",
+    "name": "navigate-filled",
+    "font_class": "navigate-filled",
+    "unicode": "e67a",
+    "unicode_decimal": 59002
+  }, {
+    "icon_id": "24879603",
+    "name": "plusempty",
+    "font_class": "plusempty",
+    "unicode": "e67b",
+    "unicode_decimal": 59003
+  }, {
+    "icon_id": "24879604",
+    "name": "smallcircle",
+    "font_class": "smallcircle",
+    "unicode": "e67c",
+    "unicode_decimal": 59004
+  }, {
+    "icon_id": "24879605",
+    "name": "minus-filled",
+    "font_class": "minus-filled",
+    "unicode": "e67d",
+    "unicode_decimal": 59005
+  }, {
+    "icon_id": "24879606",
+    "name": "micoff",
+    "font_class": "micoff",
+    "unicode": "e67e",
+    "unicode_decimal": 59006
+  }, {
+    "icon_id": "24879588",
+    "name": "closeempty",
+    "font_class": "closeempty",
+    "unicode": "e66c",
+    "unicode_decimal": 58988
+  }, {
+    "icon_id": "24879589",
+    "name": "clear",
+    "font_class": "clear",
+    "unicode": "e66d",
+    "unicode_decimal": 58989
+  }, {
+    "icon_id": "24879590",
+    "name": "navigate",
+    "font_class": "navigate",
+    "unicode": "e66e",
+    "unicode_decimal": 58990
+  }, {
+    "icon_id": "24879591",
+    "name": "minus",
+    "font_class": "minus",
+    "unicode": "e66f",
+    "unicode_decimal": 58991
+  }, {
+    "icon_id": "24879592",
+    "name": "image",
+    "font_class": "image",
+    "unicode": "e670",
+    "unicode_decimal": 58992
+  }, {
+    "icon_id": "24879593",
+    "name": "mic",
+    "font_class": "mic",
+    "unicode": "e671",
+    "unicode_decimal": 58993
+  }, {
+    "icon_id": "24879594",
+    "name": "paperplane",
+    "font_class": "paperplane",
+    "unicode": "e672",
+    "unicode_decimal": 58994
+  }, {
+    "icon_id": "24879595",
+    "name": "close",
+    "font_class": "close",
+    "unicode": "e673",
+    "unicode_decimal": 58995
+  }, {
+    "icon_id": "24879596",
+    "name": "help-filled",
+    "font_class": "help-filled",
+    "unicode": "e674",
+    "unicode_decimal": 58996
+  }, {
+    "icon_id": "24879597",
+    "name": "plus-filled",
+    "font_class": "paperplane-filled",
+    "unicode": "e675",
+    "unicode_decimal": 58997
+  }, {
+    "icon_id": "24879598",
+    "name": "plus",
+    "font_class": "plus",
+    "unicode": "e676",
+    "unicode_decimal": 58998
+  }, {
+    "icon_id": "24879599",
+    "name": "mic-filled",
+    "font_class": "mic-filled",
+    "unicode": "e677",
+    "unicode_decimal": 58999
+  }, {
+    "icon_id": "24879600",
+    "name": "image-filled",
+    "font_class": "image-filled",
+    "unicode": "e678",
+    "unicode_decimal": 59000
+  }, {
+    "icon_id": "24855900",
+    "name": "locked-filled",
+    "font_class": "locked-filled",
+    "unicode": "e668",
+    "unicode_decimal": 58984
+  }, {
+    "icon_id": "24855901",
+    "name": "info",
+    "font_class": "info",
+    "unicode": "e669",
+    "unicode_decimal": 58985
+  }, {
+    "icon_id": "24855903",
+    "name": "locked",
+    "font_class": "locked",
+    "unicode": "e66b",
+    "unicode_decimal": 58987
+  }, {
+    "icon_id": "24855884",
+    "name": "camera-filled",
+    "font_class": "camera-filled",
+    "unicode": "e658",
+    "unicode_decimal": 58968
+  }, {
+    "icon_id": "24855885",
+    "name": "chat-filled",
+    "font_class": "chat-filled",
+    "unicode": "e659",
+    "unicode_decimal": 58969
+  }, {
+    "icon_id": "24855886",
+    "name": "camera",
+    "font_class": "camera",
+    "unicode": "e65a",
+    "unicode_decimal": 58970
+  }, {
+    "icon_id": "24855887",
+    "name": "circle",
+    "font_class": "circle",
+    "unicode": "e65b",
+    "unicode_decimal": 58971
+  }, {
+    "icon_id": "24855888",
+    "name": "checkmarkempty",
+    "font_class": "checkmarkempty",
+    "unicode": "e65c",
+    "unicode_decimal": 58972
+  }, {
+    "icon_id": "24855889",
+    "name": "chat",
+    "font_class": "chat",
+    "unicode": "e65d",
+    "unicode_decimal": 58973
+  }, {
+    "icon_id": "24855890",
+    "name": "circle-filled",
+    "font_class": "circle-filled",
+    "unicode": "e65e",
+    "unicode_decimal": 58974
+  }, {
+    "icon_id": "24855891",
+    "name": "flag",
+    "font_class": "flag",
+    "unicode": "e65f",
+    "unicode_decimal": 58975
+  }, {
+    "icon_id": "24855892",
+    "name": "flag-filled",
+    "font_class": "flag-filled",
+    "unicode": "e660",
+    "unicode_decimal": 58976
+  }, {
+    "icon_id": "24855893",
+    "name": "gear-filled",
+    "font_class": "gear-filled",
+    "unicode": "e661",
+    "unicode_decimal": 58977
+  }, {
+    "icon_id": "24855894",
+    "name": "home",
+    "font_class": "home",
+    "unicode": "e662",
+    "unicode_decimal": 58978
+  }, {
+    "icon_id": "24855895",
+    "name": "home-filled",
+    "font_class": "home-filled",
+    "unicode": "e663",
+    "unicode_decimal": 58979
+  }, {
+    "icon_id": "24855896",
+    "name": "gear",
+    "font_class": "gear",
+    "unicode": "e664",
+    "unicode_decimal": 58980
+  }, {
+    "icon_id": "24855897",
+    "name": "smallcircle-filled",
+    "font_class": "smallcircle-filled",
+    "unicode": "e665",
+    "unicode_decimal": 58981
+  }, {
+    "icon_id": "24855898",
+    "name": "map-filled",
+    "font_class": "map-filled",
+    "unicode": "e666",
+    "unicode_decimal": 58982
+  }, {
+    "icon_id": "24855899",
+    "name": "map",
+    "font_class": "map",
+    "unicode": "e667",
+    "unicode_decimal": 58983
+  }, {
+    "icon_id": "24855825",
+    "name": "refresh-filled",
+    "font_class": "refresh-filled",
+    "unicode": "e656",
+    "unicode_decimal": 58966
+  }, {
+    "icon_id": "24855826",
+    "name": "refresh",
+    "font_class": "refresh",
+    "unicode": "e657",
+    "unicode_decimal": 58967
+  }, {
+    "icon_id": "24855808",
+    "name": "cloud-upload",
+    "font_class": "cloud-upload",
+    "unicode": "e645",
+    "unicode_decimal": 58949
+  }, {
+    "icon_id": "24855809",
+    "name": "cloud-download-filled",
+    "font_class": "cloud-download-filled",
+    "unicode": "e646",
+    "unicode_decimal": 58950
+  }, {
+    "icon_id": "24855810",
+    "name": "cloud-download",
+    "font_class": "cloud-download",
+    "unicode": "e647",
+    "unicode_decimal": 58951
+  }, {
+    "icon_id": "24855811",
+    "name": "cloud-upload-filled",
+    "font_class": "cloud-upload-filled",
+    "unicode": "e648",
+    "unicode_decimal": 58952
+  }, {
+    "icon_id": "24855813",
+    "name": "redo",
+    "font_class": "redo",
+    "unicode": "e64a",
+    "unicode_decimal": 58954
+  }, {
+    "icon_id": "24855814",
+    "name": "images-filled",
+    "font_class": "images-filled",
+    "unicode": "e64b",
+    "unicode_decimal": 58955
+  }, {
+    "icon_id": "24855815",
+    "name": "undo-filled",
+    "font_class": "undo-filled",
+    "unicode": "e64c",
+    "unicode_decimal": 58956
+  }, {
+    "icon_id": "24855816",
+    "name": "more",
+    "font_class": "more",
+    "unicode": "e64d",
+    "unicode_decimal": 58957
+  }, {
+    "icon_id": "24855817",
+    "name": "more-filled",
+    "font_class": "more-filled",
+    "unicode": "e64e",
+    "unicode_decimal": 58958
+  }, {
+    "icon_id": "24855818",
+    "name": "undo",
+    "font_class": "undo",
+    "unicode": "e64f",
+    "unicode_decimal": 58959
+  }, {
+    "icon_id": "24855819",
+    "name": "images",
+    "font_class": "images",
+    "unicode": "e650",
+    "unicode_decimal": 58960
+  }, {
+    "icon_id": "24855821",
+    "name": "paperclip",
+    "font_class": "paperclip",
+    "unicode": "e652",
+    "unicode_decimal": 58962
+  }, {
+    "icon_id": "24855822",
+    "name": "settings",
+    "font_class": "settings",
+    "unicode": "e653",
+    "unicode_decimal": 58963
+  }, {
+    "icon_id": "24855823",
+    "name": "search",
+    "font_class": "search",
+    "unicode": "e654",
+    "unicode_decimal": 58964
+  }, {
+    "icon_id": "24855824",
+    "name": "redo-filled",
+    "font_class": "redo-filled",
+    "unicode": "e655",
+    "unicode_decimal": 58965
+  }, {
+    "icon_id": "24841702",
+    "name": "list",
+    "font_class": "list",
+    "unicode": "e644",
+    "unicode_decimal": 58948
+  }, {
+    "icon_id": "24841489",
+    "name": "mail-open-filled",
+    "font_class": "mail-open-filled",
+    "unicode": "e63a",
+    "unicode_decimal": 58938
+  }, {
+    "icon_id": "24841491",
+    "name": "hand-thumbsdown-filled",
+    "font_class": "hand-down-filled",
+    "unicode": "e63c",
+    "unicode_decimal": 58940
+  }, {
+    "icon_id": "24841492",
+    "name": "hand-thumbsdown",
+    "font_class": "hand-down",
+    "unicode": "e63d",
+    "unicode_decimal": 58941
+  }, {
+    "icon_id": "24841493",
+    "name": "hand-thumbsup-filled",
+    "font_class": "hand-up-filled",
+    "unicode": "e63e",
+    "unicode_decimal": 58942
+  }, {
+    "icon_id": "24841494",
+    "name": "hand-thumbsup",
+    "font_class": "hand-up",
+    "unicode": "e63f",
+    "unicode_decimal": 58943
+  }, {
+    "icon_id": "24841496",
+    "name": "heart-filled",
+    "font_class": "heart-filled",
+    "unicode": "e641",
+    "unicode_decimal": 58945
+  }, {
+    "icon_id": "24841498",
+    "name": "mail-open",
+    "font_class": "mail-open",
+    "unicode": "e643",
+    "unicode_decimal": 58947
+  }, {
+    "icon_id": "24841488",
+    "name": "heart",
+    "font_class": "heart",
+    "unicode": "e639",
+    "unicode_decimal": 58937
+  }, {
+    "icon_id": "24839963",
+    "name": "loop",
+    "font_class": "loop",
+    "unicode": "e633",
+    "unicode_decimal": 58931
+  }, {
+    "icon_id": "24839866",
+    "name": "pulldown",
+    "font_class": "pulldown",
+    "unicode": "e632",
+    "unicode_decimal": 58930
+  }, {
+    "icon_id": "24813798",
+    "name": "scan",
+    "font_class": "scan",
+    "unicode": "e62a",
+    "unicode_decimal": 58922
+  }, {
+    "icon_id": "24813786",
+    "name": "bars",
+    "font_class": "bars",
+    "unicode": "e627",
+    "unicode_decimal": 58919
+  }, {
+    "icon_id": "24813788",
+    "name": "cart-filled",
+    "font_class": "cart-filled",
+    "unicode": "e629",
+    "unicode_decimal": 58921
+  }, {
+    "icon_id": "24813790",
+    "name": "checkbox",
+    "font_class": "checkbox",
+    "unicode": "e62b",
+    "unicode_decimal": 58923
+  }, {
+    "icon_id": "24813791",
+    "name": "checkbox-filled",
+    "font_class": "checkbox-filled",
+    "unicode": "e62c",
+    "unicode_decimal": 58924
+  }, {
+    "icon_id": "24813794",
+    "name": "shop",
+    "font_class": "shop",
+    "unicode": "e62f",
+    "unicode_decimal": 58927
+  }, {
+    "icon_id": "24813795",
+    "name": "headphones",
+    "font_class": "headphones",
+    "unicode": "e630",
+    "unicode_decimal": 58928
+  }, {
+    "icon_id": "24813796",
+    "name": "cart",
+    "font_class": "cart",
+    "unicode": "e631",
+    "unicode_decimal": 58929
+  }]
+};
+exports.default = _default;
+
+/***/ }),
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
 /* 97 */,
 /* 98 */,
 /* 99 */,
@@ -17379,7 +18399,9 @@ exports.default = _default;
 /* 101 */,
 /* 102 */,
 /* 103 */,
-/* 104 */
+/* 104 */,
+/* 105 */,
+/* 106 */
 /*!********************************************************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
   \********************************************************************************************************/
@@ -17394,9 +18416,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 105));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 106));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 107));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 107));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 108));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 109));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -17405,7 +18427,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 105 */
+/* 107 */
 /*!*******************************************************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
   \*******************************************************************************************************/
@@ -17415,7 +18437,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
 
 /***/ }),
-/* 106 */
+/* 108 */
 /*!************************************************************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
   \************************************************************************************************************/
@@ -17425,7 +18447,7 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show mo
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
 
 /***/ }),
-/* 107 */
+/* 109 */
 /*!************************************************************************************************************!*\
   !*** E:/Github/Desertation-2022/Demo/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
   \************************************************************************************************************/
@@ -17433,6 +18455,7785 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
+
+/***/ }),
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */
+/*!************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/utils/utils.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAllRect = getAllRect;
+exports.getRect = getRect;
+exports.requestAnimationFrame = requestAnimationFrame;
+function getAllRect(context, selector) {
+  return new Promise(function (resolve) {
+    uni.createSelectorQuery().in(context).selectAll(selector).boundingClientRect().exec(function () {
+      var rect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return resolve(rect[0]);
+    });
+  });
+}
+function getRect(context, selector) {
+  return new Promise(function (resolve) {
+    uni.createSelectorQuery().in(context).select(selector).boundingClientRect().exec(function () {
+      var rect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return resolve(rect[0]);
+    });
+  });
+}
+function requestAnimationFrame(cb) {
+  var systemInfo = uni.getSystemInfoSync();
+  if (systemInfo.platform === 'devtools') {
+    return setTimeout(function () {
+      cb();
+    }, 1000 / 30);
+  }
+  return uni.createSelectorQuery().selectViewport().boundingClientRect().exec(function () {
+    cb();
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 122 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/get-params.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getParams = getParams;
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../index.js */ 123));
+var _utils = __webpack_require__(/*! ./utils.js */ 199);
+var _paramsList = __webpack_require__(/*! ./params-list.js */ 200);
+function getParams() {
+  var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var params = {
+    on: {}
+  };
+  var passedParams = {};
+  (0, _utils.extend)(params, _index.default.defaults);
+  (0, _utils.extend)(params, _index.default.extendedDefaults);
+  params._emitClasses = true;
+  params.init = false;
+  var rest = {};
+  var allowedParams = _paramsList.paramsList.map(function (key) {
+    return key.replace(/_/, '');
+  });
+  // Prevent empty Object.keys(obj) array on ios.
+  var plainObj = Object.assign({}, obj);
+  Object.keys(plainObj).forEach(function (key) {
+    if (typeof obj[key] === 'undefined') return;
+    if (allowedParams.indexOf(key) >= 0) {
+      if ((0, _utils.isObject)(obj[key])) {
+        params[key] = {};
+        passedParams[key] = {};
+        (0, _utils.extend)(params[key], obj[key]);
+        (0, _utils.extend)(passedParams[key], obj[key]);
+      } else {
+        params[key] = obj[key];
+        passedParams[key] = obj[key];
+      }
+    } else if (key.search(/on[A-Z]/) === 0 && typeof obj[key] === 'function') {
+      params.on["".concat(key[2].toLowerCase()).concat(key.substr(3))] = obj[key];
+    } else {
+      rest[key] = obj[key];
+    }
+  });
+  ['navigation', 'pagination', 'scrollbar'].forEach(function (key) {
+    if (params[key] === true) params[key] = {};
+    if (params[key] === false) delete params[key];
+  });
+  return {
+    params: params,
+    passedParams: passedParams,
+    rest: rest
+  };
+}
+
+/***/ }),
+/* 123 */
+/*!*************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "Swiper", {
+  enumerable: true,
+  get: function get() {
+    return _core.default;
+  }
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _core.default;
+  }
+});
+var _core = _interopRequireDefault(__webpack_require__(/*! ./libs/core.js */ 124));
+var _autoplay = _interopRequireDefault(__webpack_require__(/*! ./modules/autoplay/autoplay.js */ 179));
+var _freeMode = _interopRequireDefault(__webpack_require__(/*! ./modules/free-mode/free-mode.js */ 180));
+var _effectFade = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-fade/effect-fade.js */ 181));
+var _effectCube = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-cube/effect-cube.js */ 185));
+var _effectCoverflow = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-coverflow/effect-coverflow.js */ 186));
+var _effectFlip = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-flip/effect-flip.js */ 187));
+var _effectCards = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-cards/effect-cards.js */ 188));
+var _effectCreative = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-creative/effect-creative.js */ 189));
+var _effectPanorama = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-panorama/effect-panorama.js */ 190));
+var _effectCarousel = _interopRequireDefault(__webpack_require__(/*! ./modules/effect-carousel/effect-carousel.js */ 191));
+var _navigation = _interopRequireDefault(__webpack_require__(/*! ./modules/navigation/navigation.js */ 192));
+var _pagination = _interopRequireDefault(__webpack_require__(/*! ./modules/pagination/pagination.js */ 193));
+var _thumbs = _interopRequireDefault(__webpack_require__(/*! ./modules/thumbs/thumbs.js */ 195));
+var _scrollbar = _interopRequireDefault(__webpack_require__(/*! ./modules/scrollbar/scrollbar.js */ 196));
+var _virtual = _interopRequireDefault(__webpack_require__(/*! ./modules/virtual/virtual.js */ 197));
+var _willChange = _interopRequireDefault(__webpack_require__(/*! ./modules/will-change/will-change.js */ 198));
+var modules = [_autoplay.default, _freeMode.default, _effectFade.default, _effectCube.default, _effectCoverflow.default, _effectFlip.default, _effectCards.default, _effectCreative.default, _effectPanorama.default, _effectCarousel.default, _navigation.default, _pagination.default, _thumbs.default, _scrollbar.default, _willChange.default, _virtual.default];
+_core.default.use(modules);
+
+/***/ }),
+/* 124 */
+/*!*****************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/core.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _utils = __webpack_require__(/*! ../shared/utils.js */ 125);
+var _getSupport = __webpack_require__(/*! ../shared/get-support.js */ 126);
+var _getDevice = __webpack_require__(/*! ../shared/get-device.js */ 127);
+var _getBrowser = __webpack_require__(/*! ../shared/get-browser.js */ 128);
+var _moduleExtendParams = _interopRequireDefault(__webpack_require__(/*! ./moduleExtendParams.js */ 129));
+var _eventsEmitter = _interopRequireDefault(__webpack_require__(/*! ./events-emitter.js */ 130));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./update/index.js */ 131));
+var _index2 = _interopRequireDefault(__webpack_require__(/*! ./translate/index.js */ 141));
+var _index3 = _interopRequireDefault(__webpack_require__(/*! ./transition/index.js */ 147));
+var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults.js */ 152));
+var _index4 = _interopRequireDefault(__webpack_require__(/*! ./classes/index.js */ 153));
+var _index5 = _interopRequireDefault(__webpack_require__(/*! ./check-overflow/index.js */ 156));
+var _index6 = _interopRequireDefault(__webpack_require__(/*! ./slide/index.js */ 157));
+var _index7 = _interopRequireDefault(__webpack_require__(/*! ./loop/index.js */ 165));
+var _index8 = _interopRequireDefault(__webpack_require__(/*! ./grab-cursor/index.js */ 169));
+var _index9 = _interopRequireDefault(__webpack_require__(/*! ./events/index.js */ 172));
+var _utils2 = __webpack_require__(/*! ./utils/utils.js */ 121);
+var prototypes = {
+  eventsEmitter: _eventsEmitter.default,
+  update: _index.default,
+  checkOverflow: _index5.default,
+  slide: _index6.default,
+  loop: _index7.default,
+  translate: _index2.default,
+  transition: _index3.default,
+  grabCursor: _index8.default,
+  events: _index9.default,
+  classes: _index4.default
+};
+var extendedDefaults = {};
+var Swiper = /*#__PURE__*/function () {
+  function Swiper() {
+    (0, _classCallCheck2.default)(this, Swiper);
+    var swiper = this;
+    var params;
+    var el;
+    var native;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === 'Object') {
+      params = args[0];
+    } else if (args.length === 2 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === 'Object') {
+      params = args[0];
+      native = args[1];
+    } else {
+      el = args[0];
+      params = args[1];
+      native = args[2];
+    }
+    if (!params) params = {};
+    params = (0, _utils.extend)({}, params);
+    if (el && !params.el) params.el = el;
+
+    // Swiper Instance
+    swiper.__swiper__ = true;
+    swiper.support = (0, _getSupport.getSupport)();
+    swiper.device = (0, _getDevice.getDevice)({
+      userAgent: params.userAgent
+    });
+    swiper.browser = (0, _getBrowser.getBrowser)();
+    swiper.eventsListeners = {};
+    swiper.eventsAnyListeners = [];
+    swiper.modules = (0, _toConsumableArray2.default)(swiper.__modules__);
+    swiper.native = native;
+    if (params.modules && Array.isArray(params.modules)) {
+      var _swiper$modules;
+      (_swiper$modules = swiper.modules).push.apply(_swiper$modules, (0, _toConsumableArray2.default)(params.modules));
+    }
+    var allModulesParams = {};
+    swiper.modules.forEach(function (mod) {
+      mod({
+        swiper: swiper,
+        extendParams: (0, _moduleExtendParams.default)(params, allModulesParams),
+        on: swiper.on.bind(swiper),
+        once: swiper.once.bind(swiper),
+        off: swiper.off.bind(swiper),
+        emit: swiper.emit.bind(swiper)
+      });
+    }); // Extend defaults with modules params
+    var swiperParams = (0, _utils.extend)({}, _defaults.default, allModulesParams); // Extend defaults with passed params
+    swiper.params = (0, _utils.extend)({}, swiperParams, extendedDefaults, params);
+    swiper.originalParams = (0, _utils.extend)({}, swiper.params);
+    swiper.passedParams = (0, _utils.extend)({}, params); // add event listeners
+
+    if (swiper.params && swiper.params.on) {
+      Object.keys(swiper.params.on).forEach(function (eventName) {
+        swiper.on(eventName, swiper.params.on[eventName]);
+      });
+    }
+    if (swiper.params && swiper.params.onAny) {
+      swiper.onAny(swiper.params.onAny);
+    } // Save Dom lib
+
+    Object.assign(swiper, {
+      enabled: swiper.params.enabled,
+      el: el,
+      // Classes
+      classNames: [],
+      // Slides
+      slides: [],
+      slidesGrid: [],
+      snapGrid: [],
+      slidesSizesGrid: [],
+      // isDirection
+      isHorizontal: function isHorizontal() {
+        return swiper.params.direction === 'horizontal';
+      },
+      isVertical: function isVertical() {
+        return swiper.params.direction === 'vertical';
+      },
+      // Indexes
+      activeIndex: 0,
+      realIndex: 0,
+      //
+      isBeginning: true,
+      isEnd: false,
+      // Props
+      translate: 0,
+      previousTranslate: 0,
+      progress: 0,
+      velocity: 0,
+      animating: false,
+      // Locks
+      allowSlideNext: swiper.params.allowSlideNext,
+      allowSlidePrev: swiper.params.allowSlidePrev,
+      // Touch Events
+      touchEvents: function touchEvents() {
+        var touch = ['touchstart', 'touchmove', 'touchend', 'touchcancel'];
+        var desktop = ['pointerdown', 'pointermove', 'pointerup'];
+        swiper.touchEventsTouch = {
+          start: touch[0],
+          move: touch[1],
+          end: touch[2],
+          cancel: touch[3]
+        };
+        swiper.touchEventsDesktop = {
+          start: desktop[0],
+          move: desktop[1],
+          end: desktop[2]
+        };
+        return swiper.support.touch || !swiper.params.simulateTouch ? swiper.touchEventsTouch : swiper.touchEventsDesktop;
+      }(),
+      touchEventsData: {
+        isTouched: undefined,
+        isMoved: undefined,
+        allowTouchCallbacks: undefined,
+        touchStartTime: undefined,
+        isScrolling: undefined,
+        currentTranslate: undefined,
+        startTranslate: undefined,
+        allowThresholdMove: undefined,
+        // Form elements to match
+        focusableElements: swiper.params.focusableElements,
+        // Last click time
+        lastClickTime: (0, _utils.now)(),
+        clickTimeout: undefined,
+        // Velocities
+        velocities: [],
+        allowMomentumBounce: undefined,
+        isTouchEvent: undefined,
+        startMoving: undefined
+      },
+      // Clicks
+      allowClick: true,
+      // Touches
+      allowTouchMove: swiper.params.allowTouchMove,
+      touches: {
+        startX: 0,
+        startY: 0,
+        currentX: 0,
+        currentY: 0,
+        diff: 0
+      },
+      // Images
+      imagesToLoad: [],
+      imagesLoaded: 0,
+      virtualList: [],
+      virtualIndexList: []
+    });
+    swiper.emit('_swiper'); // Init
+
+    if (swiper.params.init) {
+      swiper.init();
+    } // Return app instance
+    return swiper;
+  }
+  (0, _createClass2.default)(Swiper, [{
+    key: "enable",
+    value: function enable() {
+      var swiper = this;
+      if (swiper.enabled) return;
+      swiper.enabled = true;
+      if (swiper.params.grabCursor) {
+        swiper.setGrabCursor();
+      }
+      swiper.emit('enable');
+    }
+  }, {
+    key: "disable",
+    value: function disable() {
+      var swiper = this;
+      if (!swiper.enabled) return;
+      swiper.enabled = false;
+      if (swiper.params.grabCursor) {
+        swiper.unsetGrabCursor();
+      }
+      swiper.emit('disable');
+    }
+  }, {
+    key: "setProgress",
+    value: function setProgress(progress, speed) {
+      var swiper = this;
+      progress = Math.min(Math.max(progress, 0), 1);
+      var min = swiper.minTranslate();
+      var max = swiper.maxTranslate();
+      var current = (max - min) * progress + min;
+      swiper.translateTo(current, typeof speed === 'undefined' ? 0 : speed);
+      swiper.updateActiveIndex();
+      swiper.updateSlidesClasses();
+    }
+  }, {
+    key: "emitContainerClasses",
+    value: function emitContainerClasses() {
+      var swiper = this;
+      if (!swiper.params._emitClasses || !swiper.el) return;
+      var cls = swiper.native.contentClass.split(' ').filter(function (className) {
+        return className.indexOf('swiper') === 0 || className.indexOf(swiper.params.containerModifierClass) === 0;
+      });
+      swiper.emit('_containerClasses', cls.join(' '));
+    }
+  }, {
+    key: "getSlideClasses",
+    value: function getSlideClasses(slideEl) {
+      var swiper = this;
+      return slideEl.slideClass.split(' ').filter(function (className) {
+        return className.indexOf('swiper-slide') === 0 || className.indexOf(swiper.params.slideClass) === 0;
+      }).join(' ');
+    }
+  }, {
+    key: "emitSlidesClasses",
+    value: function emitSlidesClasses() {
+      var swiper = this;
+      if (!swiper.params._emitClasses || !swiper.el) return;
+      var updates = [];
+      swiper.slides.forEach(function (slideEl) {
+        var classNames = swiper.getSlideClasses(slideEl);
+        updates.push({
+          slideEl: slideEl,
+          classNames: classNames
+        });
+        swiper.emit('_slideClass', slideEl, classNames);
+      });
+      swiper.emit('_slideClasses', updates);
+    }
+  }, {
+    key: "slidesPerViewDynamic",
+    value: function slidesPerViewDynamic() {
+      var view = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'current';
+      var exact = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var swiper = this;
+      var params = swiper.params,
+        slides = swiper.slides,
+        slidesGrid = swiper.slidesGrid,
+        slidesSizesGrid = swiper.slidesSizesGrid,
+        swiperSize = swiper.size,
+        activeIndex = swiper.activeIndex;
+      var spv = 1;
+      if (params.centeredSlides) {
+        var slideSize = slides[activeIndex].swiperSlideSize;
+        var breakLoop;
+        for (var i = activeIndex + 1; i < slides.length; i += 1) {
+          if (slides[i] && !breakLoop) {
+            slideSize += slides[i].swiperSlideSize;
+            spv += 1;
+            if (slideSize > swiperSize) breakLoop = true;
+          }
+        }
+        for (var _i = activeIndex - 1; _i >= 0; _i -= 1) {
+          if (slides[_i] && !breakLoop) {
+            slideSize += slides[_i].swiperSlideSize;
+            spv += 1;
+            if (slideSize > swiperSize) breakLoop = true;
+          }
+        }
+      } else {
+        // eslint-disable-next-line
+        if (view === 'current') {
+          for (var _i2 = activeIndex + 1; _i2 < slides.length; _i2 += 1) {
+            var slideInView = exact ? slidesGrid[_i2] + slidesSizesGrid[_i2] - slidesGrid[activeIndex] < swiperSize : slidesGrid[_i2] - slidesGrid[activeIndex] < swiperSize;
+            if (slideInView) {
+              spv += 1;
+            }
+          }
+        } else {
+          // previous
+          for (var _i3 = activeIndex - 1; _i3 >= 0; _i3 -= 1) {
+            var _slideInView = slidesGrid[activeIndex] - slidesGrid[_i3] < swiperSize;
+            if (_slideInView) {
+              spv += 1;
+            }
+          }
+        }
+      }
+      return spv;
+    }
+  }, {
+    key: "changeDirection",
+    value: function changeDirection(newDirection, needUpdate) {
+      if (needUpdate === void 0) {
+        needUpdate = true;
+      }
+      var swiper = this;
+      var currentDirection = swiper.params.direction;
+      if (!newDirection) {
+        // eslint-disable-next-line
+        newDirection = currentDirection === 'horizontal' ? 'vertical' : 'horizontal';
+      }
+      if (newDirection === currentDirection || newDirection !== 'horizontal' && newDirection !== 'vertical') {
+        return swiper;
+      }
+      swiper.$wrapperEl.removeClass("".concat(swiper.params.containerModifierClass).concat(currentDirection));
+      swiper.$wrapperEl.addClass("".concat(swiper.params.containerModifierClass).concat(newDirection));
+      swiper.emitContainerClasses();
+      swiper.params.direction = newDirection;
+      swiper.slides.forEach(function (slideEl) {
+        if (newDirection === 'vertical') {
+          slideEl.css({
+            width: ''
+          });
+        } else {
+          slideEl.css({
+            height: ''
+          });
+        }
+      });
+      swiper.emit('changeDirection');
+      if (needUpdate) swiper.update();
+      return swiper;
+    }
+  }, {
+    key: "update",
+    value: function () {
+      var _update = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(el) {
+        var swiper, snapGrid, params, setTranslate, translated;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                setTranslate = function _setTranslate() {
+                  var translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate;
+                  var newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
+                  swiper.setTranslate(newTranslate);
+                  swiper.updateActiveIndex();
+                  swiper.updateSlidesClasses();
+                };
+                swiper = this;
+                if (!(!swiper || swiper.destroyed)) {
+                  _context.next = 4;
+                  break;
+                }
+                return _context.abrupt("return");
+              case 4:
+                snapGrid = swiper.snapGrid, params = swiper.params; // Breakpoints
+                _context.next = 7;
+                return swiper.native.getRect();
+              case 7:
+                el = _context.sent;
+                if (el) {
+                  _context.next = 10;
+                  break;
+                }
+                return _context.abrupt("return", false);
+              case 10:
+                Object.assign(swiper, {
+                  el: el,
+                  $el: swiper.native
+                });
+                swiper.emit('beforeUpdate');
+                if (params.breakpoints) {
+                  swiper.setBreakpoint();
+                }
+                swiper.updateSize();
+                swiper.updateSlides();
+                swiper.updateProgress();
+                swiper.updateSlidesClasses();
+                if (swiper.params.freeMode && swiper.params.freeMode.enabled) {
+                  setTranslate();
+                  if (swiper.params.autoHeight) {
+                    swiper.updateAutoHeight();
+                  }
+                } else {
+                  if ((swiper.params.slidesPerView === 'auto' || swiper.params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides) {
+                    translated = swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+                  } else {
+                    translated = swiper.slideTo(swiper.activeIndex, 0, false, true);
+                  }
+                  if (!translated) {
+                    setTranslate();
+                  }
+                }
+                if (params.watchOverflow && snapGrid !== swiper.snapGrid) {
+                  swiper.checkOverflow();
+                }
+                swiper.emit('update');
+              case 20:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+      function update(_x) {
+        return _update.apply(this, arguments);
+      }
+      return update;
+    }()
+  }, {
+    key: "mount",
+    value: function () {
+      var _mount = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(el) {
+        var swiper;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                swiper = this;
+                if (!swiper.mounted) {
+                  _context2.next = 3;
+                  break;
+                }
+                return _context2.abrupt("return", true);
+              case 3:
+                _context2.next = 5;
+                return swiper.native.getRect();
+              case 5:
+                el = _context2.sent;
+                if (el) {
+                  _context2.next = 8;
+                  break;
+                }
+                return _context2.abrupt("return", false);
+              case 8:
+                swiper.emit('beforeMount'); // Set breakpoint
+                // let $wrapperEl = new DomSimulation(swiper.native);
+                // let $el = new DomSimulation(swiper.native);
+                // if (swiper.native && swiper.native.children && swiper.native.children.length) {
+                // 	swiper.native.children.forEach((item) => {
+                // 		item.$itemEl = new ChildDomSimulation(item);
+                // 	})
+                // }
+                Object.assign(swiper, {
+                  $el: swiper.native,
+                  el: el,
+                  $wrapperEl: swiper.native,
+                  wrapperEl: swiper.native,
+                  mounted: true
+                });
+                return _context2.abrupt("return", true);
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+      function mount(_x2) {
+        return _mount.apply(this, arguments);
+      }
+      return mount;
+    }()
+  }, {
+    key: "init",
+    value: function () {
+      var _init = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(el) {
+        var swiper, mounted;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                swiper = this;
+                if (!swiper.initialized) {
+                  _context3.next = 3;
+                  break;
+                }
+                return _context3.abrupt("return", swiper);
+              case 3:
+                _context3.next = 5;
+                return swiper.mount(el);
+              case 5:
+                mounted = _context3.sent;
+                if (!(mounted === false)) {
+                  _context3.next = 8;
+                  break;
+                }
+                return _context3.abrupt("return", swiper);
+              case 8:
+                swiper.emit('beforeInit'); // Set breakpoint
+
+                swiper.addClasses(); // Create loop
+
+                if (swiper.params.loop) {
+                  swiper.loopCreate();
+                } // Update size
+
+                swiper.updateSize(); // Update slides
+
+                swiper.updateSlides();
+                if (swiper.params.watchOverflow) {
+                  swiper.checkOverflow();
+                } // Set Grab Cursor
+
+                if (swiper.params.grabCursor && swiper.enabled) {
+                  swiper.setGrabCursor();
+                }
+
+                // if (swiper.params.loop) {
+                // 	swiper.on("update", () => {
+                // 		swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params
+                // 			.runCallbacksOnInit,
+                // 			false, true);
+                // 	})
+                // } else {
+                // 	swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, false, true);
+                // } // Attach events
+                // Slide To Initial Slide
+                if (swiper.params.loop) {
+                  swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit, false, true);
+                } else {
+                  swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, false, true);
+                }
+                swiper.attachEvents(); // Init Flag
+                swiper.initialized = true; // Emit
+                swiper.emit('init');
+                swiper.emit('afterInit');
+                return _context3.abrupt("return", swiper);
+              case 21:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+      function init(_x3) {
+        return _init.apply(this, arguments);
+      }
+      return init;
+    }()
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      var deleteInstance = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      var cleanStyles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var swiper = this;
+      var params = swiper.params,
+        $el = swiper.$el,
+        $wrapperEl = swiper.$wrapperEl,
+        slides = swiper.slides;
+      if (typeof swiper.params === 'undefined' || swiper.destroyed) {
+        return null;
+      }
+      swiper.emit('beforeDestroy'); // Init Flag
+
+      swiper.initialized = false; // Detach events
+
+      swiper.detachEvents(); // Destroy loop
+
+      if (params.loop) {
+        swiper.loopDestroy();
+      } // Cleanup styles
+
+      swiper.emit('destroy'); // Detach emitter events
+
+      Object.keys(swiper.eventsListeners).forEach(function (eventName) {
+        swiper.off(eventName);
+      });
+      if (deleteInstance !== false) {
+        (0, _utils.deleteProps)(swiper);
+      }
+      swiper.destroyed = true;
+      return null;
+    }
+  }], [{
+    key: "extendDefaults",
+    value: function extendDefaults(newDefaults) {
+      (0, _utils.extend)(extendedDefaults, newDefaults);
+    }
+  }, {
+    key: "extendedDefaults",
+    get: function get() {
+      return extendedDefaults;
+    }
+  }, {
+    key: "defaults",
+    get: function get() {
+      return _defaults.default;
+    }
+  }, {
+    key: "installModule",
+    value: function installModule(mod) {
+      if (!Swiper.prototype.__modules__) Swiper.prototype.__modules__ = [];
+      var modules = Swiper.prototype.__modules__;
+      if (typeof mod === 'function' && modules.indexOf(mod) < 0) {
+        modules.push(mod);
+      }
+    }
+  }, {
+    key: "use",
+    value: function use(module) {
+      if (Array.isArray(module)) {
+        module.forEach(function (m) {
+          return Swiper.installModule(m);
+        });
+        return Swiper;
+      }
+      Swiper.installModule(module);
+      return Swiper;
+    }
+  }]);
+  return Swiper;
+}();
+Object.keys(prototypes).forEach(function (prototypeGroup) {
+  Object.keys(prototypes[prototypeGroup]).forEach(function (protoMethod) {
+    Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+  });
+});
+var _default = Swiper;
+exports.default = _default;
+
+/***/ }),
+/* 125 */
+/*!********************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/utils.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.animateCSSModeScroll = animateCSSModeScroll;
+exports.deleteProps = deleteProps;
+exports.extend = extend;
+exports.getTranslate = getTranslate;
+exports.isObject = isObject;
+exports.nextTick = nextTick;
+exports.now = now;
+exports.setCSSProperty = setCSSProperty;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function deleteProps(obj) {
+  var object = obj;
+  Object.keys(object).forEach(function (key) {
+    try {
+      object[key] = null;
+    } catch (e) {// no getter for object
+    }
+    try {
+      delete object[key];
+    } catch (e) {// something got wrong
+    }
+  });
+}
+function getTranslate(el) {
+  var axis = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'x';
+  var curTransform;
+  if (axis === 'x') {
+    curTransform = el.translate;
+  }
+  if (axis === 'y') {
+    curTransform = el.translate;
+  }
+  return curTransform || 0;
+}
+function isObject(o) {
+  return (0, _typeof2.default)(o) === 'object' && o !== null && o.constructor && Object.prototype.toString.call(o).slice(8, -1) === 'Object';
+}
+function now() {
+  return Date.now();
+}
+function nextTick(callback) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  return setTimeout(callback, delay);
+}
+function extend() {
+  var to = Object(arguments.length <= 0 ? undefined : arguments[0]);
+  var noExtend = ['__proto__', 'constructor', 'prototype'];
+  for (var i = 1; i < arguments.length; i += 1) {
+    var nextSource = i < 0 || arguments.length <= i ? undefined : arguments[i];
+    if (nextSource !== undefined && nextSource !== null) {
+      var keysArray = Object.keys(Object(nextSource)).filter(function (key) {
+        return noExtend.indexOf(key) < 0;
+      });
+      for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+        var nextKey = keysArray[nextIndex];
+        var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+        if (desc !== undefined && desc.enumerable) {
+          if (isObject(to[nextKey]) && isObject(nextSource[nextKey])) {
+            if (nextSource[nextKey].__swiper__) {
+              to[nextKey] = nextSource[nextKey];
+            } else {
+              extend(to[nextKey], nextSource[nextKey]);
+            }
+          } else if (!isObject(to[nextKey]) && isObject(nextSource[nextKey])) {
+            to[nextKey] = {};
+            if (nextSource[nextKey].__swiper__) {
+              to[nextKey] = nextSource[nextKey];
+            } else {
+              extend(to[nextKey], nextSource[nextKey]);
+            }
+          } else {
+            to[nextKey] = nextSource[nextKey];
+          }
+        }
+      }
+    }
+  }
+  return to;
+}
+function setCSSProperty(el, varName, varValue) {
+  el.style.setProperty(varName, varValue);
+}
+function animateCSSModeScroll(_ref) {
+  var swiper = _ref.swiper,
+    targetPosition = _ref.targetPosition,
+    side = _ref.side;
+  var window = getWindow();
+  var startPosition = -swiper.translate;
+  var startTime = null;
+  var time;
+  var duration = swiper.params.speed;
+  swiper.wrapperEl.style.scrollSnapType = 'none';
+  window.cancelAnimationFrame(swiper.cssModeFrameID);
+  var dir = targetPosition > startPosition ? 'next' : 'prev';
+  var isOutOfBound = function isOutOfBound(current, target) {
+    return dir === 'next' && current >= target || dir === 'prev' && current <= target;
+  };
+  var animate = function animate() {
+    time = new Date().getTime();
+    if (startTime === null) {
+      startTime = time;
+    }
+    var progress = Math.max(Math.min((time - startTime) / duration, 1), 0);
+    var easeProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
+    var currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
+    if (isOutOfBound(currentPosition, targetPosition)) {
+      currentPosition = targetPosition;
+    }
+    swiper.wrapperEl.scrollTo((0, _defineProperty2.default)({}, side, currentPosition));
+    if (isOutOfBound(currentPosition, targetPosition)) {
+      swiper.wrapperEl.style.overflow = 'hidden';
+      swiper.wrapperEl.style.scrollSnapType = '';
+      setTimeout(function () {
+        swiper.wrapperEl.style.overflow = '';
+        swiper.wrapperEl.scrollTo((0, _defineProperty2.default)({}, side, currentPosition));
+      });
+      window.cancelAnimationFrame(swiper.cssModeFrameID);
+      return;
+    }
+    swiper.cssModeFrameID = window.requestAnimationFrame(animate);
+  };
+  animate();
+}
+
+/***/ }),
+/* 126 */
+/*!**************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/get-support.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSupport = getSupport;
+var support;
+function getMobile() {
+  if (navigator.userAgent.indexOf('Mobile') > -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function calcSupport() {
+  return {
+    smoothScroll: true,
+    touch: true,
+    passiveListener: function checkPassiveListener() {
+      var supportsPassive = false;
+      try {
+        var opts = Object.defineProperty({}, 'passive', {
+          // eslint-disable-next-line
+          get: function get() {
+            supportsPassive = true;
+          }
+        });
+      } catch (e) {// No support
+      }
+      return supportsPassive;
+    }(),
+    gestures: function checkGestures() {
+      return false;
+    }()
+  };
+}
+function getSupport() {
+  if (!support) {
+    support = calcSupport();
+  }
+  return support;
+}
+
+/***/ }),
+/* 127 */
+/*!*************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/get-device.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getDevice = getDevice;
+var _getSupport = __webpack_require__(/*! ./get-support.js */ 126);
+var deviceCached;
+function calcDevice() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    userAgent = _ref.userAgent;
+  var support = (0, _getSupport.getSupport)();
+  var device = {
+    ios: false,
+    android: false
+  };
+  var res = uni.getSystemInfoSync();
+  if (res.platform == "android") {
+    device.os = 'android';
+    device.android = true;
+  }
+  if (res.platform == "ios") {
+    device.os = 'ios';
+    device.ios = true;
+  } // Export object
+
+  return device;
+}
+function getDevice() {
+  var overrides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  if (!deviceCached) {
+    deviceCached = calcDevice(overrides);
+  }
+  return deviceCached;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 128 */
+/*!**************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/get-browser.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getBrowser = getBrowser;
+var browser;
+function calcBrowser() {
+  function isSafari() {
+    var res = uni.getSystemInfoSync();
+    return res.model;
+  }
+  return {
+    isSafari: isSafari(),
+    isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(isSafari())
+  };
+}
+function getBrowser() {
+  if (!browser) {
+    browser = calcBrowser();
+  }
+  return browser;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 129 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/moduleExtendParams.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = moduleExtendParams;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var _utils = __webpack_require__(/*! ../shared/utils.js */ 125);
+function moduleExtendParams(params, allModulesParams) {
+  return function extendParams() {
+    var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var moduleParamName = Object.keys(obj)[0];
+    var moduleParams = obj[moduleParamName];
+    if ((0, _typeof2.default)(moduleParams) !== 'object' || moduleParams === null) {
+      (0, _utils.extend)(allModulesParams, obj);
+      return;
+    }
+    if (['navigation', 'pagination', 'scrollbar'].indexOf(moduleParamName) >= 0 && params[moduleParamName] === true) {
+      params[moduleParamName] = {
+        auto: true
+      };
+    }
+    if (!(moduleParamName in params && 'enabled' in moduleParams)) {
+      (0, _utils.extend)(allModulesParams, obj);
+      return;
+    }
+    if (params[moduleParamName] === true) {
+      params[moduleParamName] = {
+        enabled: true
+      };
+    }
+    if ((0, _typeof2.default)(params[moduleParamName]) === 'object' && !('enabled' in params[moduleParamName])) {
+      params[moduleParamName].enabled = true;
+    }
+    if (!params[moduleParamName]) params[moduleParamName] = {
+      enabled: false
+    };
+    (0, _utils.extend)(allModulesParams, obj);
+  };
+}
+
+/***/ }),
+/* 130 */
+/*!***************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events-emitter.js ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+/* eslint-disable no-underscore-dangle */
+var _default = {
+  on: function on(events, handler, priority) {
+    var self = this;
+    if (typeof handler !== 'function') return self;
+    var method = priority ? 'unshift' : 'push';
+    events.split(' ').forEach(function (event) {
+      if (!self.eventsListeners[event]) self.eventsListeners[event] = [];
+      self.eventsListeners[event][method](handler);
+    });
+    return self;
+  },
+  once: function once(events, handler, priority) {
+    var self = this;
+    if (typeof handler !== 'function') return self;
+    function onceHandler() {
+      self.off(events, onceHandler);
+      if (onceHandler.__emitterProxy) {
+        delete onceHandler.__emitterProxy;
+      }
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      handler.apply(self, args);
+    }
+    onceHandler.__emitterProxy = handler;
+    return self.on(events, onceHandler, priority);
+  },
+  onAny: function onAny(handler, priority) {
+    var self = this;
+    if (typeof handler !== 'function') return self;
+    var method = priority ? 'unshift' : 'push';
+    if (self.eventsAnyListeners.indexOf(handler) < 0) {
+      self.eventsAnyListeners[method](handler);
+    }
+    return self;
+  },
+  offAny: function offAny(handler) {
+    var self = this;
+    if (!self.eventsAnyListeners) return self;
+    var index = self.eventsAnyListeners.indexOf(handler);
+    if (index >= 0) {
+      self.eventsAnyListeners.splice(index, 1);
+    }
+    return self;
+  },
+  off: function off(events, handler) {
+    var self = this;
+    if (!self.eventsListeners) return self;
+    events.split(' ').forEach(function (event) {
+      // self.native.off(event, handler);
+      if (typeof handler === 'undefined') {
+        self.eventsListeners[event] = [];
+      } else if (self.eventsListeners[event]) {
+        self.eventsListeners[event].forEach(function (eventHandler, index) {
+          if (eventHandler === handler || eventHandler.__emitterProxy && eventHandler.__emitterProxy === handler) {
+            self.eventsListeners[event].splice(index, 1);
+          }
+        });
+      }
+    });
+    return self;
+  },
+  emit: function emit() {
+    var self = this;
+    if (!self.eventsListeners) return self;
+    var events;
+    var data;
+    var context;
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+    if (typeof args[0] === 'string' || Array.isArray(args[0])) {
+      events = args[0];
+      data = args.slice(1, args.length);
+      context = self;
+    } else {
+      events = args[0].events;
+      data = args[0].data;
+      context = args[0].context || self;
+    }
+    data.unshift(context);
+    var eventsArray = Array.isArray(events) ? events : events.split(' ');
+    eventsArray.forEach(function (event) {
+      // console.log(event)
+      if (self.eventsAnyListeners && self.eventsAnyListeners.length) {
+        self.eventsAnyListeners.forEach(function (eventHandler) {
+          eventHandler.apply(context, [event].concat((0, _toConsumableArray2.default)(data)));
+        });
+      }
+      if (self.eventsListeners && self.eventsListeners[event]) {
+        self.eventsListeners[event].forEach(function (eventHandler) {
+          eventHandler.apply(context, data);
+        });
+      }
+    });
+    return self;
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 131 */
+/*!*************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _updateSize = _interopRequireDefault(__webpack_require__(/*! ./updateSize.js */ 132));
+var _updateSlides = _interopRequireDefault(__webpack_require__(/*! ./updateSlides.js */ 133));
+var _updateAutoHeight = _interopRequireDefault(__webpack_require__(/*! ./updateAutoHeight.js */ 134));
+var _updateSlidesOffset = _interopRequireDefault(__webpack_require__(/*! ./updateSlidesOffset.js */ 135));
+var _updateSlidesProgress = _interopRequireDefault(__webpack_require__(/*! ./updateSlidesProgress.js */ 136));
+var _updateProgress = _interopRequireDefault(__webpack_require__(/*! ./updateProgress.js */ 137));
+var _updateSlidesClasses = _interopRequireDefault(__webpack_require__(/*! ./updateSlidesClasses.js */ 138));
+var _updateActiveIndex = _interopRequireDefault(__webpack_require__(/*! ./updateActiveIndex.js */ 139));
+var _updateClickedSlide = _interopRequireDefault(__webpack_require__(/*! ./updateClickedSlide.js */ 140));
+var _default = {
+  updateSize: _updateSize.default,
+  updateSlides: _updateSlides.default,
+  updateAutoHeight: _updateAutoHeight.default,
+  updateSlidesOffset: _updateSlidesOffset.default,
+  updateSlidesProgress: _updateSlidesProgress.default,
+  updateProgress: _updateProgress.default,
+  updateSlidesClasses: _updateSlidesClasses.default,
+  updateActiveIndex: _updateActiveIndex.default,
+  updateClickedSlide: _updateClickedSlide.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 132 */
+/*!******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateSize.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateSize;
+function updateSize() {
+  var swiper = this;
+  var width;
+  var height;
+  var el = swiper.el;
+  if (typeof swiper.params.width !== 'undefined' && swiper.params.width !== null) {
+    width = swiper.params.width;
+  } else {
+    width = el.width;
+  }
+  if (typeof swiper.params.height !== 'undefined' && swiper.params.height !== null) {
+    height = swiper.params.height;
+  } else {
+    height = el.height;
+  }
+  if (width === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) {
+    return;
+  } // Subtract paddings
+  if (Number.isNaN(width)) width = 0;
+  if (Number.isNaN(height)) height = 0;
+  Object.assign(swiper, {
+    width: width,
+    height: height,
+    size: swiper.isHorizontal() ? width : height
+  });
+}
+
+/***/ }),
+/* 133 */
+/*!********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateSlides.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateSlides;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function updateSlides() {
+  var swiper = this;
+  function getDirectionLabel(property) {
+    if (swiper.isHorizontal()) {
+      return property;
+    } // prettier-ignore
+
+    return {
+      'width': 'height',
+      'margin-top': 'margin-left',
+      'margin-bottom ': 'margin-right',
+      'margin-left': 'margin-top',
+      'margin-right': 'margin-bottom',
+      'padding-left': 'padding-top',
+      'padding-right': 'padding-bottom',
+      'marginRight': 'marginBottom'
+    }[property];
+  }
+  function getDirectionPropertyValue(node, label) {
+    return parseFloat(node[getDirectionLabel(label)] || 0);
+  }
+  function getComputedStyle(native) {
+    return native.itemStyle;
+  }
+  var params = swiper.params;
+  var $wrapperEl = swiper.$wrapperEl,
+    swiperSize = swiper.size,
+    rtl = swiper.rtlTranslate,
+    wrongRTL = swiper.wrongRTL;
+  var isVirtual = swiper.virtual && params.virtual.enabled;
+  var previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length;
+  // const slides = $wrapperEl.children(`.${swiper.params.slideClass}`);
+  var slides = swiper.slides;
+  var slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length;
+  var snapGrid = [];
+  var slidesGrid = [];
+  var slidesSizesGrid = [];
+  var offsetBefore = params.slidesOffsetBefore;
+  if (typeof offsetBefore === 'function') {
+    offsetBefore = params.slidesOffsetBefore.call(swiper);
+  }
+  var offsetAfter = params.slidesOffsetAfter;
+  if (typeof offsetAfter === 'function') {
+    offsetAfter = params.slidesOffsetAfter.call(swiper);
+  }
+  var previousSnapGridLength = swiper.snapGrid.length;
+  var previousSlidesGridLength = swiper.slidesGrid.length;
+  var spaceBetween = params.spaceBetween;
+  var slidePosition = -offsetBefore;
+  var prevSlideSize = 0;
+  var index = 0;
+  if (typeof swiperSize === 'undefined') {
+    return;
+  }
+  if (typeof spaceBetween === 'string' && spaceBetween.indexOf('%') >= 0) {
+    spaceBetween = parseFloat(spaceBetween.replace('%', '')) / 100 * swiperSize;
+  }
+  swiper.virtualSize = -spaceBetween; // reset margins
+
+  if (params.centeredSlides && params.cssMode) {
+    (0, _utils.setCSSProperty)(swiper.wrapperEl, '--swiper-centered-offset-before', '');
+    (0, _utils.setCSSProperty)(swiper.wrapperEl, '--swiper-centered-offset-after', '');
+  }
+  var gridEnabled = params.grid && params.grid.rows > 1 && swiper.grid;
+  if (gridEnabled) {
+    swiper.grid.initSlides(slidesLength);
+  }
+  var slideSize;
+  var shouldResetSlideSize = params.slidesPerView === 'auto' && params.breakpoints && Object.keys(params.breakpoints).filter(function (key) {
+    return typeof params.breakpoints[key].slidesPerView !== 'undefined';
+  }).length > 0;
+  Array.apply(void 0, (0, _toConsumableArray2.default)(Array(slidesLength))).forEach( /*#__PURE__*/function () {
+    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(item, i) {
+      var slide, slideStyles, currentTransform, currentWebKitTransform, width, paddingLeft, paddingRight, marginLeft, marginRight, boxSizing;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              slideSize = 0;
+              slide = slides[i];
+              if (gridEnabled) {
+                swiper.grid.updateSlide(i, slide, slidesLength, getDirectionLabel);
+              }
+              if (params.slidesPerView === 'auto') {
+                if (shouldResetSlideSize) {
+                  slides[i].style[getDirectionLabel('width')] = "";
+                }
+                slideStyles = getComputedStyle(slide);
+                currentTransform = slide.itemStyle.transform;
+                currentWebKitTransform = slide.itemStyle.webkitTransform;
+                if (currentTransform) {
+                  slide.itemStyle.transform = 'none';
+                }
+                if (currentWebKitTransform) {
+                  slide.itemStyle.webkitTransform = 'none';
+                }
+                if (params.roundLengths) {
+                  slideSize = swiper.isHorizontal() ? slide.outerWidth(true) : slide.outerHeight(true);
+                } else {
+                  width = swiper.isHorizontal() ? slide.width : slide.height;
+                  paddingLeft = getDirectionPropertyValue(slideStyles, 'padding-left');
+                  paddingRight = getDirectionPropertyValue(slideStyles, 'padding-right');
+                  marginLeft = getDirectionPropertyValue(slideStyles, 'margin-left');
+                  marginRight = getDirectionPropertyValue(slideStyles, 'margin-right');
+                  boxSizing = slideStyles['box-sizing'];
+                  if (boxSizing && boxSizing === 'border-box') {
+                    slideSize = width + marginLeft + marginRight;
+                  } else {
+                    // slideSize = width + paddingLeft + paddingRight + marginLeft + marginRight;
+                    slideSize = width;
+                  }
+                }
+                if (currentTransform) {
+                  slide.itemStyle.transform = currentTransform;
+                }
+                if (currentWebKitTransform) {
+                  slide.itemStyle.webkitTransform = currentWebKitTransform;
+                }
+                if (params.roundLengths) slideSize = Math.floor(slideSize);
+              } else {
+                slideSize = (swiperSize - (params.slidesPerView - 1) * spaceBetween) / params.slidesPerView;
+                if (params.roundLengths) slideSize = Math.floor(slideSize);
+                slides[i] && slides[i].css((0, _defineProperty2.default)({}, getDirectionLabel('width'), "".concat(slideSize, "px")));
+              }
+              if (slides[i]) {
+                slides[i].swiperSlideSize = slideSize;
+              }
+              if (params.autoHeight) {
+                slides[i] && slides[i].css({
+                  height: 'auto'
+                });
+              }
+              slidesSizesGrid.push(slideSize);
+              if (params.centeredSlides) {
+                slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween;
+                if (prevSlideSize === 0 && i !== 0) slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
+                if (i === 0) slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
+                if (Math.abs(slidePosition) < 1 / 1000) slidePosition = 0;
+                if (params.roundLengths) slidePosition = Math.floor(slidePosition);
+                if (index % params.slidesPerGroup === 0) snapGrid.push(slidePosition);
+                slidesGrid.push(slidePosition);
+              } else {
+                if (params.roundLengths) slidePosition = Math.floor(slidePosition);
+                if ((index - Math.min(swiper.params.slidesPerGroupSkip, index)) % swiper.params.slidesPerGroup === 0) snapGrid.push(slidePosition);
+                slidesGrid.push(slidePosition);
+                slidePosition = slidePosition + slideSize + spaceBetween;
+              }
+              swiper.virtualSize += slideSize + spaceBetween;
+              prevSlideSize = slideSize;
+              index += 1;
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return function (_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+  swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter;
+  if (rtl && wrongRTL && (params.effect === 'slide' || params.effect === 'coverflow')) {
+    $wrapperEl.css({
+      width: "".concat(swiper.virtualSize + params.spaceBetween, "px")
+    });
+  }
+  if (params.setWrapperSize) {
+    $wrapperEl.css((0, _defineProperty2.default)({}, getDirectionLabel('width'), "".concat(swiper.virtualSize + params.spaceBetween, "px")));
+  }
+  if (gridEnabled) {
+    swiper.grid.updateWrapperSize(slideSize, snapGrid, getDirectionLabel);
+  } // Remove last grid elements depending on width
+
+  if (!params.centeredSlides) {
+    var newSlidesGrid = [];
+    for (var i = 0; i < snapGrid.length; i += 1) {
+      var slidesGridItem = snapGrid[i];
+      if (params.roundLengths) slidesGridItem = Math.floor(slidesGridItem);
+      if (snapGrid[i] <= swiper.virtualSize - swiperSize) {
+        newSlidesGrid.push(slidesGridItem);
+      }
+    }
+    snapGrid = newSlidesGrid;
+    if (Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1) {
+      snapGrid.push(swiper.virtualSize - swiperSize);
+    }
+  }
+  if (snapGrid.length === 0) snapGrid = [0];
+  if (params.spaceBetween !== 0) {
+    var key = swiper.isHorizontal() && rtl ? 'margin-left' : getDirectionLabel('margin-right');
+    slides.filter(function (_, slideIndex) {
+      if (!params.cssMode) return true;
+      if (slideIndex === slides.length - 1) {
+        return false;
+      }
+      return true;
+    }).forEach(function (item) {
+      item.css((0, _defineProperty2.default)({}, key, "".concat(spaceBetween, "px")));
+    });
+  }
+  if (params.centeredSlides && params.centeredSlidesBounds) {
+    var allSlidesSize = 0;
+    slidesSizesGrid.forEach(function (slideSizeValue) {
+      allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+    });
+    allSlidesSize -= params.spaceBetween;
+    var maxSnap = allSlidesSize - swiperSize;
+    snapGrid = snapGrid.map(function (snap) {
+      if (snap < 0) return -offsetBefore;
+      if (snap > maxSnap) return maxSnap + offsetAfter;
+      return snap;
+    });
+  }
+  if (params.centerInsufficientSlides) {
+    var _allSlidesSize = 0;
+    slidesSizesGrid.forEach(function (slideSizeValue) {
+      _allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+    });
+    _allSlidesSize -= params.spaceBetween;
+    if (_allSlidesSize < swiperSize) {
+      var allSlidesOffset = (swiperSize - _allSlidesSize) / 2;
+      snapGrid.forEach(function (snap, snapIndex) {
+        snapGrid[snapIndex] = snap - allSlidesOffset;
+      });
+      slidesGrid.forEach(function (snap, snapIndex) {
+        slidesGrid[snapIndex] = snap + allSlidesOffset;
+      });
+    }
+  }
+  Object.assign(swiper, {
+    slides: slides,
+    snapGrid: snapGrid,
+    slidesGrid: slidesGrid,
+    slidesSizesGrid: slidesSizesGrid
+  });
+  if (params.centeredSlides && params.cssMode && !params.centeredSlidesBounds) {
+    (0, _utils.setCSSProperty)(swiper.wrapperEl, '--swiper-centered-offset-before', "".concat(-snapGrid[0], "px"));
+    (0, _utils.setCSSProperty)(swiper.wrapperEl, '--swiper-centered-offset-after', "".concat(swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2, "px"));
+    var addToSnapGrid = -swiper.snapGrid[0];
+    var addToSlidesGrid = -swiper.slidesGrid[0];
+    swiper.snapGrid = swiper.snapGrid.map(function (v) {
+      return v + addToSnapGrid;
+    });
+    swiper.slidesGrid = swiper.slidesGrid.map(function (v) {
+      return v + addToSlidesGrid;
+    });
+  }
+  if (slidesLength !== previousSlidesLength) {
+    swiper.emit('slidesLengthChange');
+  }
+  if (snapGrid.length !== previousSnapGridLength) {
+    if (swiper.params.watchOverflow) swiper.checkOverflow();
+    swiper.emit('snapGridLengthChange');
+  }
+  if (slidesGrid.length !== previousSlidesGridLength) {
+    swiper.emit('slidesGridLengthChange');
+  }
+  if (params.watchSlidesProgress) {
+    swiper.updateSlidesOffset();
+  }
+  return slides;
+}
+
+/***/ }),
+/* 134 */
+/*!************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateAutoHeight.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateAutoHeight;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+function updateAutoHeight(_x) {
+  return _updateAutoHeight.apply(this, arguments);
+}
+function _updateAutoHeight() {
+  _updateAutoHeight = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(speed) {
+    var swiper, activeSlides, isVirtual, newHeight, i, getSlideByIndex, index, size, height;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            swiper = this;
+            activeSlides = [];
+            isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+            newHeight = 0;
+            if (typeof speed === 'number') {
+              swiper.setTransition(speed);
+            } else if (speed === true) {
+              swiper.setTransition(swiper.params.speed);
+            }
+            getSlideByIndex = function getSlideByIndex(index) {
+              if (isVirtual) {
+                return swiper.slides.filter(function (el) {
+                  return parseInt(el.getAttribute('data-swiper-slide-index'), 10) === index;
+                })[0];
+              }
+              return swiper.slides[index];
+            }; // Find slides currently in view
+            if (!(swiper.params.slidesPerView !== 'auto' && swiper.params.slidesPerView > 1)) {
+              _context.next = 22;
+              break;
+            }
+            if (!swiper.params.centeredSlides) {
+              _context.next = 11;
+              break;
+            }
+            swiper.visibleSlides.each(function (slide) {
+              activeSlides.push(slide);
+            });
+            _context.next = 20;
+            break;
+          case 11:
+            i = 0;
+          case 12:
+            if (!(i < Math.ceil(swiper.params.slidesPerView))) {
+              _context.next = 20;
+              break;
+            }
+            index = swiper.activeIndex + i;
+            if (!(index > swiper.slides.length && !isVirtual)) {
+              _context.next = 16;
+              break;
+            }
+            return _context.abrupt("break", 20);
+          case 16:
+            activeSlides.push(getSlideByIndex(index));
+          case 17:
+            i += 1;
+            _context.next = 12;
+            break;
+          case 20:
+            _context.next = 23;
+            break;
+          case 22:
+            activeSlides.push(getSlideByIndex(swiper.activeIndex));
+          case 23:
+            i = 0;
+          case 24:
+            if (!(i < activeSlides.length)) {
+              _context.next = 34;
+              break;
+            }
+            if (!(typeof activeSlides[i] !== 'undefined')) {
+              _context.next = 31;
+              break;
+            }
+            _context.next = 28;
+            return activeSlides[i].getSize();
+          case 28:
+            size = _context.sent;
+            height = size.height;
+            newHeight = height > newHeight ? height : newHeight;
+          case 31:
+            i += 1;
+            _context.next = 24;
+            break;
+          case 34:
+            // Update Height
+
+            if (newHeight || newHeight === 0) swiper.$wrapperEl.css({
+              height: "".concat(newHeight ? newHeight : '', "px")
+            });
+          case 35:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+  return _updateAutoHeight.apply(this, arguments);
+}
+
+/***/ }),
+/* 135 */
+/*!**************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateSlidesOffset.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateSlidesOffset;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+function updateSlidesOffset() {
+  return _updateSlidesOffset.apply(this, arguments);
+}
+function _updateSlidesOffset() {
+  _updateSlidesOffset = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+    var swiper, slides, i, offset;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            swiper = this;
+            slides = swiper.slides;
+            for (i = 0; i < slides.length; i += 1) {
+              offset = (slides[i].swiperSlideSize + swiper.params.spaceBetween) * slides[i].index;
+              slides[i].swiperSlideOffset = swiper.isHorizontal() ? offset : offset;
+            }
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+  return _updateSlidesOffset.apply(this, arguments);
+}
+
+/***/ }),
+/* 136 */
+/*!****************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateSlidesProgress.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateSlidesProgress;
+function updateSlidesProgress() {
+  var translate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this && this.translate || 0;
+  var swiper = this;
+  var params = swiper.params;
+  var slides = swiper.slides,
+    rtl = swiper.rtlTranslate,
+    snapGrid = swiper.snapGrid;
+  if (slides.length === 0) return;
+  if (typeof slides[0].swiperSlideOffset === 'undefined' || typeof slides[slides.length - 1].swiperSlideOffset === 'undefined') swiper.updateSlidesOffset();
+  var offsetCenter = -translate;
+  if (rtl) offsetCenter = translate; // Visible Slides
+
+  swiper.visibleSlidesIndexes = [];
+  swiper.visibleSlides = [];
+
+  // slides.forEach((item)=>)
+
+  for (var i = 0; i < slides.length; i += 1) {
+    var slide = slides[i];
+    var slideOffset = slide.swiperSlideOffset;
+    if (params.cssMode && params.centeredSlides) {
+      slideOffset -= slides[0].swiperSlideOffset;
+    }
+    var slideProgress = (offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween);
+    var originalSlideProgress = (offsetCenter - snapGrid[0] + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween);
+    var slideBefore = -(offsetCenter - slideOffset);
+    var slideAfter = slideBefore + swiper.slidesSizesGrid[i];
+    var isVisible = slideBefore >= 0 && slideBefore < swiper.size - 1 || slideAfter > 1 && slideAfter <= swiper.size || slideBefore <= 0 && slideAfter >= swiper.size;
+    if (isVisible) {
+      swiper.visibleSlides.push(slide);
+      swiper.visibleSlidesIndexes.push(i);
+      slides[i].addClass(params.slideVisibleClass);
+    }
+    slide.progress = rtl ? -slideProgress : slideProgress;
+    slide.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
+  }
+}
+
+/***/ }),
+/* 137 */
+/*!**********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateProgress.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateProgress;
+function updateProgress(translate) {
+  var swiper = this;
+  if (typeof translate === 'undefined') {
+    var multiplier = swiper.rtlTranslate ? -1 : 1; // eslint-disable-next-line
+
+    translate = swiper && swiper.translate && swiper.translate * multiplier || 0;
+  }
+  var params = swiper.params;
+  var translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  var progress = swiper.progress,
+    isBeginning = swiper.isBeginning,
+    isEnd = swiper.isEnd;
+  var wasBeginning = isBeginning;
+  var wasEnd = isEnd;
+  if (translatesDiff === 0) {
+    progress = 0;
+    isBeginning = true;
+    isEnd = true;
+  } else {
+    progress = (translate - swiper.minTranslate()) / translatesDiff;
+    isBeginning = progress <= 0;
+    isEnd = progress >= 1;
+  }
+  Object.assign(swiper, {
+    progress: progress,
+    isBeginning: isBeginning,
+    isEnd: isEnd
+  });
+  if (params.watchSlidesProgress || params.centeredSlides && params.autoHeight) swiper.updateSlidesProgress(translate);
+  if (isBeginning && !wasBeginning) {
+    swiper.emit('reachBeginning toEdge');
+  }
+  if (isEnd && !wasEnd) {
+    swiper.emit('reachEnd toEdge');
+  }
+  if (wasBeginning && !isBeginning || wasEnd && !isEnd) {
+    swiper.emit('fromEdge');
+  }
+  swiper.emit('progress', progress);
+}
+
+/***/ }),
+/* 138 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateSlidesClasses.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateSlidesClasses;
+function updateSlidesClasses() {
+  var swiper = this;
+  var slides = swiper.slides,
+    params = swiper.params,
+    $wrapperEl = swiper.$wrapperEl,
+    activeIndex = swiper.activeIndex,
+    realIndex = swiper.realIndex;
+  if (!slides.length || !$wrapperEl) return;
+  var isVirtual = swiper.virtual && params.virtual.enabled;
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].removeClass("".concat(params.slideActiveClass, " ").concat(params.slideNextClass, " ").concat(params.slidePrevClass, " ").concat(params.slideDuplicateActiveClass, " ").concat(params.slideDuplicateNextClass, " ").concat(params.slideDuplicatePrevClass));
+  }
+  var activeSlide;
+  if (isVirtual) {
+    // activeSlide = swiper.$wrapperEl.find(`.${params.slideClass}[data-swiper-slide-index="${activeIndex}"]`);
+    activeSlide = slides[slides.findIndex(function (item) {
+      return item.dataSwiperSlideIndex == activeIndex;
+    })];
+  } else {
+    activeSlide = slides[activeIndex];
+  } // Active classes
+
+  if (!activeSlide) return;
+  activeSlide.addClass(params.slideActiveClass);
+  if (params.loop) {
+    if (activeSlide.hasClass(params.slideDuplicateClass)) {
+      // $wrapperEl.children[realIndex].addClass(params.slideDuplicateActiveClass);
+      var index = slides.findIndex(function (item) {
+        return !item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == realIndex;
+      });
+      slides[index] && slides[index].addClass(params.slideDuplicateActiveClass);
+    } else {
+      // $wrapperEl.children[realIndex].addClass(params.slideDuplicateActiveClass);
+      var _index = slides.findIndex(function (item) {
+        return item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == realIndex;
+      });
+      slides[_index] && slides[_index].addClass(params.slideDuplicateActiveClass);
+    }
+  } // Next Slide
+
+  var nextSlide = activeSlide.nextAll(".".concat(params.slideClass))[0];
+  if (nextSlide) {
+    nextSlide.addClass(params.slideNextClass);
+  } else {
+    if (params.loop && !nextSlide) {
+      nextSlide = slides[0];
+      nextSlide.addClass(params.slideNextClass);
+    } // Prev Slide
+  }
+
+  var prevSlide = activeSlide.prevAll(".".concat(params.slideClass))[0];
+  if (prevSlide) {
+    prevSlide.addClass(params.slidePrevClass);
+  } else {
+    if (params.loop && !prevSlide) {
+      prevSlide = slides[slides.length - 1];
+      prevSlide.addClass(params.slidePrevClass);
+    }
+  }
+  if (params.loop) {
+    // Duplicate to all looped slides
+    if (nextSlide.hasClass(params.slideDuplicateClass)) {
+      // $wrapperEl.children(
+      // 	nextSlide.dataSwiperSlideIndex
+      // ).addClass(params.slideDuplicateNextClass);
+
+      var _index2 = slides.findIndex(function (item) {
+        return !item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == nextSlide.dataSwiperSlideIndex;
+      });
+      slides[_index2] && slides[_index2].addClass(params.slideDuplicateNextClass);
+    } else {
+      // $wrapperEl.children(
+      // 	nextSlide.dataSwiperSlideIndex
+      // ).addClass(params.slideDuplicateNextClass);
+
+      var _index3 = slides.findIndex(function (item) {
+        return item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == nextSlide.dataSwiperSlideIndex;
+      });
+      slides[_index3] && slides[_index3].addClass(params.slideDuplicateNextClass);
+    }
+    if (prevSlide.hasClass(params.slideDuplicateClass)) {
+      // $wrapperEl.children(
+      // 	prevSlide.dataSwiperSlideIndex
+      // ).addClass(params.slideDuplicatePrevClass);
+      var _index4 = slides.findIndex(function (item) {
+        return !item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == prevSlide.dataSwiperSlideIndex;
+      });
+      slides[_index4] && slides[_index4].addClass(params.slideDuplicatePrevClass);
+    } else {
+      // $wrapperEl.children(
+      // 	prevSlide.dataSwiperSlideIndex
+      // ).addClass(params.slideDuplicatePrevClass);
+      var _index5 = slides.findIndex(function (item) {
+        return item.hasClass(params.slideDuplicateClass) && item.dataSwiperSlideIndex == prevSlide.dataSwiperSlideIndex;
+      });
+      slides[_index5] && slides[_index5].addClass(params.slideDuplicatePrevClass);
+    }
+  }
+  swiper.emitSlidesClasses();
+}
+
+/***/ }),
+/* 139 */
+/*!*************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateActiveIndex.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateActiveIndex;
+function updateActiveIndex(newActiveIndex) {
+  var swiper = this;
+  var translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+  var slidesGrid = swiper.slidesGrid,
+    snapGrid = swiper.snapGrid,
+    params = swiper.params,
+    previousIndex = swiper.activeIndex,
+    previousRealIndex = swiper.realIndex,
+    previousSnapIndex = swiper.snapIndex;
+  var activeIndex = newActiveIndex;
+  var snapIndex;
+  if (typeof activeIndex === 'undefined') {
+    for (var i = 0; i < slidesGrid.length; i += 1) {
+      if (typeof slidesGrid[i + 1] !== 'undefined') {
+        if (translate >= slidesGrid[i] && translate < slidesGrid[i + 1] - (slidesGrid[i + 1] - slidesGrid[i]) / 2) {
+          activeIndex = i;
+        } else if (translate >= slidesGrid[i] && translate < slidesGrid[i + 1]) {
+          activeIndex = i + 1;
+        }
+      } else if (translate >= slidesGrid[i]) {
+        activeIndex = i;
+      }
+    } // Normalize slideIndex
+
+    if (params.normalizeSlideIndex) {
+      if (activeIndex < 0 || typeof activeIndex === 'undefined') activeIndex = 0;
+    }
+  }
+  if (snapGrid.indexOf(translate) >= 0) {
+    snapIndex = snapGrid.indexOf(translate);
+  } else {
+    var skip = Math.min(params.slidesPerGroupSkip, activeIndex);
+    snapIndex = skip + Math.floor((activeIndex - skip) / params.slidesPerGroup);
+  }
+  if (snapIndex >= snapGrid.length) snapIndex = snapGrid.length - 1;
+  if (swiper.loopedSlides) {
+    swiper.slides.filter(function (item) {
+      return item.index >= swiper.loopedSlides && item.index < swiper.slides.length - swiper.loopedSlides;
+    }).forEach(function (item, index) {
+      item.dataSwiperSlideIndex = item.index - swiper.loopedSlides;
+    });
+    swiper.slides.filter(function (item) {
+      return item.index < swiper.loopedSlides;
+    }).forEach(function (item, index) {
+      if (swiper.slides[swiper.slides.length - swiper.loopedSlides * 3 + index]) {
+        item.dataSwiperSlideIndex = swiper.slides[swiper.slides.length - swiper.loopedSlides * 3 + index].index;
+      }
+    });
+    swiper.slides.filter(function (item) {
+      return item.index >= swiper.slides.length - swiper.loopedSlides;
+    }).forEach(function (item, index) {
+      item.dataSwiperSlideIndex = swiper.slides[index].index;
+    });
+  }
+  if (activeIndex === previousIndex) {
+    if (snapIndex !== previousSnapIndex) {
+      swiper.snapIndex = snapIndex;
+      swiper.emit('snapIndexChange');
+    }
+    return;
+  } // Get real index
+
+  var realIndex;
+  if (swiper.virtual && params.virtual.enabled) {
+    realIndex = activeIndex;
+  } else {
+    if (swiper.slides[activeIndex].dataSwiperSlideIndex == undefined || swiper.slides[activeIndex].dataSwiperSlideIndex == null) {
+      realIndex = activeIndex;
+    } else {
+      realIndex = swiper.slides[activeIndex].dataSwiperSlideIndex;
+    }
+  }
+  Object.assign(swiper, {
+    snapIndex: snapIndex,
+    realIndex: realIndex,
+    previousIndex: previousIndex,
+    activeIndex: activeIndex
+  });
+  swiper.emit('activeIndexChange');
+  swiper.emit('snapIndexChange');
+  if (previousRealIndex !== realIndex) {
+    swiper.emit('realIndexChange');
+  }
+  if (swiper.initialized || swiper.params.runCallbacksOnInit) {
+    swiper.emit('slideChange', activeIndex);
+  }
+}
+
+/***/ }),
+/* 140 */
+/*!**************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/update/updateClickedSlide.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateClickedSlide;
+function updateClickedSlide(e) {
+  var swiper = this;
+  var params = swiper.params;
+  var slide = swiper.slides[e];
+  var slideFound = false;
+  var slideIndex;
+  if (slide) {
+    for (var i = 0; i < swiper.slides.length; i += 1) {
+      if (swiper.slides[i] === slide) {
+        slideFound = true;
+        slideIndex = i;
+        break;
+      }
+    }
+  }
+  if (slide && slideFound) {
+    swiper.clickedSlide = slide;
+    if (swiper.virtual && swiper.params.virtual.enabled) {
+      swiper.clickedIndex = parseInt($(slide).attr('data-swiper-slide-index'), 10);
+    } else {
+      swiper.clickedIndex = slideIndex;
+    }
+  } else {
+    swiper.clickedSlide = undefined;
+    swiper.clickedIndex = undefined;
+    return;
+  }
+  if (params.slideToClickedSlide && swiper.clickedIndex !== undefined && swiper.clickedIndex !== swiper.activeIndex) {
+    swiper.slideToClickedSlide();
+  }
+}
+
+/***/ }),
+/* 141 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/index.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _getTranslate = _interopRequireDefault(__webpack_require__(/*! ./getTranslate.js */ 142));
+var _setTranslate = _interopRequireDefault(__webpack_require__(/*! ./setTranslate.js */ 143));
+var _minTranslate = _interopRequireDefault(__webpack_require__(/*! ./minTranslate.js */ 144));
+var _maxTranslate = _interopRequireDefault(__webpack_require__(/*! ./maxTranslate.js */ 145));
+var _translateTo = _interopRequireDefault(__webpack_require__(/*! ./translateTo.js */ 146));
+var _default = {
+  getTranslate: _getTranslate.default,
+  setTranslate: _setTranslate.default,
+  minTranslate: _minTranslate.default,
+  maxTranslate: _maxTranslate.default,
+  translateTo: _translateTo.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 142 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/getTranslate.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = getSwiperTranslate;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function getSwiperTranslate() {
+  var axis = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.isHorizontal() ? 'x' : 'y';
+  var swiper = this;
+  var params = swiper.params,
+    rtl = swiper.rtlTranslate,
+    translate = swiper.translate,
+    $wrapperEl = swiper.$wrapperEl;
+  if (params.virtualTranslate) {
+    return rtl ? -translate : translate;
+  }
+  if (params.cssMode) {
+    return translate;
+  }
+  var currentTranslate = (0, _utils.getTranslate)(swiper, axis);
+  if (rtl) currentTranslate = -currentTranslate;
+  return currentTranslate || 0;
+}
+
+/***/ }),
+/* 143 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/setTranslate.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setTranslate;
+function setTranslate(translate, byController) {
+  var swiper = this;
+  var rtl = swiper.rtlTranslate,
+    params = swiper.params,
+    $wrapperEl = swiper.$wrapperEl,
+    wrapperEl = swiper.wrapperEl,
+    progress = swiper.progress;
+  var x = 0;
+  var y = 0;
+  var z = 0;
+  if (isNaN(translate)) {
+    return;
+  }
+  if (!$wrapperEl) return;
+  if (swiper.isHorizontal()) {
+    x = rtl ? -translate : translate;
+  } else {
+    y = translate;
+  }
+  if (params.roundLengths) {
+    x = Math.floor(x);
+    y = Math.floor(y);
+  }
+  if (params.cssMode) {
+    wrapperEl[swiper.isHorizontal() ? 'scrollLeft' : 'scrollTop'] = swiper.isHorizontal() ? -x : -y;
+  } else if (!params.virtualTranslate) {
+    $wrapperEl.transform("translate3d(".concat(x, "px, ").concat(y, "px, ").concat(z, "px)"));
+  }
+  swiper.previousTranslate = swiper.translate;
+  swiper.translate = swiper.isHorizontal() ? x : y; // Check if we need to update progress
+
+  var newProgress;
+  var translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  if (translatesDiff === 0) {
+    newProgress = 0;
+  } else {
+    newProgress = (translate - swiper.minTranslate()) / translatesDiff;
+  }
+  if (newProgress !== progress) {
+    swiper.updateProgress(translate);
+  }
+  swiper.emit('setTranslate', swiper.translate, byController);
+}
+
+/***/ }),
+/* 144 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/minTranslate.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = minTranslate;
+function minTranslate() {
+  return -this.snapGrid[0];
+}
+
+/***/ }),
+/* 145 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/maxTranslate.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = maxTranslate;
+function maxTranslate() {
+  return -this.snapGrid[this.snapGrid.length - 1];
+}
+
+/***/ }),
+/* 146 */
+/*!**********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/translate/translateTo.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = translateTo;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function translateTo() {
+  var translate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.params.speed;
+  var runCallbacks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var translateBounds = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  var internal = arguments.length > 4 ? arguments[4] : undefined;
+  var swiper = this;
+  var timer;
+  var params = swiper.params,
+    wrapperEl = swiper.wrapperEl;
+  if (swiper.animating && params.preventInteractionOnTransition) {
+    return false;
+  }
+  var minTranslate = swiper.minTranslate();
+  var maxTranslate = swiper.maxTranslate();
+  var newTranslate;
+  if (translateBounds && translate > minTranslate) newTranslate = minTranslate;else if (translateBounds && translate < maxTranslate) newTranslate = maxTranslate;else newTranslate = translate; // Update progress
+
+  swiper.updateProgress(newTranslate);
+  if (params.cssMode) {
+    var isH = swiper.isHorizontal();
+    if (speed === 0) {
+      wrapperEl[isH ? 'scrollLeft' : 'scrollTop'] = -newTranslate;
+    } else {
+      var _wrapperEl$scrollTo;
+      if (!swiper.support.smoothScroll) {
+        (0, _utils.animateCSSModeScroll)({
+          swiper: swiper,
+          targetPosition: -newTranslate,
+          side: isH ? 'left' : 'top'
+        });
+        return true;
+      }
+      wrapperEl.scrollTo((_wrapperEl$scrollTo = {}, (0, _defineProperty2.default)(_wrapperEl$scrollTo, isH ? 'left' : 'top', -newTranslate), (0, _defineProperty2.default)(_wrapperEl$scrollTo, "behavior", 'smooth'), _wrapperEl$scrollTo));
+    }
+    return true;
+  }
+  if (speed === 0) {
+    swiper.setTransition(0);
+    swiper.setTranslate(newTranslate);
+    if (runCallbacks) {
+      swiper.emit('beforeTransitionStart', speed, internal);
+      swiper.emit('transitionEnd');
+    }
+  } else {
+    swiper.setTransition(speed);
+    swiper.setTranslate(newTranslate);
+    if (runCallbacks) {
+      swiper.emit('beforeTransitionStart', speed, internal);
+      swiper.emit('transitionStart');
+    }
+    if (!swiper.animating) {
+      swiper.animating = true;
+      if (!swiper.onTranslateToWrapperTransitionEnd) {
+        swiper.onTranslateToWrapperTransitionEnd = function transitionEnd(e) {
+          if (!swiper || swiper.destroyed) return;
+          if (e.target !== this) return;
+          clearTimeout(timer);
+          swiper.onTranslateToWrapperTransitionEnd = null;
+          delete swiper.onTranslateToWrapperTransitionEnd;
+          if (runCallbacks) {
+            swiper.emit('transitionEnd');
+          }
+        };
+      }
+      timer = setTimeout(function () {
+        swiper.onTranslateToWrapperTransitionEnd();
+      }, speed);
+    }
+  }
+  return true;
+}
+
+/***/ }),
+/* 147 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/transition/index.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _setTransition = _interopRequireDefault(__webpack_require__(/*! ./setTransition.js */ 148));
+var _transitionStart = _interopRequireDefault(__webpack_require__(/*! ./transitionStart.js */ 149));
+var _transitionEnd = _interopRequireDefault(__webpack_require__(/*! ./transitionEnd.js */ 151));
+var _default = {
+  setTransition: _setTransition.default,
+  transitionStart: _transitionStart.default,
+  transitionEnd: _transitionEnd.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 148 */
+/*!*************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/transition/setTransition.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setTransition;
+function setTransition(duration, byController) {
+  var swiper = this;
+  if (!swiper.$wrapperEl) return;
+  if (!swiper.params.cssMode) {
+    swiper.$wrapperEl.transition(duration);
+  }
+  swiper.emit('setTransition', duration, byController);
+}
+
+/***/ }),
+/* 149 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/transition/transitionStart.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = transitionStart;
+var _transitionEmit = _interopRequireDefault(__webpack_require__(/*! ./transitionEmit.js */ 150));
+function transitionStart() {
+  var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var direction = arguments.length > 1 ? arguments[1] : undefined;
+  var swiper = this;
+  var params = swiper.params;
+  if (params.cssMode) return;
+  if (params.autoHeight) {
+    swiper.updateAutoHeight();
+  }
+  (0, _transitionEmit.default)({
+    swiper: swiper,
+    runCallbacks: runCallbacks,
+    direction: direction,
+    step: 'Start'
+  });
+}
+
+/***/ }),
+/* 150 */
+/*!**************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/transition/transitionEmit.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = transitionEmit;
+function transitionEmit(_ref) {
+  var swiper = _ref.swiper,
+    runCallbacks = _ref.runCallbacks,
+    direction = _ref.direction,
+    step = _ref.step;
+  var activeIndex = swiper.activeIndex,
+    previousIndex = swiper.previousIndex;
+  var dir = direction;
+  if (!dir) {
+    if (activeIndex > previousIndex) dir = 'next';else if (activeIndex < previousIndex) dir = 'prev';else dir = 'reset';
+  }
+  swiper.emit("transition".concat(step));
+  if (runCallbacks && activeIndex !== previousIndex) {
+    if (dir === 'reset') {
+      swiper.emit("slideResetTransition".concat(step));
+      return;
+    }
+    swiper.emit("slideChangeTransition".concat(step));
+    if (dir === 'next') {
+      swiper.emit("slideNextTransition".concat(step));
+    } else {
+      swiper.emit("slidePrevTransition".concat(step));
+    }
+  }
+}
+
+/***/ }),
+/* 151 */
+/*!*************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/transition/transitionEnd.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = transitionEnd;
+var _transitionEmit = _interopRequireDefault(__webpack_require__(/*! ./transitionEmit.js */ 150));
+function transitionEnd() {
+  var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var direction = arguments.length > 1 ? arguments[1] : undefined;
+  var swiper = this;
+  var params = swiper.params;
+  swiper.animating = false;
+  if (params.cssMode) return;
+  swiper.setTransition(0);
+  (0, _transitionEmit.default)({
+    swiper: swiper,
+    runCallbacks: runCallbacks,
+    direction: direction,
+    step: 'End'
+  });
+}
+
+/***/ }),
+/* 152 */
+/*!*********************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/defaults.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  init: true,
+  direction: 'horizontal',
+  touchEventsTarget: 'wrapper',
+  initialSlide: 0,
+  speed: 300,
+  cssMode: false,
+  updateOnWindowResize: true,
+  resizeObserver: true,
+  nested: false,
+  createElements: false,
+  enabled: true,
+  focusableElements: 'input, select, option, textarea, button, video, label',
+  // Overrides
+  width: null,
+  height: null,
+  //
+  preventInteractionOnTransition: false,
+  // ssr
+  userAgent: null,
+  url: null,
+  // To support iOS's swipe-to-go-back gesture (when being used in-app).
+  edgeSwipeDetection: false,
+  edgeSwipeThreshold: 20,
+  // Autoheight
+  autoHeight: false,
+  // Set wrapper width
+  setWrapperSize: false,
+  // Virtual Translate
+  virtualTranslate: false,
+  virtualList: [],
+  virtualIndexList: [],
+  // Effects
+  effect: 'slide',
+  // 'slide' or 'fade' or 'cube' or 'coverflow' or 'flip'
+  // Breakpoints
+  breakpoints: undefined,
+  breakpointsBase: 'window',
+  // Slides grid
+  spaceBetween: 0,
+  slidesPerView: 1,
+  slidesPerGroup: 1,
+  slidesPerGroupSkip: 0,
+  slidesPerGroupAuto: false,
+  centeredSlides: false,
+  centeredSlidesBounds: false,
+  slidesOffsetBefore: 0,
+  // in px
+  slidesOffsetAfter: 0,
+  // in px
+  normalizeSlideIndex: true,
+  centerInsufficientSlides: false,
+  // Disable swiper and hide navigation when container not overflow
+  watchOverflow: true,
+  // Round length
+  roundLengths: false,
+  // Touches
+  touchRatio: 1,
+  touchAngle: 45,
+  simulateTouch: true,
+  shortSwipes: true,
+  longSwipes: true,
+  longSwipesRatio: 0.5,
+  longSwipesMs: 300,
+  followFinger: true,
+  allowTouchMove: true,
+  threshold: 0,
+  touchMoveStopPropagation: false,
+  touchStartPreventDefault: true,
+  touchStartForcePreventDefault: false,
+  touchReleaseOnEdges: false,
+  // Unique Navigation Elements
+  uniqueNavElements: true,
+  // Resistance
+  resistance: true,
+  resistanceRatio: 0.85,
+  // Progress
+  watchSlidesProgress: false,
+  // Cursor
+  grabCursor: false,
+  // Clicks
+  preventClicks: true,
+  preventClicksPropagation: true,
+  slideToClickedSlide: false,
+  // Images
+  preloadImages: true,
+  updateOnImagesReady: true,
+  // loop
+  loop: false,
+  loopAdditionalSlides: 0,
+  loopedSlides: null,
+  loopFillGroupWithBlank: false,
+  loopPreventsSlide: true,
+  // rewind
+  rewind: false,
+  // Swiping/no swiping
+  allowSlidePrev: true,
+  allowSlideNext: true,
+  swipeHandler: null,
+  // '.swipe-handler',
+  noSwiping: false,
+  noSwipingClass: 'swiper-no-swiping',
+  noSwipingSelector: null,
+  // Passive Listeners
+  passiveListeners: true,
+  // NS
+  containerModifierClass: 'swiper-',
+  // NEW
+  slideClass: 'swiper-slide',
+  slideBlankClass: 'swiper-slide-invisible-blank',
+  slideActiveClass: 'swiper-slide-active',
+  slideDuplicateActiveClass: 'swiper-slide-duplicate-active',
+  slideVisibleClass: 'swiper-slide-visible',
+  slideDuplicateClass: 'swiper-slide-duplicate',
+  slideNextClass: 'swiper-slide-next',
+  slideDuplicateNextClass: 'swiper-slide-duplicate-next',
+  slidePrevClass: 'swiper-slide-prev',
+  slideDuplicatePrevClass: 'swiper-slide-duplicate-prev',
+  wrapperClass: 'swiper-wrapper',
+  slideThumbsClass: 'swiper-slide-thumb',
+  // Callbacks
+  runCallbacksOnInit: true,
+  // Internals
+  _emitClasses: false,
+  willChange: false
+};
+exports.default = _default;
+
+/***/ }),
+/* 153 */
+/*!**************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/classes/index.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _addClasses = _interopRequireDefault(__webpack_require__(/*! ./addClasses.js */ 154));
+var _removeClasses = _interopRequireDefault(__webpack_require__(/*! ./removeClasses.js */ 155));
+var _default = {
+  addClasses: _addClasses.default,
+  removeClasses: _removeClasses.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 154 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/classes/addClasses.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = addClasses;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function prepareClasses(entries, prefix) {
+  var resultClasses = [];
+  entries.forEach(function (item) {
+    if ((0, _typeof2.default)(item) === 'object') {
+      Object.keys(item).forEach(function (classNames) {
+        if (item[classNames]) {
+          resultClasses.push(prefix + classNames);
+        }
+      });
+    } else if (typeof item === 'string') {
+      resultClasses.push(prefix + item);
+    }
+  });
+  return resultClasses;
+}
+function addClasses() {
+  var swiper = this;
+  var classNames = swiper.classNames,
+    params = swiper.params,
+    rtl = swiper.rtl,
+    $el = swiper.$el,
+    device = swiper.device,
+    support = swiper.support; // prettier-ignore
+
+  var suffixes = prepareClasses(['initialized', params.direction, {
+    'pointer-events': !support.touch
+  }, {
+    'free-mode': swiper.params.freeMode && params.freeMode.enabled
+  }, {
+    'autoheight': params.autoHeight
+  }, {
+    'rtl': rtl
+  }, {
+    'grid': params.grid && params.grid.rows > 1
+  }, {
+    'grid-column': params.grid && params.grid.rows > 1 && params.grid.fill === 'column'
+  }, {
+    'android': device.android
+  }, {
+    'ios': device.ios
+  }, {
+    'css-mode': params.cssMode
+  }, {
+    'centered': params.cssMode && params.centeredSlides
+  }], params.containerModifierClass);
+  classNames.push.apply(classNames, (0, _toConsumableArray2.default)(suffixes));
+  $el.addClass((0, _toConsumableArray2.default)(classNames).join(' '));
+  swiper.emitContainerClasses();
+}
+
+/***/ }),
+/* 155 */
+/*!**********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/classes/removeClasses.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = removeClasses;
+function removeClasses() {
+  var swiper = this;
+  var $el = swiper.$el,
+    classNames = swiper.classNames;
+  $el.removeClass(classNames.join(' '));
+  swiper.emitContainerClasses();
+}
+
+/***/ }),
+/* 156 */
+/*!*********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/check-overflow/index.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function checkOverflow() {
+  var swiper = this;
+  var wasLocked = swiper.isLocked,
+    params = swiper.params;
+  var slidesOffsetBefore = params.slidesOffsetBefore;
+  if (slidesOffsetBefore) {
+    var lastSlideIndex = swiper.slides.length - 1;
+    var lastSlideRightEdge = swiper.slidesGrid[lastSlideIndex] + swiper.slidesSizesGrid[lastSlideIndex] + slidesOffsetBefore * 2;
+    swiper.isLocked = swiper.size > lastSlideRightEdge;
+  } else {
+    swiper.isLocked = swiper.snapGrid.length === 1;
+  }
+  if (params.allowSlideNext === true) {
+    swiper.allowSlideNext = !swiper.isLocked;
+  }
+  if (params.allowSlidePrev === true) {
+    swiper.allowSlidePrev = !swiper.isLocked;
+  }
+  if (wasLocked && wasLocked !== swiper.isLocked) {
+    swiper.isEnd = false;
+  }
+  if (wasLocked !== swiper.isLocked) {
+    swiper.emit(swiper.isLocked ? 'lock' : 'unlock');
+  }
+}
+var _default = {
+  checkOverflow: checkOverflow
+};
+exports.default = _default;
+
+/***/ }),
+/* 157 */
+/*!************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _slideTo = _interopRequireDefault(__webpack_require__(/*! ./slideTo.js */ 158));
+var _slideToLoop = _interopRequireDefault(__webpack_require__(/*! ./slideToLoop.js */ 159));
+var _slideNext = _interopRequireDefault(__webpack_require__(/*! ./slideNext.js */ 160));
+var _slidePrev = _interopRequireDefault(__webpack_require__(/*! ./slidePrev.js */ 161));
+var _slideReset = _interopRequireDefault(__webpack_require__(/*! ./slideReset.js */ 162));
+var _slideToClosest = _interopRequireDefault(__webpack_require__(/*! ./slideToClosest.js */ 163));
+var _slideToClickedSlide = _interopRequireDefault(__webpack_require__(/*! ./slideToClickedSlide.js */ 164));
+var _default = {
+  slideTo: _slideTo.default,
+  slideToLoop: _slideToLoop.default,
+  slideNext: _slideNext.default,
+  slidePrev: _slidePrev.default,
+  slideReset: _slideReset.default,
+  slideToClosest: _slideToClosest.default,
+  slideToClickedSlide: _slideToClickedSlide.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 158 */
+/*!**************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideTo.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideTo;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function slideTo() {
+  var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.params.speed;
+  var runCallbacks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var internal = arguments.length > 3 ? arguments[3] : undefined;
+  var initial = arguments.length > 4 ? arguments[4] : undefined;
+  if (typeof index !== 'number' && typeof index !== 'string') {
+    throw new Error("The 'index' argument cannot have type other than 'number' or 'string'. [".concat((0, _typeof2.default)(index), "] given."));
+  }
+  if (typeof index === 'string') {
+    /**
+     * The `index` argument converted from `string` to `number`.
+     * @type {number}
+     */
+    var indexAsNumber = parseInt(index, 10);
+    /**
+     * Determines whether the `index` argument is a valid `number`
+     * after being converted from the `string` type.
+     * @type {boolean}
+     */
+
+    var isValidNumber = isFinite(indexAsNumber);
+    if (!isValidNumber) {
+      throw new Error("The passed-in 'index' (string) couldn't be converted to 'number'. [".concat(index, "] given."));
+    } // Knowing that the converted `index` is a valid number,
+    // we can update the original argument's value.
+
+    index = indexAsNumber;
+  }
+  var swiper = this;
+  var slideIndex = index;
+  var timer;
+  if (slideIndex < 0) slideIndex = 0;
+  var params = swiper.params,
+    snapGrid = swiper.snapGrid,
+    slidesGrid = swiper.slidesGrid,
+    previousIndex = swiper.previousIndex,
+    activeIndex = swiper.activeIndex,
+    rtl = swiper.rtlTranslate,
+    wrapperEl = swiper.wrapperEl,
+    enabled = swiper.enabled;
+  if (swiper.animating && params.preventInteractionOnTransition || !enabled && !internal && !initial) {
+    return false;
+  }
+  var skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex);
+  var snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
+  if (snapIndex >= snapGrid.length) snapIndex = snapGrid.length - 1;
+  if ((activeIndex || params.initialSlide || 0) === (previousIndex || 0) && runCallbacks) {
+    swiper.emit('beforeSlideChangeStart');
+  }
+  var translate = -snapGrid[snapIndex]; // Update progress
+
+  swiper.updateProgress(translate); // Normalize slideIndex
+
+  if (params.normalizeSlideIndex) {
+    for (var i = 0; i < slidesGrid.length; i += 1) {
+      var normalizedTranslate = -Math.floor(translate * 100);
+      var normalizedGrid = Math.floor(slidesGrid[i] * 100);
+      var normalizedGridNext = Math.floor(slidesGrid[i + 1] * 100);
+      if (typeof slidesGrid[i + 1] !== 'undefined') {
+        if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext - (normalizedGridNext - normalizedGrid) / 2) {
+          slideIndex = i;
+        } else if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext) {
+          slideIndex = i + 1;
+        }
+      } else if (normalizedTranslate >= normalizedGrid) {
+        slideIndex = i;
+      }
+    }
+  } // Directions locks
+
+  if (swiper.initialized && slideIndex !== activeIndex) {
+    if (!swiper.allowSlideNext && translate < swiper.translate && translate < swiper.minTranslate()) {
+      return false;
+    }
+    if (!swiper.allowSlidePrev && translate > swiper.translate && translate > swiper.maxTranslate()) {
+      if ((activeIndex || 0) !== slideIndex) return false;
+    }
+  }
+  var direction;
+  if (slideIndex > activeIndex) direction = 'next';else if (slideIndex < activeIndex) direction = 'prev';else direction = 'reset'; // Update Index
+
+  if (rtl && -translate === swiper.translate || !rtl && translate === swiper.translate) {
+    swiper.updateActiveIndex(slideIndex); // Update Height
+
+    if (params.autoHeight) {
+      setTimeout(function () {
+        swiper.updateAutoHeight();
+      }, 0);
+    }
+    swiper.updateSlidesClasses();
+    if (params.effect !== 'slide') {
+      swiper.setTranslate(translate);
+    }
+    if (direction !== 'reset') {
+      swiper.transitionStart(runCallbacks, direction);
+      swiper.transitionEnd(runCallbacks, direction);
+    }
+    return false;
+  }
+  if (params.cssMode) {
+    var isH = swiper.isHorizontal();
+    var t = rtl ? translate : -translate;
+    if (speed === 0) {
+      var isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+      if (isVirtual) {
+        swiper.wrapperEl.style.scrollSnapType = 'none';
+        swiper._immediateVirtual = true;
+      }
+      wrapperEl[isH ? 'scrollLeft' : 'scrollTop'] = t;
+      if (isVirtual) {
+        requestAnimationFrame(function () {
+          swiper.wrapperEl.style.scrollSnapType = '';
+          swiper._swiperImmediateVirtual = false;
+        });
+      }
+    } else {
+      var _wrapperEl$scrollTo;
+      if (!swiper.support.smoothScroll) {
+        (0, _utils.animateCSSModeScroll)({
+          swiper: swiper,
+          targetPosition: t,
+          side: isH ? 'left' : 'top'
+        });
+        return true;
+      }
+      wrapperEl.scrollTo((_wrapperEl$scrollTo = {}, (0, _defineProperty2.default)(_wrapperEl$scrollTo, isH ? 'left' : 'top', t), (0, _defineProperty2.default)(_wrapperEl$scrollTo, "behavior", 'smooth'), _wrapperEl$scrollTo));
+    }
+    return true;
+  }
+  swiper.setTransition(speed);
+  swiper.setTranslate(translate);
+  swiper.updateActiveIndex(slideIndex);
+  swiper.updateSlidesClasses();
+  swiper.emit('beforeTransitionStart', speed, internal);
+  swiper.transitionStart(runCallbacks, direction);
+  if (speed === 0) {
+    swiper.transitionEnd(runCallbacks, direction);
+  } else if (!swiper.animating) {
+    swiper.animating = true;
+    if (!swiper.onSlideToWrapperTransitionEnd) {
+      swiper.onSlideToWrapperTransitionEnd = function transitionEnd(e) {
+        if (!swiper || swiper.destroyed) return;
+        clearTimeout(timer);
+        swiper.onSlideToWrapperTransitionEnd = null;
+        delete swiper.onSlideToWrapperTransitionEnd;
+        swiper.transitionEnd(runCallbacks, direction);
+      };
+    }
+    timer = setTimeout(function () {
+      if (swiper.onSlideToWrapperTransitionEnd) {
+        swiper.onSlideToWrapperTransitionEnd();
+      }
+    }, speed);
+  }
+  return true;
+}
+
+/***/ }),
+/* 159 */
+/*!******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideToLoop.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideToLoop;
+function slideToLoop() {
+  var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.params.speed;
+  var runCallbacks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var internal = arguments.length > 3 ? arguments[3] : undefined;
+  var swiper = this;
+  var newIndex = index;
+  if (swiper.params.loop) {
+    newIndex += swiper.loopedSlides;
+  }
+  return swiper.slideTo(newIndex, speed, runCallbacks, internal);
+}
+
+/***/ }),
+/* 160 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideNext.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideNext;
+function slideNext() {
+  var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.params.speed;
+  var runCallbacks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var internal = arguments.length > 2 ? arguments[2] : undefined;
+  var swiper = this;
+  var animating = swiper.animating,
+    enabled = swiper.enabled,
+    params = swiper.params;
+  if (!enabled) return swiper;
+  var perGroup = params.slidesPerGroup;
+  if (params.slidesPerView === 'auto' && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
+    perGroup = Math.max(swiper.slidesPerViewDynamic('current', true), 1);
+  }
+  var increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup;
+  if (params.loop) {
+    if (animating && params.loopPreventsSlide) return false;
+    swiper.loopFix();
+  }
+  if (params.rewind && swiper.isEnd) {
+    return swiper.slideTo(0, speed, runCallbacks, internal);
+  }
+  setTimeout(function () {
+    swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
+  }, 0);
+  return true;
+}
+
+/***/ }),
+/* 161 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slidePrev.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slidePrev;
+function slidePrev() {
+  var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.params.speed;
+  var runCallbacks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var internal = arguments.length > 2 ? arguments[2] : undefined;
+  var swiper = this;
+  var params = swiper.params,
+    animating = swiper.animating,
+    snapGrid = swiper.snapGrid,
+    slidesGrid = swiper.slidesGrid,
+    rtlTranslate = swiper.rtlTranslate,
+    enabled = swiper.enabled;
+  if (!enabled) return swiper;
+  if (params.loop) {
+    if (animating && params.loopPreventsSlide) return false;
+    swiper.loopFix();
+  }
+  var translate = rtlTranslate ? swiper.translate : -swiper.translate;
+  function normalize(val) {
+    if (val < 0) return -Math.floor(Math.abs(val));
+    return Math.floor(val);
+  }
+  var normalizedTranslate = normalize(translate);
+  var normalizedSnapGrid = snapGrid.map(function (val) {
+    return normalize(val);
+  });
+  var prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
+  if (typeof prevSnap === 'undefined' && params.cssMode) {
+    var prevSnapIndex;
+    snapGrid.forEach(function (snap, snapIndex) {
+      if (normalizedTranslate >= snap) {
+        prevSnapIndex = snapIndex;
+      }
+    });
+    if (typeof prevSnapIndex !== 'undefined') {
+      prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex];
+    }
+  }
+  var prevIndex = 0;
+  if (typeof prevSnap !== 'undefined') {
+    prevIndex = slidesGrid.indexOf(prevSnap);
+    if (prevIndex < 0) prevIndex = swiper.activeIndex - 1;
+    if (params.slidesPerView === 'auto' && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
+      prevIndex = prevIndex - swiper.slidesPerViewDynamic('previous', true) + 1;
+      prevIndex = Math.max(prevIndex, 0);
+    }
+  }
+  if (params.rewind && swiper.isBeginning) {
+    return swiper.slideTo(swiper.slides.length - 1, speed, runCallbacks, internal);
+  }
+  setTimeout(function () {
+    swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+  }, 30);
+  return true;
+}
+
+/***/ }),
+/* 162 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideReset.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideReset;
+function slideReset() {
+  var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.params.speed;
+  var runCallbacks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var internal = arguments.length > 2 ? arguments[2] : undefined;
+  var swiper = this;
+  return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
+}
+
+/***/ }),
+/* 163 */
+/*!*********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideToClosest.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideToClosest;
+/* eslint no-unused-vars: "off" */
+function slideToClosest() {
+  var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.params.speed;
+  var runCallbacks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var internal = arguments.length > 2 ? arguments[2] : undefined;
+  var threshold = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.5;
+  var swiper = this;
+  var index = swiper.activeIndex;
+  var skip = Math.min(swiper.params.slidesPerGroupSkip, index);
+  var snapIndex = skip + Math.floor((index - skip) / swiper.params.slidesPerGroup);
+  var translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+  if (translate >= swiper.snapGrid[snapIndex]) {
+    var currentSnap = swiper.snapGrid[snapIndex];
+    var nextSnap = swiper.snapGrid[snapIndex + 1];
+    if (translate - currentSnap > (nextSnap - currentSnap) * threshold) {
+      index += swiper.params.slidesPerGroup;
+    }
+  } else {
+    var prevSnap = swiper.snapGrid[snapIndex - 1];
+    var _currentSnap = swiper.snapGrid[snapIndex];
+    if (translate - prevSnap <= (_currentSnap - prevSnap) * threshold) {
+      index -= swiper.params.slidesPerGroup;
+    }
+  }
+  index = Math.max(index, 0);
+  index = Math.min(index, swiper.slidesGrid.length - 1);
+  return swiper.slideTo(index, speed, runCallbacks, internal);
+}
+
+/***/ }),
+/* 164 */
+/*!**************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/slide/slideToClickedSlide.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = slideToClickedSlide;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function slideToClickedSlide() {
+  var swiper = this;
+  var params = swiper.params,
+    $wrapperEl = swiper.$wrapperEl;
+  var slidesPerView = params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : params.slidesPerView;
+  var slideToIndex = swiper.clickedIndex;
+  var realIndex;
+  if (params.loop) {
+    if (swiper.animating) return;
+    // realIndex = parseInt($(swiper.clickedSlide).attr('data-swiper-slide-index'), 10);
+    realIndex = parseInt(swiper.activeIndex, 10);
+    if (params.centeredSlides) {
+      if (slideToIndex < swiper.loopedSlides - slidesPerView / 2 || slideToIndex > swiper.slides.length - swiper.loopedSlides + slidesPerView / 2) {
+        swiper.loopFix();
+        slideToIndex = $wrapperEl.children(".".concat(params.slideClass, "[data-swiper-slide-index=\"").concat(realIndex, "\"]:not(.").concat(params.slideDuplicateClass, ")")).eq(0).index();
+        (0, _utils.nextTick)(function () {
+          swiper.slideTo(slideToIndex);
+        });
+      } else {
+        swiper.slideTo(slideToIndex);
+      }
+    } else if (slideToIndex > swiper.slides.length - slidesPerView) {
+      swiper.loopFix();
+      slideToIndex = $wrapperEl.children(".".concat(params.slideClass, "[data-swiper-slide-index=\"").concat(realIndex, "\"]:not(.").concat(params.slideDuplicateClass, ")")).eq(0).index();
+      (0, _utils.nextTick)(function () {
+        swiper.slideTo(slideToIndex);
+      });
+    } else {
+      swiper.slideTo(slideToIndex);
+    }
+  } else {
+    swiper.slideTo(slideToIndex);
+  }
+}
+
+/***/ }),
+/* 165 */
+/*!***********************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/loop/index.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _loopCreate = _interopRequireDefault(__webpack_require__(/*! ./loopCreate.js */ 166));
+var _loopFix = _interopRequireDefault(__webpack_require__(/*! ./loopFix.js */ 167));
+var _loopDestroy = _interopRequireDefault(__webpack_require__(/*! ./loopDestroy.js */ 168));
+var _default = {
+  loopCreate: _loopCreate.default,
+  loopFix: _loopFix.default,
+  loopDestroy: _loopDestroy.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 166 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/loop/loopCreate.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = loopCreate;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+function loopCreate() {
+  var swiper = this;
+  var params = swiper.params,
+    $wrapperEl = swiper.$wrapperEl,
+    native = swiper.native; // Remove duplicated slides
+  var $selector = $wrapperEl;
+  var slides = native.children;
+  if (params.loopFillGroupWithBlank) {
+    var blankSlidesNum = params.slidesPerGroup - slides.length % params.slidesPerGroup;
+    if (blankSlidesNum !== params.slidesPerGroup) {
+      native.loopBlankShow = true;
+      native.loopBlankNumber = blankSlidesNum;
+    }
+  }
+  if (params.slidesPerView === 'auto' && !params.loopedSlides) params.loopedSlides = slides.length;
+  swiper.loopedSlides = Math.ceil(parseFloat(params.loopedSlides || params.slidesPerView, 10));
+  swiper.loopedSlides += params.loopAdditionalSlides;
+  if (swiper.loopedSlides > slides.length) {
+    swiper.loopedSlides = slides.length;
+  }
+  var prependSlides = [];
+  var appendSlides = [];
+  slides.forEach(function (el, index) {
+    var slide = el;
+    if (index < slides.length && index >= slides.length - swiper.loopedSlides) {
+      prependSlides.push(el);
+    }
+    if (index < swiper.loopedSlides) {
+      appendSlides.push(el);
+    }
+  });
+  var list = (0, _toConsumableArray2.default)(swiper.native.value);
+  var newList = (0, _toConsumableArray2.default)(list);
+  swiper.originalDataList = (0, _toConsumableArray2.default)(swiper.native.value);
+  for (var i = 0; i < appendSlides.length; i += 1) {
+    newList.push(list[appendSlides[i].index]);
+  }
+  for (var _i = prependSlides.length - 1; _i >= 0; _i -= 1) {
+    newList.unshift(list[prependSlides[_i].index]);
+  }
+  swiper.native.$emit("input", newList);
+  return true;
+}
+
+/***/ }),
+/* 167 */
+/*!*************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/loop/loopFix.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = loopFix;
+function loopFix() {
+  var swiper = this;
+  swiper.emit('beforeLoopFix');
+  var activeIndex = swiper.activeIndex,
+    slides = swiper.slides,
+    loopedSlides = swiper.loopedSlides,
+    allowSlidePrev = swiper.allowSlidePrev,
+    allowSlideNext = swiper.allowSlideNext,
+    snapGrid = swiper.snapGrid,
+    rtl = swiper.rtlTranslate;
+  var newIndex;
+  swiper.allowSlidePrev = true;
+  swiper.allowSlideNext = true;
+  var snapTranslate = -snapGrid[activeIndex];
+  var diff = snapTranslate - swiper.getTranslate();
+  if (activeIndex < loopedSlides) {
+    newIndex = slides.length - loopedSlides * 3 + activeIndex;
+    newIndex += loopedSlides;
+    var slideChanged = swiper.slideTo(newIndex, 0, false, true);
+    if (slideChanged && diff !== 0) {
+      swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+    }
+  } else if (activeIndex >= slides.length - loopedSlides) {
+    newIndex = -slides.length + activeIndex + loopedSlides;
+    newIndex += loopedSlides;
+    var _slideChanged = swiper.slideTo(newIndex, 0, false, true);
+    if (_slideChanged && diff !== 0) {
+      swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+    }
+  }
+  swiper.allowSlidePrev = allowSlidePrev;
+  swiper.allowSlideNext = allowSlideNext;
+  swiper.emit('loopFix');
+}
+
+/***/ }),
+/* 168 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/loop/loopDestroy.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = loopDestroy;
+function loopDestroy() {
+  var swiper = this;
+  var $wrapperEl = swiper.$wrapperEl,
+    params = swiper.params,
+    slides = swiper.slides;
+}
+
+/***/ }),
+/* 169 */
+/*!******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/grab-cursor/index.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _setGrabCursor = _interopRequireDefault(__webpack_require__(/*! ./setGrabCursor.js */ 170));
+var _unsetGrabCursor = _interopRequireDefault(__webpack_require__(/*! ./unsetGrabCursor.js */ 171));
+var _default = {
+  setGrabCursor: _setGrabCursor.default,
+  unsetGrabCursor: _unsetGrabCursor.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 170 */
+/*!**************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/grab-cursor/setGrabCursor.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setGrabCursor;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function setGrabCursor(moving) {
+  var _el$setCss;
+  var swiper = this;
+  if (swiper.support.touch || !swiper.params.simulateTouch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode) return;
+  var el = swiper.params.touchEventsTarget === 'container' ? swiper.$el : swiper.$wrapperEl;
+  el.setCss((_el$setCss = {
+    cursor: 'move'
+  }, (0, _defineProperty2.default)(_el$setCss, "cursor", moving ? '-webkit-grabbing' : '-webkit-grab'), (0, _defineProperty2.default)(_el$setCss, "cursor", moving ? '-moz-grabbin' : '-moz-grab'), (0, _defineProperty2.default)(_el$setCss, "cursor", moving ? 'grabbing' : 'grab'), _el$setCss));
+}
+
+/***/ }),
+/* 171 */
+/*!****************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/grab-cursor/unsetGrabCursor.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = unsetGrabCursor;
+function unsetGrabCursor() {
+  var swiper = this;
+  if (swiper.support.touch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode) {
+    return;
+  }
+  swiper[swiper.params.touchEventsTarget === 'container' ? '$el' : '$wrapperEl'].setCss({
+    cursor: ''
+  });
+}
+
+/***/ }),
+/* 172 */
+/*!*************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _onTouchStart = _interopRequireDefault(__webpack_require__(/*! ./onTouchStart.js */ 173));
+var _onTouchMove = _interopRequireDefault(__webpack_require__(/*! ./onTouchMove.js */ 174));
+var _onTouchEnd = _interopRequireDefault(__webpack_require__(/*! ./onTouchEnd.js */ 175));
+var _onResize = _interopRequireDefault(__webpack_require__(/*! ./onResize.js */ 176));
+var _onClick = _interopRequireDefault(__webpack_require__(/*! ./onClick.js */ 177));
+var _onScroll = _interopRequireDefault(__webpack_require__(/*! ./onScroll.js */ 178));
+var dummyEventAttached = false;
+function dummyEventListener() {}
+var events = function events(swiper, method) {
+  var params = swiper.params,
+    touchEvents = swiper.touchEvents,
+    wrapperEl = swiper.wrapperEl,
+    device = swiper.device,
+    support = swiper.support;
+  var el = swiper.native;
+  var capture = !!params.nested;
+  var domMethod = method === 'on' ? 'on' : 'off';
+  var swiperMethod = method;
+  if (!support.touch) {
+    var desktopMethod = method === 'on' ? 'addEventListener' : 'removeEventListener';
+    if (document.querySelector("#".concat(swiper.$el.swiperElId))) {
+      document.querySelector("#".concat(swiper.$el.swiperElId))[desktopMethod](touchEvents.start, swiper.onTouchStart, false);
+    }
+    document[desktopMethod](touchEvents.move, swiper.onTouchMove, capture);
+    document[desktopMethod](touchEvents.end, swiper.onTouchEnd, false);
+  } else {
+    var passiveListener = touchEvents.start === 'touchstart' && support.passiveListener && params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
+  }
+};
+function attachEvents() {
+  var swiper = this;
+  var params = swiper.params,
+    support = swiper.support;
+  swiper.onTouchStart = _onTouchStart.default.bind(swiper);
+  swiper.onTouchMove = _onTouchMove.default.bind(swiper);
+  swiper.onTouchEnd = _onTouchEnd.default.bind(swiper);
+  if (params.cssMode) {
+    swiper.onScroll = _onScroll.default.bind(swiper);
+  }
+  swiper.onClick = _onClick.default.bind(swiper);
+  events(swiper, 'on');
+}
+function detachEvents() {
+  var swiper = this;
+  events(swiper, 'off');
+}
+var _default = {
+  attachEvents: attachEvents,
+  detachEvents: detachEvents
+};
+exports.default = _default;
+
+/***/ }),
+/* 173 */
+/*!********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onTouchStart.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onTouchStart;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function onTouchStart(event) {
+  var swiper = this;
+  var data = swiper.touchEventsData;
+  var params = swiper.params,
+    touches = swiper.touches,
+    enabled = swiper.enabled;
+  if (!enabled) return;
+  if (swiper.animating && params.preventInteractionOnTransition) {
+    return;
+  }
+  if (!swiper.animating && params.cssMode && params.loop) {
+    swiper.loopFix();
+  }
+  var e = event;
+  if (e.originalEvent) e = e.originalEvent;
+  data.isTouchEvent = e.type === 'touchstart' || e.type === 'touchStart' || e.type === 'onTouchstart';
+  if (!data.isTouchEvent && 'which' in e && e.which === 3) return;
+  if (!data.isTouchEvent && 'button' in e && e.button > 0) return;
+  if (data.isTouched && data.isMoved) return; // change target el for shadow root component
+
+  var swipingClassHasValue = !!params.noSwipingClass && params.noSwipingClass !== '';
+  var noSwipingSelector = params.noSwipingSelector ? params.noSwipingSelector : ".".concat(params.noSwipingClass);
+  var isTargetShadow = !!(e.target && e.target.shadowRoot);
+  if (params.noSwiping) {
+    swiper.allowClick = true;
+    return;
+  }
+  if (params.swipeHandler) {
+    if (!$targetEl.closest(params.swipeHandler)[0]) return;
+  }
+  touches.currentX = e.type === 'touchstart' || e.type === 'touchStart' || e.type === 'onTouchstart' ? e.touches[0].pageX : e.pageX;
+  touches.currentY = e.type === 'touchstart' || e.type === 'touchStart' || e.type === 'onTouchstart' ? e.touches[0].pageY : e.pageY;
+  var startX = touches.currentX;
+  var startY = touches.currentY;
+  var edgeSwipeDetection = params.edgeSwipeDetection || params.iOSEdgeSwipeDetection;
+  var edgeSwipeThreshold = params.edgeSwipeThreshold || params.iOSEdgeSwipeThreshold;
+  Object.assign(data, {
+    isTouched: true,
+    isMoved: false,
+    allowTouchCallbacks: true,
+    isScrolling: undefined,
+    startMoving: undefined
+  });
+  touches.startX = startX;
+  touches.startY = startY;
+  data.touchStartTime = (0, _utils.now)();
+  swiper.allowClick = true;
+  swiper.updateSize();
+  swiper.swipeDirection = undefined;
+  if (params.threshold > 0) data.allowThresholdMove = false;
+  // if (e.type !== 'touchstart' && e.type !== 'touchStart') {
+  // let preventDefault = true;
+  // if ($targetEl.is(data.focusableElements)) preventDefault = false;
+
+  // const shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
+
+  // if ((params.touchStartForcePreventDefault || shouldPreventDefault) && !$targetEl[0].isContentEditable) {
+  // e.preventDefault();
+  // }
+  // }
+
+  swiper.emit('touch-start', e);
+}
+
+/***/ }),
+/* 174 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onTouchMove.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onTouchMove;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function onTouchMove(event) {
+  var swiper = this;
+  var data = swiper.touchEventsData;
+  var params = swiper.params,
+    touches = swiper.touches,
+    rtl = swiper.rtlTranslate,
+    enabled = swiper.enabled;
+  if (!enabled) return;
+  var e = event;
+  if (e.originalEvent) e = e.originalEvent;
+  if (!data.isTouched) {
+    if (data.startMoving && data.isScrolling) {
+      swiper.emit('touchMoveOpposite', e);
+    }
+    return;
+  }
+  if (data.isTouchEvent && e.type !== 'touchmove' && e.type !== 'touchMove' && e.type !== 'onTouchmove') return;
+  var targetTouch = (e.type === 'touchmove' || e.type === 'touchMove' || e.type === 'onTouchmove') && e.touches && (e.touches[0] || e.changedTouches[0]);
+  var pageX = e.type === 'touchmove' || e.type === 'touchMove' || e.type === 'onTouchmove' ? targetTouch.pageX : e.pageX;
+  var pageY = e.type === 'touchmove' || e.type === 'touchMove' || e.type === 'onTouchmove' ? targetTouch.pageY : e.pageY;
+  if (e.preventedByNestedSwiper) {
+    touches.startX = pageX;
+    touches.startY = pageY;
+    return;
+  }
+  if (!swiper.allowTouchMove) {
+    swiper.allowClick = false;
+    if (data.isTouched) {
+      Object.assign(touches, {
+        startX: pageX,
+        startY: pageY,
+        currentX: pageX,
+        currentY: pageY
+      });
+      data.touchStartTime = (0, _utils.now)();
+    }
+    return;
+  }
+  if (data.isTouchEvent && params.touchReleaseOnEdges && !params.loop) {
+    if (swiper.isVertical()) {
+      if (pageY < touches.startY && swiper.translate <= swiper.maxTranslate() || pageY > touches.startY && swiper.translate >= swiper.minTranslate()) {
+        data.isTouched = false;
+        data.isMoved = false;
+        return;
+      }
+    } else if (pageX < touches.startX && swiper.translate <= swiper.maxTranslate() || pageX > touches.startX && swiper.translate >= swiper.minTranslate()) {
+      return;
+    }
+  }
+
+  // if (data.isTouchEvent && document.activeElement) {
+  //   if (e.target === document.activeElement && $(e.target).is(data.focusableElements)) {
+  //     data.isMoved = true;
+  //     swiper.allowClick = false;
+  //     return;
+  //   }
+  // }
+
+  if (data.allowTouchCallbacks) {
+    swiper.emit('touch-move', e);
+  }
+  if (e.touches && e.touches.length > 1) return;
+  touches.currentX = pageX;
+  touches.currentY = pageY;
+  var diffX = touches.currentX - touches.startX;
+  var diffY = touches.currentY - touches.startY;
+  if (swiper.params.threshold && Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2)) < swiper.params.threshold) return;
+  if (typeof data.isScrolling === 'undefined') {
+    var touchAngle;
+    if (swiper.isHorizontal() && touches.currentY === touches.startY || swiper.isVertical() && touches.currentX === touches.startX) {
+      data.isScrolling = false;
+    } else {
+      if (diffX * diffX + diffY * diffY >= 25) {
+        touchAngle = Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180 / Math.PI;
+        data.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : 90 - touchAngle > params.touchAngle;
+      }
+    }
+  }
+  if (data.isScrolling) {
+    swiper.emit('touchMoveOpposite', e);
+  }
+  if (typeof data.startMoving === 'undefined') {
+    if (touches.currentX !== touches.startX || touches.currentY !== touches.startY) {
+      data.startMoving = true;
+    }
+  }
+  if (data.isScrolling) {
+    data.isTouched = false;
+    return;
+  }
+  if (!data.startMoving) {
+    return;
+  }
+  swiper.allowClick = false;
+  if (!params.cssMode && e.cancelable) {
+    e.preventDefault();
+  }
+  if (params.touchMoveStopPropagation && !params.nested) {
+    e.stopPropagation();
+  }
+  if (!data.isMoved) {
+    if (params.loop && !params.cssMode) {
+      swiper.loopFix();
+    }
+    data.startTranslate = swiper.getTranslate();
+    swiper.setTransition(0);
+    if (swiper.animating) {
+      swiper.$wrapperEl.emit('transitionend', [swiper]);
+    }
+    data.allowMomentumBounce = false;
+    if (params.grabCursor && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+      swiper.setGrabCursor(true);
+    }
+    swiper.emit('sliderFirstMove', e);
+  }
+  swiper.emit('sliderMove', e);
+  data.isMoved = true;
+  var diff = swiper.isHorizontal() ? diffX : diffY;
+  touches.diff = diff;
+  diff *= params.touchRatio;
+  if (rtl) diff = -diff;
+  swiper.swipeDirection = diff > 0 ? 'prev' : 'next';
+  data.currentTranslate = diff + data.startTranslate;
+  var disableParentSwiper = true;
+  var resistanceRatio = params.resistanceRatio;
+  if (params.touchReleaseOnEdges) {
+    resistanceRatio = 0;
+  }
+  if (diff > 0 && data.currentTranslate > swiper.minTranslate()) {
+    disableParentSwiper = false;
+    if (params.resistance) data.currentTranslate = swiper.minTranslate() - 1 + Math.pow(-swiper.minTranslate() + data.startTranslate + diff, resistanceRatio);
+  } else if (diff < 0 && data.currentTranslate < swiper.maxTranslate()) {
+    disableParentSwiper = false;
+    if (params.resistance) data.currentTranslate = swiper.maxTranslate() + 1 - Math.pow(swiper.maxTranslate() - data.startTranslate - diff, resistanceRatio);
+  }
+  if (disableParentSwiper) {
+    e.preventedByNestedSwiper = true;
+  }
+  if (!swiper.allowSlideNext && swiper.swipeDirection === 'next' && data.currentTranslate < data.startTranslate) {
+    data.currentTranslate = data.startTranslate;
+  }
+  if (!swiper.allowSlidePrev && swiper.swipeDirection === 'prev' && data.currentTranslate > data.startTranslate) {
+    data.currentTranslate = data.startTranslate;
+  }
+  if (!swiper.allowSlidePrev && !swiper.allowSlideNext) {
+    data.currentTranslate = data.startTranslate;
+  }
+  if (params.threshold > 0) {
+    if (Math.abs(diff) > params.threshold || data.allowThresholdMove) {
+      if (!data.allowThresholdMove) {
+        data.allowThresholdMove = true;
+        touches.startX = touches.currentX;
+        touches.startY = touches.currentY;
+        data.currentTranslate = data.startTranslate;
+        touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
+        return;
+      }
+    } else {
+      data.currentTranslate = data.startTranslate;
+      return;
+    }
+  }
+  if (!params.followFinger || params.cssMode) return;
+  if (params.freeMode && params.freeMode.enabled && swiper.freeMode || params.watchSlidesProgress) {
+    swiper.updateActiveIndex();
+    swiper.updateSlidesClasses();
+  }
+  if (swiper.params.freeMode && params.freeMode.enabled && swiper.freeMode) {
+    swiper.freeMode.onTouchMove();
+  }
+  swiper.updateProgress(data.currentTranslate);
+  swiper.setTranslate(data.currentTranslate);
+}
+
+/***/ }),
+/* 175 */
+/*!******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onTouchEnd.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onTouchEnd;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function onTouchEnd(event) {
+  var swiper = this;
+  var data = swiper.touchEventsData;
+  var params = swiper.params,
+    touches = swiper.touches,
+    rtl = swiper.rtlTranslate,
+    slidesGrid = swiper.slidesGrid,
+    enabled = swiper.enabled;
+  if (!enabled) return;
+  var e = event;
+  if (e.originalEvent) e = e.originalEvent;
+  if (data.allowTouchCallbacks) {
+    swiper.emit('touch-end', e);
+  }
+  data.allowTouchCallbacks = false;
+  if (!data.isTouched) {
+    if (data.isMoved && params.grabCursor) {
+      swiper.setGrabCursor(false);
+    }
+    data.isMoved = false;
+    data.startMoving = false;
+    return;
+  }
+  if (params.grabCursor && data.isMoved && data.isTouched && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+    swiper.setGrabCursor(false);
+  }
+  var touchEndTime = (0, _utils.now)();
+  var timeDiff = touchEndTime - data.touchStartTime; // Tap, doubleTap, Click
+
+  if (swiper.allowClick) {
+    var pathTree = e.path || e.composedPath && e.composedPath();
+    // swiper.updateClickedSlide(pathTree && pathTree[0] || e.target);
+    swiper.emit('tap click', e);
+    if (timeDiff < 300 && touchEndTime - data.lastClickTime < 300) {
+      swiper.emit('doubleTap doubleClick', e);
+    }
+  }
+  data.lastClickTime = (0, _utils.now)();
+  (0, _utils.nextTick)(function () {
+    if (!swiper.destroyed) swiper.allowClick = true;
+  });
+  if (!data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
+    data.isTouched = false;
+    data.isMoved = false;
+    data.startMoving = false;
+    return;
+  }
+  data.isTouched = false;
+  data.isMoved = false;
+  data.startMoving = false;
+  var currentPos;
+  if (params.followFinger) {
+    currentPos = rtl ? swiper.translate : -swiper.translate;
+  } else {
+    currentPos = -data.currentTranslate;
+  }
+  if (params.cssMode) {
+    return;
+  }
+  if (swiper.params.freeMode && params.freeMode.enabled) {
+    swiper.freeMode.onTouchEnd({
+      currentPos: currentPos
+    });
+    return;
+  }
+  var stopIndex = 0;
+  var groupSize = swiper.slidesSizesGrid[0];
+  for (var i = 0; i < slidesGrid.length; i += i < params.slidesPerGroupSkip ? 1 : params.slidesPerGroup) {
+    var _increment = i < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+    if (typeof slidesGrid[i + _increment] !== 'undefined') {
+      if (currentPos >= slidesGrid[i] && currentPos < slidesGrid[i + _increment]) {
+        stopIndex = i;
+        groupSize = slidesGrid[i + _increment] - slidesGrid[i];
+      }
+    } else if (currentPos >= slidesGrid[i]) {
+      stopIndex = i;
+      groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2];
+    }
+  }
+  var ratio = (currentPos - slidesGrid[stopIndex]) / groupSize;
+  var increment = stopIndex < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+  if (timeDiff > params.longSwipesMs) {
+    if (!params.longSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    if (swiper.swipeDirection === 'next') {
+      if (ratio >= params.longSwipesRatio) swiper.slideTo(stopIndex + increment);else swiper.slideTo(stopIndex);
+    }
+    if (swiper.swipeDirection === 'prev') {
+      if (ratio > 1 - params.longSwipesRatio) swiper.slideTo(stopIndex + increment);else swiper.slideTo(stopIndex);
+    }
+  } else {
+    if (!params.shortSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    var isNavButtonTarget = swiper.navigation && (e.target === swiper.navigation.nextEl || e.target === swiper.navigation.prevEl);
+    if (!isNavButtonTarget) {
+      if (swiper.swipeDirection === 'next') {
+        swiper.slideTo(stopIndex + increment);
+      }
+      if (swiper.swipeDirection === 'prev') {
+        swiper.slideTo(stopIndex);
+      }
+    } else if (e.target === swiper.navigation.nextEl) {
+      swiper.slideTo(stopIndex + increment);
+    } else {
+      swiper.slideTo(stopIndex);
+    }
+  }
+}
+
+/***/ }),
+/* 176 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onResize.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onResize;
+function onResize() {
+  var swiper = this;
+  var params = swiper.params,
+    el = swiper.el;
+  if (el && el.offsetWidth === 0) return;
+  if (params.breakpoints) {
+    swiper.setBreakpoint();
+  }
+  var allowSlideNext = swiper.allowSlideNext,
+    allowSlidePrev = swiper.allowSlidePrev,
+    snapGrid = swiper.snapGrid;
+  swiper.allowSlideNext = true;
+  swiper.allowSlidePrev = true;
+  swiper.updateSize();
+  swiper.updateSlides();
+  swiper.updateSlidesClasses();
+  if ((params.slidesPerView === 'auto' || params.slidesPerView > 1) && swiper.isEnd && !swiper.isBeginning && !swiper.params.centeredSlides) {
+    swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+  } else {
+    swiper.slideTo(swiper.activeIndex, 0, false, true);
+  }
+  if (swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused) {
+    swiper.autoplay.run();
+  }
+  swiper.allowSlidePrev = allowSlidePrev;
+  swiper.allowSlideNext = allowSlideNext;
+  if (swiper.params.watchOverflow && snapGrid !== swiper.snapGrid) {
+    swiper.checkOverflow();
+  }
+}
+
+/***/ }),
+/* 177 */
+/*!***************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onClick.js ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onClick;
+function onClick(e) {
+  var swiper = this;
+  if (!swiper.enabled) return;
+  if (!swiper.allowClick) {
+    if (swiper.params.preventClicks) e.preventDefault();
+    if (swiper.params.preventClicksPropagation && swiper.animating) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+}
+
+/***/ }),
+/* 178 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/events/onScroll.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = onScroll;
+function onScroll() {
+  var swiper = this;
+  var wrapperEl = swiper.wrapperEl,
+    rtlTranslate = swiper.rtlTranslate,
+    enabled = swiper.enabled;
+  if (!enabled) return;
+  swiper.previousTranslate = swiper.translate;
+  if (swiper.isHorizontal()) {
+    swiper.translate = -wrapperEl.scrollLeft;
+  } else {
+    swiper.translate = -wrapperEl.scrollTop;
+  } // eslint-disable-next-line
+
+  if (swiper.translate === -0) swiper.translate = 0;
+  swiper.updateActiveIndex();
+  swiper.updateSlidesClasses();
+  var newProgress;
+  var translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  if (translatesDiff === 0) {
+    newProgress = 0;
+  } else {
+    newProgress = (swiper.translate - swiper.minTranslate()) / translatesDiff;
+  }
+  if (newProgress !== swiper.progress) {
+    swiper.updateProgress(rtlTranslate ? -swiper.translate : swiper.translate);
+  }
+  swiper.emit('setTranslate', swiper.translate, false);
+}
+
+/***/ }),
+/* 179 */
+/*!*********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/autoplay/autoplay.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Autoplay;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function Autoplay(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on,
+    emit = _ref.emit;
+  var timeout;
+  swiper.autoplay = {
+    running: false,
+    paused: false
+  };
+  extendParams({
+    autoplay: {
+      enabled: false,
+      delay: 3000,
+      waitForTransition: true,
+      disableOnInteraction: true,
+      stopOnLastSlide: false,
+      reverseDirection: false,
+      pauseOnMouseEnter: false
+    }
+  });
+  function run() {
+    var $activeSlideEl = swiper.slides[swiper.activeIndex];
+    var delay = swiper.params.autoplay.delay;
+    clearTimeout(timeout);
+    timeout = (0, _utils.nextTick)(function () {
+      var autoplayResult;
+      if (swiper.params.autoplay.reverseDirection) {
+        if (swiper.params.loop) {
+          swiper.loopFix();
+          autoplayResult = swiper.slidePrev(swiper.params.speed, true, true);
+          emit('autoplay');
+        } else if (!swiper.isBeginning) {
+          autoplayResult = swiper.slidePrev(swiper.params.speed, true, true);
+          emit('autoplay');
+        } else if (!swiper.params.autoplay.stopOnLastSlide) {
+          autoplayResult = swiper.slideTo(swiper.slides.length - 1, swiper.params.speed, true, true);
+          emit('autoplay');
+        } else {
+          stop();
+        }
+      } else if (swiper.params.loop) {
+        swiper.loopFix();
+        setTimeout(function () {
+          autoplayResult = swiper.slideNext(swiper.params.speed, true, true);
+        }, 30);
+        emit('autoplay');
+      } else if (!swiper.isEnd) {
+        autoplayResult = swiper.slideNext(swiper.params.speed, true, true);
+        emit('autoplay');
+      } else if (!swiper.params.autoplay.stopOnLastSlide) {
+        autoplayResult = swiper.slideTo(0, swiper.params.speed, true, true);
+        emit('autoplay');
+      } else {
+        stop();
+      }
+      if (swiper.params.cssMode && swiper.autoplay.running) run();else if (autoplayResult === false) {
+        run();
+      }
+    }, delay);
+  }
+  function start() {
+    if (typeof timeout !== 'undefined') return false;
+    if (swiper.autoplay.running) return false;
+    swiper.autoplay.running = true;
+    emit('autoplayStart');
+    run();
+    return true;
+  }
+  function stop() {
+    if (!swiper.autoplay.running) return false;
+    if (typeof timeout === 'undefined') return false;
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = undefined;
+    }
+    swiper.autoplay.running = false;
+    emit('autoplayStop');
+    return true;
+  }
+  function pause(speed) {
+    if (!swiper.autoplay.running) return;
+    if (swiper.autoplay.paused) return;
+    if (timeout) clearTimeout(timeout);
+    swiper.autoplay.paused = true;
+    if (speed === 0 || !swiper.params.autoplay.waitForTransition) {
+      swiper.autoplay.paused = false;
+      run();
+    } else {
+      ['transitionEnd', 'webkitTransitionEnd'].forEach(function (event) {
+        swiper.on(event, onTransitionEnd);
+      });
+    }
+  }
+  function onVisibilityChange() {
+    // const document = getDocument();
+
+    // if (document.visibilityState === 'hidden' && swiper.autoplay.running) {
+    // 	pause();
+    // }
+
+    // if (document.visibilityState === 'visible' && swiper.autoplay.paused) {
+    // 	run();
+    // 	swiper.autoplay.paused = false;
+    // }
+  }
+  function onTransitionEnd(e) {
+    if (!swiper || swiper.destroyed || !swiper.$wrapperEl) return;
+    // if (e.target !== swiper.$wrapperEl[0]) return;
+    ['transitionEnd', 'webkitTransitionEnd'].forEach(function (event) {
+      swiper.off(event, onTransitionEnd);
+    });
+    swiper.autoplay.paused = false;
+    if (!swiper.autoplay.running) {
+      stop();
+    } else {
+      run();
+    }
+  }
+  function onMouseEnter() {
+    if (swiper.params.autoplay.disableOnInteraction) {
+      stop();
+    } else {
+      pause();
+    }
+
+    // ['transitionend', 'webkitTransitionEnd'].forEach(event => {
+    // 	swiper.$wrapperEl[0].removeEventListener(event, onTransitionEnd);
+    // });
+  }
+
+  function onMouseLeave() {
+    if (swiper.params.autoplay.disableOnInteraction) {
+      return;
+    }
+    swiper.autoplay.paused = false;
+    run();
+  }
+  function attachMouseEvents() {
+    if (swiper.params.autoplay.pauseOnMouseEnter) {}
+  }
+  function detachMouseEvents() {}
+  on('init update', function () {
+    if (swiper.params.autoplay.enabled) {
+      start();
+      attachMouseEvents();
+    }
+  });
+  on('beforeTransitionStart', function (_s, speed, internal) {
+    if (swiper.autoplay.running) {
+      if (internal || !swiper.params.autoplay.disableOnInteraction) {
+        swiper.autoplay.pause(speed);
+      } else {
+        if (!swiper.params.loop) {
+          stop();
+        }
+      }
+    }
+  });
+  on('sliderFirstMove', function () {
+    if (swiper.autoplay.running) {
+      if (swiper.params.autoplay.disableOnInteraction) {
+        stop();
+      } else {
+        pause();
+      }
+    }
+  });
+  on('touch-end', function () {
+    if (swiper.params.cssMode && swiper.autoplay.paused && !swiper.params.autoplay.disableOnInteraction) {
+      run();
+    }
+  });
+  on('destroy', function () {
+    detachMouseEvents();
+    if (swiper.autoplay.running) {
+      stop();
+    }
+  });
+  Object.assign(swiper.autoplay, {
+    pause: pause,
+    run: run,
+    start: start,
+    stop: stop
+  });
+}
+
+/***/ }),
+/* 180 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/free-mode/free-mode.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = freeMode;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function freeMode(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    emit = _ref.emit,
+    once = _ref.once;
+  extendParams({
+    freeMode: {
+      enabled: false,
+      momentum: true,
+      momentumRatio: 1,
+      momentumBounce: true,
+      momentumBounceRatio: 1,
+      momentumVelocityRatio: 1,
+      sticky: false,
+      minimumVelocity: 0.02
+    }
+  });
+  function onTouchMove() {
+    var data = swiper.touchEventsData,
+      touches = swiper.touches; // Velocity
+
+    if (data.velocities.length === 0) {
+      data.velocities.push({
+        position: touches[swiper.isHorizontal() ? 'startX' : 'startY'],
+        time: data.touchStartTime
+      });
+    }
+    data.velocities.push({
+      position: touches[swiper.isHorizontal() ? 'currentX' : 'currentY'],
+      time: (0, _utils.now)()
+    });
+  }
+  function onTouchEnd(_ref2) {
+    var currentPos = _ref2.currentPos;
+    var params = swiper.params,
+      $wrapperEl = swiper.$wrapperEl,
+      rtl = swiper.rtlTranslate,
+      snapGrid = swiper.snapGrid,
+      data = swiper.touchEventsData; // Time diff
+
+    var touchEndTime = (0, _utils.now)();
+    var timeDiff = touchEndTime - data.touchStartTime;
+    if (currentPos < -swiper.minTranslate()) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    if (currentPos > -swiper.maxTranslate()) {
+      if (swiper.slides.length < snapGrid.length) {
+        swiper.slideTo(snapGrid.length - 1);
+      } else {
+        swiper.slideTo(swiper.slides.length - 1);
+      }
+      return;
+    }
+    if (params.freeMode.momentum) {
+      if (data.velocities.length > 1) {
+        var lastMoveEvent = data.velocities.pop();
+        var velocityEvent = data.velocities.pop();
+        var distance = lastMoveEvent.position - velocityEvent.position;
+        var time = lastMoveEvent.time - velocityEvent.time;
+        swiper.velocity = distance / time;
+        swiper.velocity /= 2;
+        if (Math.abs(swiper.velocity) < params.freeMode.minimumVelocity) {
+          swiper.velocity = 0;
+        } // this implies that the user stopped moving a finger then released.
+        // There would be no events with distance zero, so the last event is stale.
+
+        if (time > 150 || (0, _utils.now)() - lastMoveEvent.time > 300) {
+          swiper.velocity = 0;
+        }
+      } else {
+        swiper.velocity = 0;
+      }
+      swiper.velocity *= params.freeMode.momentumVelocityRatio;
+      data.velocities.length = 0;
+      var momentumDuration = 1000 * params.freeMode.momentumRatio;
+      var momentumDistance = swiper.velocity * momentumDuration;
+      var newPosition = swiper.translate + momentumDistance;
+      if (rtl) newPosition = -newPosition;
+      var doBounce = false;
+      var afterBouncePosition;
+      var bounceAmount = Math.abs(swiper.velocity) * 20 * params.freeMode.momentumBounceRatio;
+      var needsLoopFix;
+      if (newPosition < swiper.maxTranslate()) {
+        if (params.freeMode.momentumBounce) {
+          if (newPosition + swiper.maxTranslate() < -bounceAmount) {
+            newPosition = swiper.maxTranslate() - bounceAmount;
+          }
+          afterBouncePosition = swiper.maxTranslate();
+          doBounce = true;
+          data.allowMomentumBounce = true;
+        } else {
+          newPosition = swiper.maxTranslate();
+        }
+        if (params.loop && params.centeredSlides) needsLoopFix = true;
+      } else if (newPosition > swiper.minTranslate()) {
+        if (params.freeMode.momentumBounce) {
+          if (newPosition - swiper.minTranslate() > bounceAmount) {
+            newPosition = swiper.minTranslate() + bounceAmount;
+          }
+          afterBouncePosition = swiper.minTranslate();
+          doBounce = true;
+          data.allowMomentumBounce = true;
+        } else {
+          newPosition = swiper.minTranslate();
+        }
+        if (params.loop && params.centeredSlides) needsLoopFix = true;
+      } else if (params.freeMode.sticky) {
+        var nextSlide;
+        for (var j = 0; j < snapGrid.length; j += 1) {
+          if (snapGrid[j] > -newPosition) {
+            nextSlide = j;
+            break;
+          }
+        }
+        if (Math.abs(snapGrid[nextSlide] - newPosition) < Math.abs(snapGrid[nextSlide - 1] - newPosition) || swiper.swipeDirection === 'next') {
+          newPosition = snapGrid[nextSlide];
+        } else {
+          newPosition = snapGrid[nextSlide - 1];
+        }
+        newPosition = -newPosition;
+      }
+      if (needsLoopFix) {
+        once('transitionEnd', function () {
+          swiper.loopFix();
+        });
+      } // Fix duration
+
+      if (swiper.velocity !== 0) {
+        if (rtl) {
+          momentumDuration = Math.abs((-newPosition - swiper.translate) / swiper.velocity);
+        } else {
+          momentumDuration = Math.abs((newPosition - swiper.translate) / swiper.velocity);
+        }
+        if (params.freeMode.sticky) {
+          var moveDistance = Math.abs((rtl ? -newPosition : newPosition) - swiper.translate);
+          var currentSlideSize = swiper.slidesSizesGrid[swiper.activeIndex];
+          if (moveDistance < currentSlideSize) {
+            momentumDuration = params.speed;
+          } else if (moveDistance < 2 * currentSlideSize) {
+            momentumDuration = params.speed * 1.5;
+          } else {
+            momentumDuration = params.speed * 2.5;
+          }
+        }
+      } else if (params.freeMode.sticky) {
+        swiper.slideToClosest();
+        return;
+      }
+      if (params.freeMode.momentumBounce && doBounce) {
+        swiper.updateProgress(afterBouncePosition);
+        swiper.setTransition(momentumDuration);
+        swiper.setTranslate(newPosition);
+        swiper.transitionStart(true, swiper.swipeDirection);
+        swiper.animating = true;
+        $wrapperEl.transitionEnd(function () {
+          if (!swiper || swiper.destroyed || !data.allowMomentumBounce) return;
+          emit('momentumBounce');
+          swiper.setTransition(params.speed);
+          setTimeout(function () {
+            swiper.setTranslate(afterBouncePosition);
+            $wrapperEl.transitionEnd(function () {
+              if (!swiper || swiper.destroyed) return;
+              swiper.transitionEnd();
+            }, momentumDuration);
+          }, 0);
+        }, momentumDuration);
+      } else if (swiper.velocity) {
+        emit('_freeModeNoMomentumRelease');
+        swiper.updateProgress(newPosition);
+        swiper.setTransition(momentumDuration);
+        swiper.setTranslate(newPosition);
+        swiper.transitionStart(true, swiper.swipeDirection);
+        if (!swiper.animating) {
+          swiper.animating = true;
+          $wrapperEl.transitionEnd(function () {
+            if (!swiper || swiper.destroyed) return;
+            swiper.transitionEnd();
+          }, momentumDuration);
+        }
+      } else {
+        swiper.updateProgress(newPosition);
+      }
+      swiper.updateActiveIndex();
+      swiper.updateSlidesClasses();
+    } else if (params.freeMode.sticky) {
+      swiper.slideToClosest();
+      return;
+    } else if (params.freeMode) {
+      emit('_freeModeNoMomentumRelease');
+    }
+    if (!params.freeMode.momentum || timeDiff >= params.longSwipesMs) {
+      swiper.updateProgress();
+      swiper.updateActiveIndex();
+      swiper.updateSlidesClasses();
+    }
+  }
+  Object.assign(swiper, {
+    freeMode: {
+      onTouchMove: onTouchMove,
+      onTouchEnd: onTouchEnd
+    }
+  });
+}
+
+/***/ }),
+/* 181 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-fade/effect-fade.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectFade;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+var _effectVirtualTransitionEnd = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-virtual-transition-end.js */ 184));
+function EffectFade(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    fadeEffect: {
+      crossFade: false,
+      transformEl: null
+    }
+  });
+  var setTranslate = function setTranslate() {
+    var slides = swiper.slides;
+    var params = swiper.params.fadeEffect;
+    for (var i = 0; i < slides.length; i += 1) {
+      var $slideEl = swiper.slides[i];
+      var offset = $slideEl.swiperSlideOffset;
+      var tx = -offset;
+      if (!swiper.params.virtualTranslate) tx -= swiper.translate;
+      var ty = 0;
+      if (!swiper.isHorizontal()) {
+        ty = tx;
+        tx = 0;
+      }
+      var slideOpacity = swiper.params.fadeEffect.crossFade ? Math.max(1 - Math.abs($slideEl.progress), 0) : 1 + Math.min(Math.max($slideEl.progress, -1), 0);
+      var $targetEl = (0, _effectTarget.default)(params, $slideEl);
+      $targetEl.css({
+        opacity: slideOpacity
+      });
+      $targetEl.transform("translate3d(".concat(tx, "px, ").concat(ty, "px, 0px)"));
+      if (swiper.params.willChange) {
+        $targetEl.willChange("opacity");
+      }
+      slides[i].addClass('swiper-slide-fade');
+    }
+  };
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.fadeEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i += 1) {
+      $transitionElements[i].transition(duration);
+    }
+    (0, _effectVirtualTransitionEnd.default)({
+      swiper: swiper,
+      duration: duration,
+      transformEl: transformEl,
+      allSlides: true
+    });
+  };
+  (0, _effectInit.default)({
+    effect: 'fade',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    overwriteParams: function overwriteParams() {
+      return {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        watchSlidesProgress: true,
+        spaceBetween: 0,
+        virtualTranslate: !swiper.params.cssMode
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 182 */
+/*!**************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/effect-init.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = effectInit;
+function effectInit(params) {
+  var effect = params.effect,
+    swiper = params.swiper,
+    on = params.on,
+    setTranslate = params.setTranslate,
+    setTransition = params.setTransition,
+    overwriteParams = params.overwriteParams,
+    perspective = params.perspective;
+  on('beforeInit', function () {
+    if (swiper.params.effect !== effect) return;
+    swiper.classNames.push("".concat(swiper.params.containerModifierClass).concat(effect));
+    if (perspective && perspective()) {
+      swiper.classNames.push("".concat(swiper.params.containerModifierClass, "3d"));
+    }
+    var overwriteParamsResult = overwriteParams ? overwriteParams() : {};
+    Object.assign(swiper.params, overwriteParamsResult);
+    Object.assign(swiper.originalParams, overwriteParamsResult);
+  });
+  on('setTranslate', function () {
+    if (swiper.params.effect !== effect) return;
+    setTranslate();
+  });
+  on('setTransition', function (_s, duration) {
+    if (swiper.params.effect !== effect) return;
+    setTransition(duration);
+  });
+}
+
+/***/ }),
+/* 183 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/effect-target.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = effectTarget;
+function effectTarget(effectParams, $slideEl) {
+  if (effectParams.transformEl) {
+    return $slideEl.find(effectParams.transformEl).css({
+      'backface-visibility': 'hidden',
+      '-webkit-backface-visibility': 'hidden'
+    });
+  }
+  return $slideEl;
+}
+
+/***/ }),
+/* 184 */
+/*!********************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/effect-virtual-transition-end.js ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = effectVirtualTransitionEnd;
+function effectVirtualTransitionEnd(_ref) {
+  var swiper = _ref.swiper,
+    duration = _ref.duration,
+    transformEl = _ref.transformEl,
+    allSlides = _ref.allSlides;
+  var slides = swiper.slides,
+    activeIndex = swiper.activeIndex,
+    $wrapperEl = swiper.$wrapperEl;
+  if (swiper.params.virtualTranslate && duration !== 0) {
+    (function () {
+      var eventTriggered = false;
+      var $transitionEndTarget;
+      if (allSlides) {
+        $transitionEndTarget = transformEl ? slides.find(transformEl) : slides;
+      } else {
+        $transitionEndTarget = transformEl ? slides.eq(activeIndex).find(transformEl) : slides[activeIndex];
+      }
+      for (var i = 0; i < $transitionEndTarget.length; i += 1) {
+        $transitionEndTarget[i].transitionEnd(function () {
+          if (eventTriggered) return;
+          if (!swiper || swiper.destroyed) return;
+          eventTriggered = true;
+          swiper.animating = false;
+          // const triggerEvents = ['webkitTransitionEnd', 'transitionend'];
+          swiper.emit('transitionEnd');
+          // for (let i = 0; i < triggerEvents.length; i += 1) {
+          // 	$wrapperEl.trigger(triggerEvents[i]);
+          // }
+        }, duration);
+      }
+    })();
+  }
+}
+
+/***/ }),
+/* 185 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-cube/effect-cube.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectCube;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+function EffectCube(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    cubeEffect: {
+      slideShadows: true,
+      shadow: true,
+      shadowOffset: 20,
+      shadowScale: 0.94
+    }
+  });
+  var setTranslate = function setTranslate() {
+    var $el = swiper.$el,
+      $wrapperEl = swiper.$wrapperEl,
+      slides = swiper.slides,
+      swiperWidth = swiper.width,
+      swiperHeight = swiper.height,
+      rtl = swiper.rtlTranslate,
+      swiperSize = swiper.size,
+      browser = swiper.browser;
+    var params = swiper.params.cubeEffect;
+    var isHorizontal = swiper.isHorizontal();
+    var isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+    var wrapperRotate = 0;
+    var $cubeShadowEl;
+    if (params.shadow) {
+      if (isHorizontal) {
+        // $cubeShadowEl = $wrapperEl.find('.swiper-cube-shadow');
+        if (!swiper.native.cubeShadowShowWrapper) {
+          swiper.$wrapperEl.updateData({
+            cubeShadowShowWrapper: true
+          });
+        }
+        swiper.$wrapperEl.cubeShadowCss({
+          height: "".concat(swiperWidth, "px")
+        });
+      } else {
+        if (!swiper.native.cubeShadowShowRoot) {
+          swiper.$wrapperEl.updateData({
+            cubeShadowShowRoot: true
+          });
+        }
+      }
+    }
+    for (var i = 0; i < slides.length; i += 1) {
+      var $slideEl = slides[i];
+      var slideIndex = i;
+      if (isVirtual) {
+        slideIndex = parseInt(swiper.activeIndex, 10);
+      }
+      var slideAngle = slideIndex * 90;
+      var round = Math.floor(slideAngle / 360);
+      if (rtl) {
+        slideAngle = -slideAngle;
+        round = Math.floor(-slideAngle / 360);
+      }
+      var progress = Math.max(Math.min($slideEl.progress, 1), -1);
+      var tx = 0;
+      var ty = 0;
+      var tz = 0;
+      if (slideIndex % 4 === 0) {
+        tx = -round * 4 * swiperSize;
+        tz = 0;
+      } else if ((slideIndex - 1) % 4 === 0) {
+        tx = 0;
+        tz = -round * 4 * swiperSize;
+      } else if ((slideIndex - 2) % 4 === 0) {
+        tx = swiperSize + round * 4 * swiperSize;
+        tz = swiperSize;
+      } else if ((slideIndex - 3) % 4 === 0) {
+        tx = -swiperSize;
+        tz = 3 * swiperSize + swiperSize * 4 * round;
+      }
+      if (rtl) {
+        tx = -tx;
+      }
+      if (!isHorizontal) {
+        ty = tx;
+        tx = 0;
+      }
+      var transform = "rotateX(".concat(isHorizontal ? 0 : -slideAngle, "deg) rotateY(").concat(isHorizontal ? slideAngle : 0, "deg) translate3d(").concat(tx, "px, ").concat(ty, "px, ").concat(tz, "px)");
+      if (progress <= 1 && progress > -1) {
+        wrapperRotate = slideIndex * 90 + progress * 90;
+        if (rtl) wrapperRotate = -slideIndex * 90 - progress * 90;
+      }
+      $slideEl.transform(transform);
+      // if (params.slideShadows) {
+      // 	// Set shadows
+      // 	let shadowBefore = isHorizontal ?
+      // 		$slideEl.find('.swiper-slide-shadow-left') :
+      // 		$slideEl.find('.swiper-slide-shadow-top');
+      // 	let shadowAfter = isHorizontal ?
+      // 		$slideEl.find('.swiper-slide-shadow-right') :
+      // 		$slideEl.find('.swiper-slide-shadow-bottom');
+      // 	if (shadowBefore.length === 0) {
+      // 		shadowBefore = $(
+      // 			`<div class="swiper-slide-shadow-${isHorizontal ? 'left' : 'top'}"></div>`,
+      // 		);
+      // 		$slideEl.append(shadowBefore);
+      // 	}
+      // 	if (shadowAfter.length === 0) {
+      // 		shadowAfter = $(
+      // 			`<div class="swiper-slide-shadow-${isHorizontal ? 'right' : 'bottom'}"></div>`,
+      // 		);
+      // 		$slideEl.append(shadowAfter);
+      // 	}
+      // 	if (shadowBefore.length) shadowBefore[0].style.opacity = Math.max(-progress, 0);
+      // 	if (shadowAfter.length) shadowAfter[0].style.opacity = Math.max(progress, 0);
+      // }
+      $slideEl.addClass('swiper-slide-cube');
+    }
+    $wrapperEl.css({
+      '-webkit-transform-origin': "50% 50% -".concat(swiperSize / 2, "px"),
+      'transform-origin': "50% 50% -".concat(swiperSize / 2, "px")
+    });
+    if (params.shadow) {
+      if (isHorizontal) {
+        swiper.$wrapperEl.cubeShadowTransform("translate3d(0px, ".concat(swiperWidth / 2 + params.shadowOffset, "px, ").concat(-swiperWidth / 2, "px) rotateX(90deg) rotateZ(0deg) scale(").concat(params.shadowScale, ")"));
+      } else {
+        var shadowAngle = Math.abs(wrapperRotate) - Math.floor(Math.abs(wrapperRotate) / 90) * 90;
+        var multiplier = 1.5 - (Math.sin(shadowAngle * 2 * Math.PI / 360) / 2 + Math.cos(shadowAngle * 2 * Math.PI / 360) / 2);
+        var scale1 = params.shadowScale;
+        var scale2 = params.shadowScale / multiplier;
+        var offset = params.shadowOffset;
+        swiper.$wrapperEl.cubeShadowTransform("scale3d(".concat(scale1, ", 1, ").concat(scale2, ") translate3d(0px, ").concat(swiperHeight / 2 + offset, "px, ").concat(-swiperHeight / 2 / scale2, "px) rotateX(-90deg)"));
+      }
+    }
+    var zFactor = browser.isSafari || browser.isWebView ? -swiperSize / 2 : 0;
+    $wrapperEl.transform("translate3d(0px,0,".concat(zFactor, "px) rotateX(").concat(swiper.isHorizontal() ? 0 : wrapperRotate, "deg) rotateY(").concat(swiper.isHorizontal() ? -wrapperRotate : 0, "deg)"));
+  };
+  var setTransition = function setTransition(duration) {
+    var $el = swiper.$el,
+      slides = swiper.slides;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].transition(duration);
+    }
+    if (swiper.params.cubeEffect.shadow && !swiper.isHorizontal()) {
+      swiper.$wrapperEl.cubeShadowTransition(duration);
+    }
+  };
+  (0, _effectInit.default)({
+    effect: 'cube',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return true;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        watchSlidesProgress: true,
+        resistanceRatio: 0,
+        spaceBetween: 0,
+        centeredSlides: false,
+        virtualTranslate: true
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 186 */
+/*!*************************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-coverflow/effect-coverflow.js ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectCoverflow;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+function EffectCoverflow(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      scale: 1,
+      modifier: 1,
+      slideShadows: true,
+      transformEl: null
+    }
+  });
+  var setTranslate = function setTranslate() {
+    var swiperWidth = swiper.width,
+      swiperHeight = swiper.height,
+      slides = swiper.slides,
+      slidesSizesGrid = swiper.slidesSizesGrid;
+    var params = swiper.params.coverflowEffect;
+    var isHorizontal = swiper.isHorizontal();
+    var transform = swiper.translate;
+    var center = isHorizontal ? -transform + swiperWidth / 2 : -transform + swiperHeight / 2;
+    var rotate = isHorizontal ? params.rotate : -params.rotate;
+    var translate = params.depth; // Each slide offset from center
+
+    for (var i = 0, length = slides.length; i < length; i += 1) {
+      var $slideEl = slides[i];
+      var slideSize = slidesSizesGrid[i];
+      var slideOffset = $slideEl.swiperSlideOffset;
+      var offsetMultiplier = (center - slideOffset - slideSize / 2) / slideSize * params.modifier;
+      var rotateY = isHorizontal ? rotate * offsetMultiplier : 0;
+      var rotateX = isHorizontal ? 0 : rotate * offsetMultiplier; // var rotateZ = 0
+
+      var translateZ = -translate * Math.abs(offsetMultiplier);
+      var stretch = params.stretch; // Allow percentage to make a relative stretch for responsive sliders
+
+      if (typeof stretch === 'string' && stretch.indexOf('%') !== -1) {
+        stretch = parseFloat(params.stretch) / 100 * slideSize;
+      }
+      var translateY = isHorizontal ? 0 : stretch * offsetMultiplier;
+      var translateX = isHorizontal ? stretch * offsetMultiplier : 0;
+      var scale = 1 - (1 - params.scale) * Math.abs(offsetMultiplier); // Fix for ultra small values
+
+      if (Math.abs(translateX) < 0.001) translateX = 0;
+      if (Math.abs(translateY) < 0.001) translateY = 0;
+      if (Math.abs(translateZ) < 0.001) translateZ = 0;
+      if (Math.abs(rotateY) < 0.001) rotateY = 0;
+      if (Math.abs(rotateX) < 0.001) rotateX = 0;
+      if (Math.abs(scale) < 0.001) scale = 0;
+      var slideTransform = "translate3d(".concat(translateX, "px,").concat(translateY, "px,").concat(translateZ, "px)  rotateX(").concat(rotateX, "deg) rotateY(").concat(rotateY, "deg) scale(").concat(scale, ")");
+      var $targetEl = (0, _effectTarget.default)(params, $slideEl);
+      $targetEl.transform(slideTransform);
+      $slideEl.css({
+        zIndex: -Math.abs(Math.round(offsetMultiplier)) + 1
+      });
+      if (swiper.params.willChange) {
+        $targetEl.willChange("transform");
+      }
+      $slideEl.addClass('swiper-slide-coverflow');
+      // if (params.slideShadows) {
+      //   // Set shadows
+      //   let $shadowBeforeEl = isHorizontal ? $slideEl.find('.swiper-slide-shadow-left') : $slideEl.find('.swiper-slide-shadow-top');
+      //   let $shadowAfterEl = isHorizontal ? $slideEl.find('.swiper-slide-shadow-right') : $slideEl.find('.swiper-slide-shadow-bottom');
+
+      //   if ($shadowBeforeEl.length === 0) {
+      //     $shadowBeforeEl = createShadow(params, $slideEl, isHorizontal ? 'left' : 'top');
+      //   }
+
+      //   if ($shadowAfterEl.length === 0) {
+      //     $shadowAfterEl = createShadow(params, $slideEl, isHorizontal ? 'right' : 'bottom');
+      //   }
+
+      //   if ($shadowBeforeEl.length) $shadowBeforeEl[0].style.opacity = offsetMultiplier > 0 ? offsetMultiplier : 0;
+      //   if ($shadowAfterEl.length) $shadowAfterEl[0].style.opacity = -offsetMultiplier > 0 ? -offsetMultiplier : 0;
+      // }
+    }
+  };
+
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.coverflowEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i++) {
+      $transitionElements[i].transition(duration);
+    }
+  };
+  (0, _effectInit.default)({
+    effect: 'coverflow',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return true;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        watchSlidesProgress: true
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 187 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-flip/effect-flip.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectFlip;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+var _effectVirtualTransitionEnd = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-virtual-transition-end.js */ 184));
+function EffectFlip(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    flipEffect: {
+      slideShadows: true,
+      limitRotation: true,
+      transformEl: null
+    }
+  });
+  var setTranslate = function setTranslate() {
+    var slides = swiper.slides,
+      rtl = swiper.rtlTranslate;
+    var params = swiper.params.flipEffect;
+    for (var i = 0; i < slides.length; i += 1) {
+      var $slideEl = slides[i];
+      var progress = $slideEl.progress;
+      if (swiper.params.flipEffect.limitRotation) {
+        progress = Math.max(Math.min($slideEl.progress, 1), -1);
+      }
+      var offset = $slideEl.swiperSlideOffset;
+      var rotate = -180 * progress;
+      var rotateY = rotate;
+      var rotateX = 0;
+      var tx = swiper.params.cssMode ? -offset - swiper.translate : -offset;
+      var ty = 0;
+      if (!swiper.isHorizontal()) {
+        ty = tx;
+        tx = 0;
+        rotateX = -rotateY;
+        rotateY = 0;
+      } else if (rtl) {
+        rotateY = -rotateY;
+      }
+      $slideEl.css({
+        zIndex: -Math.abs(Math.round(progress)) + slides.length
+      });
+      // if (params.slideShadows) {
+      //   // Set shadows
+      //   let shadowBefore = swiper.isHorizontal()
+      //     ? $slideEl.find('.swiper-slide-shadow-left')
+      //     : $slideEl.find('.swiper-slide-shadow-top');
+      //   let shadowAfter = swiper.isHorizontal()
+      //     ? $slideEl.find('.swiper-slide-shadow-right')
+      //     : $slideEl.find('.swiper-slide-shadow-bottom');
+      //   if (shadowBefore.length === 0) {
+      //     shadowBefore = createShadow(params, $slideEl, swiper.isHorizontal() ? 'left' : 'top');
+      //   }
+      //   if (shadowAfter.length === 0) {
+      //     shadowAfter = createShadow(params, $slideEl, swiper.isHorizontal() ? 'right' : 'bottom');
+      //   }
+      //   if (shadowBefore.length) shadowBefore[0].style.opacity = Math.max(-progress, 0);
+      //   if (shadowAfter.length) shadowAfter[0].style.opacity = Math.max(progress, 0);
+      // }
+      var transform = "translate3d(".concat(tx, "px, ").concat(ty, "px, 0px) rotateX(").concat(rotateX, "deg) rotateY(").concat(rotateY, "deg)");
+      var $targetEl = (0, _effectTarget.default)(params, $slideEl);
+      $targetEl.transform(transform);
+      if (swiper.params.willChange) {
+        $targetEl.willChange("transform");
+      }
+      slides[i].addClass('swiper-slide-flip');
+    }
+  };
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.flipEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i += 1) {
+      $transitionElements[i].transition(duration);
+    }
+    (0, _effectVirtualTransitionEnd.default)({
+      swiper: swiper,
+      duration: duration,
+      transformEl: transformEl
+    });
+  };
+  (0, _effectInit.default)({
+    effect: 'flip',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return true;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        watchSlidesProgress: true,
+        spaceBetween: 0,
+        virtualTranslate: !swiper.params.cssMode
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 188 */
+/*!*****************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-cards/effect-cards.js ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectCards;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+var _effectVirtualTransitionEnd = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-virtual-transition-end.js */ 184));
+function EffectCards(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    cardsEffect: {
+      slideShadows: true,
+      transformEl: null,
+      rotate: true,
+      perSlideRotate: 2,
+      perSlideOffset: 8
+    }
+  });
+  var setTranslate = function setTranslate() {
+    var slides = swiper.slides,
+      activeIndex = swiper.activeIndex;
+    var params = swiper.params.cardsEffect;
+    var _swiper$touchEventsDa = swiper.touchEventsData,
+      startTranslate = _swiper$touchEventsDa.startTranslate,
+      isTouched = _swiper$touchEventsDa.isTouched;
+    var currentTranslate = swiper.translate;
+    for (var i = 0; i < slides.length; i += 1) {
+      var $slideEl = slides[i];
+      var slideProgress = $slideEl.progress;
+      var progress = Math.min(Math.max(slideProgress, -4), 4);
+      var offset = $slideEl.swiperSlideOffset;
+      if (swiper.params.centeredSlides && !swiper.params.cssMode) {
+        swiper.$wrapperEl.transform("translateX(".concat(swiper.minTranslate(), "px)"));
+      }
+      if (swiper.params.centeredSlides && swiper.params.cssMode) {
+        offset -= slides.swiperSlideOffset;
+      }
+      var tX = swiper.params.cssMode ? -offset - swiper.translate : -offset;
+      var tY = 0;
+      var tZ = -100 * Math.abs(progress);
+      var scale = 1;
+      var rotate = -params.perSlideRotate * progress;
+      var tXAdd = params.perSlideOffset - Math.abs(progress) * 0.75;
+      var isSwipeToNext = (i === activeIndex || i === activeIndex - 1) && progress > 0 && progress < 1 && (isTouched || swiper.params.cssMode) && currentTranslate < startTranslate;
+      var isSwipeToPrev = (i === activeIndex || i === activeIndex + 1) && progress < 0 && progress > -1 && (isTouched || swiper.params.cssMode) && currentTranslate > startTranslate;
+      if (isSwipeToNext || isSwipeToPrev) {
+        var subProgress = Math.pow(1 - Math.abs((Math.abs(progress) - 0.5) / 0.5), 0.5);
+        rotate += -28 * progress * subProgress;
+        scale += -0.5 * subProgress;
+        tXAdd += 96 * subProgress;
+        tY = "".concat(-25 * subProgress * Math.abs(progress), "%");
+      }
+      if (progress < 0) {
+        // next
+        tX = "calc(".concat(tX, "px + (").concat(tXAdd * Math.abs(progress), "%))");
+      } else if (progress > 0) {
+        // prev
+        tX = "calc(".concat(tX, "px + (-").concat(tXAdd * Math.abs(progress), "%))");
+      } else {
+        tX = "".concat(tX, "px");
+      }
+      if (!swiper.isHorizontal()) {
+        var prevY = tY;
+        tY = tX;
+        tX = prevY;
+      }
+      var scaleString = progress < 0 ? "".concat(1 + (1 - scale) * progress) : "".concat(1 - (1 - scale) * progress);
+      var transform = "translate3d(".concat(tX, ", ").concat(tY, ", ").concat(tZ, "px) rotateZ(").concat(params.rotate ? rotate : 0, "deg) scale(").concat(scaleString, ")");
+      $slideEl.css({
+        zIndex: -Math.abs(Math.round(slideProgress)) + slides.length
+      });
+      var $targetEl = (0, _effectTarget.default)(params, $slideEl);
+      $targetEl.transform(transform);
+      if (swiper.params.willChange) {
+        $targetEl.willChange("transform");
+      }
+      slides[i].addClass('swiper-slide-cards');
+    }
+  };
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.cardsEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i += 1) {
+      $transitionElements[i].transition(duration);
+    }
+    (0, _effectVirtualTransitionEnd.default)({
+      swiper: swiper,
+      duration: duration,
+      transformEl: transformEl
+    });
+  };
+  (0, _effectInit.default)({
+    effect: 'cards',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return true;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        watchSlidesProgress: true,
+        virtualTranslate: !swiper.params.cssMode
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 189 */
+/*!***********************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-creative/effect-creative.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectCreative;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+var _effectVirtualTransitionEnd = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-virtual-transition-end.js */ 184));
+function EffectCreative(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    creativeEffect: {
+      transformEl: null,
+      limitProgress: 1,
+      shadowPerProgress: false,
+      progressMultiplier: 1,
+      perspective: true,
+      prev: {
+        translate: [0, 0, 0],
+        rotate: [0, 0, 0],
+        opacity: 1,
+        scale: 1
+      },
+      next: {
+        translate: [0, 0, 0],
+        rotate: [0, 0, 0],
+        opacity: 1,
+        scale: 1
+      }
+    }
+  });
+  var getTranslateValue = function getTranslateValue(value) {
+    if (typeof value === 'string') return value;
+    return "".concat(value, "px");
+  };
+  var setTranslate = function setTranslate() {
+    var slides = swiper.slides,
+      $wrapperEl = swiper.$wrapperEl,
+      slidesSizesGrid = swiper.slidesSizesGrid;
+    var params = swiper.params.creativeEffect;
+    var multiplier = params.progressMultiplier;
+    var isCenteredSlides = swiper.params.centeredSlides;
+    if (isCenteredSlides) {
+      var margin = slidesSizesGrid[0] / 2 - swiper.params.slidesOffsetBefore || 0;
+      $wrapperEl.transform("translateX(calc(50% - ".concat(margin, "px))"));
+    }
+    var _loop = function _loop(i) {
+      var $slideEl = slides[i];
+      var slideProgress = $slideEl.progress;
+      var progress = Math.min(Math.max($slideEl.progress, -params.limitProgress), params.limitProgress);
+      var originalProgress = progress;
+      if (!isCenteredSlides) {
+        originalProgress = Math.min(Math.max($slideEl.originalProgress, -params.limitProgress), params.limitProgress);
+      }
+      var offset = $slideEl.swiperSlideOffset;
+      var t = [swiper.params.cssMode ? -offset - swiper.translate : -offset, 0, 0];
+      var r = [0, 0, 0];
+      var custom = false;
+      if (!swiper.isHorizontal()) {
+        t[1] = t[0];
+        t[0] = 0;
+      }
+      var data = {
+        translate: [0, 0, 0],
+        rotate: [0, 0, 0],
+        scale: 1,
+        opacity: 1
+      };
+      if (progress < 0) {
+        data = params.next;
+        custom = true;
+      } else if (progress > 0) {
+        data = params.prev;
+        custom = true;
+      }
+      // set translate
+      t.forEach(function (value, index) {
+        t[index] = "calc(".concat(value, "px + (").concat(getTranslateValue(data.translate[index]), " * ").concat(Math.abs(progress * multiplier), "))");
+      });
+      // set rotates
+      r.forEach(function (value, index) {
+        r[index] = data.rotate[index] * Math.abs(progress * multiplier);
+      });
+
+      // $slideEl[0].style.zIndex = -Math.abs(Math.round(slideProgress)) + slides.length;
+      $slideEl.css({
+        zIndex: -Math.abs(Math.round(slideProgress)) + slides.length
+      });
+      var translateString = t.join(', ');
+      var rotateString = "rotateX(".concat(r[0], "deg) rotateY(").concat(r[1], "deg) rotateZ(").concat(r[2], "deg)");
+      var scaleString = originalProgress < 0 ? "scale(".concat(1 + (1 - data.scale) * originalProgress * multiplier, ")") : "scale(".concat(1 - (1 - data.scale) * originalProgress * multiplier, ")");
+      var opacityString = originalProgress < 0 ? 1 + (1 - data.opacity) * originalProgress * multiplier : 1 - (1 - data.opacity) * originalProgress * multiplier;
+      var transform = "translate3d(".concat(translateString, ") ").concat(rotateString, " ").concat(scaleString);
+
+      // Set shadows
+      // if ((custom && data.shadow) || !custom) {
+      //   let $shadowEl = $slideEl.children('.swiper-slide-shadow');
+      //   if ($shadowEl.length === 0 && data.shadow) {
+      //     $shadowEl = createShadow(params, $slideEl);
+      //   }
+      //   if ($shadowEl.length) {
+      //     const shadowOpacity = params.shadowPerProgress
+      //       ? progress * (1 / params.limitProgress)
+      //       : progress;
+      //     $shadowEl[0].style.opacity = Math.min(Math.max(Math.abs(shadowOpacity), 0), 1);
+      //   }
+      // }
+
+      var $targetEl = (0, _effectTarget.default)(params, $slideEl);
+      $targetEl.transform(transform);
+      $targetEl.css({
+        opacity: opacityString
+      });
+      if (data.origin) {
+        $targetEl.css({
+          'transform-origin': data.origin
+        });
+      }
+      if (swiper.params.willChange) {
+        slides[i].willChange("transform,opacity");
+      }
+      slides[i].addClass('swiper-slide-creative');
+    };
+    for (var i = 0; i < slides.length; i += 1) {
+      _loop(i);
+    }
+  };
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.creativeEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i += 1) {
+      $transitionElements[i].transition(duration);
+    }
+    (0, _effectVirtualTransitionEnd.default)({
+      swiper: swiper,
+      duration: duration,
+      transformEl: transformEl,
+      allSlides: true
+    });
+  };
+  (0, _effectInit.default)({
+    effect: 'creative',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return swiper.params.creativeEffect.perspective;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        watchSlidesProgress: true,
+        virtualTranslate: !swiper.params.cssMode
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 190 */
+/*!***********************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-panorama/effect-panorama.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Panorama;
+function Panorama(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    panorama: {
+      depth: 200,
+      rotate: 30,
+      stretch: 1
+    }
+  });
+  on('beforeInit', function () {
+    if (swiper.params.effect !== 'panorama') return;
+    swiper.classNames.push("".concat(swiper.params.containerModifierClass, "panorama"));
+    swiper.classNames.push("".concat(swiper.params.containerModifierClass, "3d"));
+    var overwriteParams = {
+      watchSlidesProgress: true
+    };
+    Object.assign(swiper.params, overwriteParams);
+    Object.assign(swiper.originalParams, overwriteParams);
+  });
+  on('progress', function () {
+    if (swiper.params.effect !== 'panorama') return;
+    var sizesGrid = swiper.slidesSizesGrid;
+    var _swiper$params$panora = swiper.params.panorama,
+      _swiper$params$panora2 = _swiper$params$panora.depth,
+      depth = _swiper$params$panora2 === void 0 ? 200 : _swiper$params$panora2,
+      _swiper$params$panora3 = _swiper$params$panora.rotate,
+      rotate = _swiper$params$panora3 === void 0 ? 30 : _swiper$params$panora3,
+      _swiper$params$panora4 = _swiper$params$panora.stretch,
+      stretch = _swiper$params$panora4 === void 0 ? 1 : _swiper$params$panora4;
+    var angleRad = rotate * Math.PI / 180;
+    var halfAngleRad = angleRad / 2;
+    var angleModifier = 1 / (180 / rotate);
+    for (var i = 0; i < swiper.slides.length; i += 1) {
+      var slideEl = swiper.slides[i];
+      var slideProgress = slideEl.progress;
+      var slideSize = sizesGrid[i];
+      var progressModifier = swiper.params.centeredSlides ? 0 : (swiper.params.slidesPerView - 1) * 0.5;
+      var modifiedProgress = slideProgress + progressModifier;
+      var angleCos = 1 - Math.cos(modifiedProgress * angleModifier * Math.PI);
+      var translateX = "".concat(modifiedProgress * (stretch * slideSize / 3) * angleCos, "px");
+      var rotateY = modifiedProgress * rotate;
+      var radius = slideSize * 0.5 / Math.sin(halfAngleRad);
+      var translateZ = "".concat(radius * angleCos - depth, "px");
+      slideEl.transform("translateX(".concat(translateX, ") translateZ(").concat(translateZ, ") rotateY(").concat(rotateY, "deg)"));
+      if (swiper.params.willChange) {
+        slideEl.willChange("transform");
+      }
+      slideEl.addClass('swiper-slide-panorama');
+    }
+  });
+  on('setTransition', function (s, duration) {
+    if (swiper.params.effect !== 'panorama') return;
+    swiper.slides.forEach(function (slideEl) {
+      slideEl.transition(duration);
+    });
+  });
+}
+
+/***/ }),
+/* 191 */
+/*!***********************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/effect-carousel/effect-carousel.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = EffectCarousel;
+var _effectInit = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-init.js */ 182));
+var _effectTarget = _interopRequireDefault(__webpack_require__(/*! ../../shared/effect-target.js */ 183));
+function EffectCarousel(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    carouselEffect: {}
+  });
+  var setTranslate = function setTranslate() {
+    var scaleStep = 0.2;
+    var zIndexMax = swiper.slides.length;
+    for (var i = 0; i < swiper.slides.length; i += 1) {
+      var slideEl = swiper.slides[i];
+      var slideProgress = swiper.slides[i].progress;
+      var absProgress = Math.abs(slideProgress);
+      var modify = 1;
+      if (absProgress > 1) {
+        modify = (absProgress - 1) * 0.3 + 1;
+      }
+      var translate = "".concat(slideProgress * modify * 50, "%");
+      var scale = 1 - absProgress * scaleStep;
+      var zIndex = zIndexMax - Math.abs(Math.round(slideProgress));
+      var slideTransform = "translateX(".concat(translate, ") scale(").concat(scale, ")");
+      slideEl.transform(slideTransform);
+      slideEl.css({
+        zIndex: zIndex
+      });
+      if (absProgress > 3) {
+        slideEl.css({
+          opacity: 0
+        });
+      } else {
+        slideEl.css({
+          opacity: 1
+        });
+      }
+    }
+  };
+  var setTransition = function setTransition(duration) {
+    var transformEl = swiper.params.coverflowEffect.transformEl;
+    var $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+    for (var i = 0; i < $transitionElements.length; i++) {
+      $transitionElements[i].transition(duration);
+    }
+  };
+  (0, _effectInit.default)({
+    effect: 'carousel',
+    swiper: swiper,
+    on: on,
+    setTranslate: setTranslate,
+    setTransition: setTransition,
+    perspective: function perspective() {
+      return true;
+    },
+    overwriteParams: function overwriteParams() {
+      return {
+        watchSlidesProgress: true,
+        slidesPerView: 'auto',
+        centeredSlides: true
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 192 */
+/*!*************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/navigation/navigation.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Navigation;
+function Navigation(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on,
+    emit = _ref.emit;
+  extendParams({
+    navigation: {
+      nextEl: null,
+      prevEl: null,
+      hideOnClick: false,
+      disabledClass: 'swiper-button-disabled',
+      hiddenClass: 'swiper-button-hidden',
+      lockClass: 'swiper-button-lock'
+    }
+  });
+  swiper.navigation = {
+    nextEl: null,
+    $nextEl: null,
+    prevEl: null,
+    $prevEl: null
+  };
+  function toggleEl($el, disabled) {
+    if (!swiper.$wrapperEl) return;
+    // debugger
+    var params = swiper.params.navigation;
+    if ($el) {
+      swiper.$wrapperEl[disabled ? "add".concat($el) : "remove".concat($el)](params.disabledClass);
+      if (swiper.params.watchOverflow && swiper.enabled) {
+        swiper.$wrapperEl[swiper.isLocked ? "add".concat($el) : "remove".concat($el)](params.lockClass);
+      }
+    }
+  }
+  function update() {
+    // Update Navigation Buttons
+    if (swiper.params.loop) return;
+    var _swiper$navigation = swiper.navigation,
+      $nextEl = _swiper$navigation.$nextEl,
+      $prevEl = _swiper$navigation.$prevEl;
+    toggleEl('PrevElClass', swiper.isBeginning && !swiper.params.rewind);
+    toggleEl('NextElClass', swiper.isEnd && !swiper.params.rewind);
+  }
+  function onPrevClick(e) {
+    // e.preventDefault();
+    if (swiper.isBeginning && !swiper.params.loop && !swiper.params.rewind) return;
+    swiper.slidePrev();
+  }
+  function onNextClick() {
+    // e.preventDefault();
+    if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind) return;
+    swiper.slideNext();
+  }
+  function init() {
+    var params = swiper.params.navigation;
+    if (params.slot || params.custom) {
+      params.nextEl = true;
+      params.prevEl = true;
+    }
+    if (!(params.nextEl || params.prevEl) && !params.slot && !params.custom) return;
+    if (params.slot) {
+      swiper.native.updateData({
+        showPrevButtonSlot: true,
+        showNextButtonSlot: true
+      });
+    } else if (params.custom) {} else {
+      swiper.native.updateData({
+        showPrevButton: true,
+        showNextButton: true
+      });
+    }
+    var $nextEl = params.nextEl;
+    var $prevEl = params.prevEl;
+    if ($nextEl) {
+      swiper.on('nextClick', onNextClick);
+    }
+    if ($prevEl) {
+      swiper.on('prevClick', onPrevClick);
+    }
+    Object.assign(swiper.navigation, {
+      $nextEl: $nextEl,
+      nextEl: $nextEl,
+      $prevEl: $prevEl,
+      prevEl: $prevEl
+    });
+    if (!swiper.enabled) {
+      if ($nextEl) swiper.$wrapperEl.addNextElClass(params.lockClass);
+      if ($prevEl) swiper.$wrapperEl.addPrevElClass(params.lockClass);
+    }
+  }
+  function destroy() {
+    var _swiper$navigation2 = swiper.navigation,
+      $nextEl = _swiper$navigation2.$nextEl,
+      $prevEl = _swiper$navigation2.$prevEl;
+    if ($nextEl) {
+      swiper.off('nextClick', onNextClick);
+      swiper.$wrapperEl.removeNextElClass(swiper.params.navigation.disabledClass);
+    }
+    if ($prevEl) {
+      swiper.off('prevClick', onPrevClick);
+      swiper.$wrapperEl.removePrevElClass(swiper.params.navigation.disabledClass);
+    }
+  }
+  on('init', function () {
+    init();
+    update();
+  });
+  on('toEdge fromEdge lock unlock', function () {
+    update();
+  });
+  on('destroy', function () {
+    destroy();
+  });
+  on('enable disable', function () {
+    var _swiper$navigation3 = swiper.navigation,
+      $nextEl = _swiper$navigation3.$nextEl,
+      $prevEl = _swiper$navigation3.$prevEl;
+    if ($nextEl) {
+      swiper.$wrapperEl[swiper.enabled ? 'removeNextElClass' : 'addNextElClass'](swiper.params.navigation.lockClass);
+      // $nextEl[swiper.enabled ? 'removeClass' : 'addClass'](swiper.params.navigation.lockClass);
+    }
+
+    if ($prevEl) {
+      swiper.$wrapperEl[swiper.enabled ? 'removePrevElClass' : 'addPrevElClass'](swiper.params.navigation.lockClass);
+      // $prevEl[swiper.enabled ? 'removeClass' : 'addClass'](swiper.params.navigation.lockClass);
+    }
+  });
+  // on('click', (_s, e) => {
+  // 	const {
+  // 		$nextEl,
+  // 		$prevEl
+  // 	} = swiper.navigation;
+  // 	const targetEl = e.target;
+  // 	if (
+  // 		swiper.params.navigation.hideOnClick &&
+  // 		!$(targetEl).is($prevEl) &&
+  // 		!$(targetEl).is($nextEl)
+  // 	) {
+  // 		if (
+  // 			swiper.pagination &&
+  // 			swiper.params.pagination &&
+  // 			swiper.params.pagination.clickable &&
+  // 			(swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl))
+  // 		)
+  // 			return;
+  // 		let isHidden;
+  // 		if ($nextEl) {
+  // 			isHidden = $nextEl.hasClass(swiper.params.navigation.hiddenClass);
+  // 		} else if ($prevEl) {
+  // 			isHidden = $prevEl.hasClass(swiper.params.navigation.hiddenClass);
+  // 		}
+  // 		if (isHidden === true) {
+  // 			emit('navigationShow');
+  // 		} else {
+  // 			emit('navigationHide');
+  // 		}
+  // 		if ($nextEl) {
+  // 			$nextEl.toggleClass(swiper.params.navigation.hiddenClass);
+  // 		}
+  // 		if ($prevEl) {
+  // 			$prevEl.toggleClass(swiper.params.navigation.hiddenClass);
+  // 		}
+  // 	}
+  // });
+
+  Object.assign(swiper.navigation, {
+    update: update,
+    init: init,
+    destroy: destroy
+  });
+}
+
+/***/ }),
+/* 193 */
+/*!*************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/pagination/pagination.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Pagination;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _classesToSelector = _interopRequireDefault(__webpack_require__(/*! ../../shared/classes-to-selector.js */ 194));
+function Pagination(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on,
+    emit = _ref.emit;
+  var pfx = 'swiper-pagination';
+  extendParams({
+    pagination: {
+      el: null,
+      bulletElement: 'span',
+      clickable: false,
+      hideOnClick: false,
+      renderBullet: null,
+      renderProgressbar: null,
+      renderFraction: null,
+      renderCustom: null,
+      progressbarOpposite: false,
+      type: 'bullets',
+      // 'bullets' or 'progressbar' or 'fraction' or 'custom'
+      dynamicBullets: false,
+      dynamicMainBullets: 1,
+      formatFractionCurrent: function formatFractionCurrent(number) {
+        return number;
+      },
+      formatFractionTotal: function formatFractionTotal(number) {
+        return number;
+      },
+      bulletClass: "".concat(pfx, "-bullet"),
+      bulletActiveClass: "".concat(pfx, "-bullet-active"),
+      modifierClass: "".concat(pfx, "-"),
+      currentClass: "".concat(pfx, "-current"),
+      totalClass: "".concat(pfx, "-total"),
+      hiddenClass: "".concat(pfx, "-hidden"),
+      progressbarFillClass: "".concat(pfx, "-progressbar-fill"),
+      progressbarOppositeClass: "".concat(pfx, "-progressbar-opposite"),
+      clickableClass: "".concat(pfx, "-clickable"),
+      lockClass: "".concat(pfx, "-lock"),
+      horizontalClass: "".concat(pfx, "-horizontal"),
+      verticalClass: "".concat(pfx, "-vertical")
+    }
+  });
+  swiper.pagination = {
+    el: null,
+    $el: null,
+    bullets: []
+  };
+  var bulletSize;
+  var dynamicBulletIndex = 0;
+  function isPaginationDisabled() {
+    return !swiper.params.pagination.el || !swiper.pagination.el || !swiper.pagination.$el;
+  }
+  function setSideBullets($bulletEl, position) {
+    var bulletActiveClass = swiper.params.pagination.bulletActiveClass;
+    var bullets = swiper.pagination.bullets;
+    if (bullets[$bulletEl.index + position]) {
+      bullets[$bulletEl.index + position].addPaginationItemClass("".concat(bulletActiveClass, "-").concat(position > 0 ? 'next' : 'prev'));
+    }
+    if (bullets[$bulletEl.index + (position > 0 ? position + 1 : position - 1)]) {
+      bullets[$bulletEl.index + (position > 0 ? position + 1 : position - 1)].addPaginationItemClass("".concat(bulletActiveClass, "-").concat(position > 0 ? 'next' : 'prev', "-").concat(position > 0 ? 'next' : 'prev'));
+    }
+  }
+  function update() {
+    // Render || Update Pagination bullets/items
+    var rtl = swiper.rtl;
+    var params = swiper.params.pagination;
+    if (isPaginationDisabled()) return;
+    var slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.slides.length;
+    var $el = swiper.pagination.$el;
+    // Current/Total
+    var current;
+    var total = swiper.params.loop ? Math.ceil((slidesLength - swiper.loopedSlides * 2) / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
+    if (swiper.params.loop) {
+      current = Math.ceil((swiper.activeIndex - swiper.loopedSlides) / swiper.params.slidesPerGroup);
+      if (current > slidesLength - 1 - swiper.loopedSlides * 2) {
+        current -= slidesLength - swiper.loopedSlides * 2;
+      }
+      if (current > total - 1) current -= total;
+      if (current < 0 && swiper.params.paginationType !== 'bullets') current = total + current;
+    } else if (typeof swiper.snapIndex !== 'undefined') {
+      current = swiper.snapIndex;
+    } else {
+      current = swiper.activeIndex || 0;
+    }
+    // Types
+    if (params.type === 'bullets' && swiper.pagination.bullets && swiper.pagination.bullets.length > 0) {
+      var bullets = swiper.pagination.bullets;
+      var firstIndex;
+      var lastIndex;
+      var midIndex;
+      if (params.dynamicBullets) {
+        bulletSize = bullets[0][swiper.isHorizontal() ? 'outerWidth' : 'outerHeight'];
+        swiper.$wrapperEl.paginationCss((0, _defineProperty2.default)({}, swiper.isHorizontal() ? 'width' : 'height', "".concat(bulletSize * (params.dynamicMainBullets + 4), "px")));
+        if (params.dynamicMainBullets > 1 && swiper.previousIndex !== undefined) {
+          dynamicBulletIndex += current - (swiper.previousIndex - swiper.loopedSlides || 0);
+          if (dynamicBulletIndex > params.dynamicMainBullets - 1) {
+            dynamicBulletIndex = params.dynamicMainBullets - 1;
+          } else if (dynamicBulletIndex < 0) {
+            dynamicBulletIndex = 0;
+          }
+        }
+        firstIndex = Math.max(current - dynamicBulletIndex, 0);
+        lastIndex = firstIndex + (Math.min(bullets.length, params.dynamicMainBullets) - 1);
+        midIndex = (lastIndex + firstIndex) / 2;
+      }
+      bullets.forEach(function (item) {
+        item.removePaginationItemClass(['', '-next', '-next-next', '-prev', '-prev-prev', '-main'].map(function (suffix) {
+          return "".concat(params.bulletActiveClass).concat(suffix);
+        }).join(' '));
+      });
+      if ($el.length > 1) {
+        bullets.each(function (bullet) {
+          var $bullet = $(bullet);
+          var bulletIndex = $bullet.index();
+          if (bulletIndex === current) {
+            $bullet.addClass(params.bulletActiveClass);
+          }
+          if (params.dynamicBullets) {
+            if (bulletIndex >= firstIndex && bulletIndex <= lastIndex) {
+              $bullet.addClass("".concat(params.bulletActiveClass, "-main"));
+            }
+            if (bulletIndex === firstIndex) {
+              setSideBullets($bullet, 'prev');
+            }
+            if (bulletIndex === lastIndex) {
+              setSideBullets($bullet, 'next');
+            }
+          }
+        });
+      } else {
+        var $bullet = bullets[current];
+        var bulletIndex = $bullet.index;
+        $bullet.addPaginationItemClass(params.bulletActiveClass);
+        if (params.dynamicBullets) {
+          var $firstDisplayedBullet = bullets[firstIndex];
+          var $lastDisplayedBullet = bullets[lastIndex];
+          for (var i = firstIndex; i <= lastIndex; i += 1) {
+            bullets[i].addPaginationItemClass("".concat(params.bulletActiveClass, "-main"));
+          }
+          if (swiper.params.loop) {
+            if (bulletIndex >= bullets.length) {
+              for (var _i = params.dynamicMainBullets; _i >= 0; _i -= 1) {
+                bullets[bullets.length - _i].addPaginationItemClass("".concat(params.bulletActiveClass, "-main"));
+              }
+              bullets[bullets.length - params.dynamicMainBullets - 1].addPaginationItemClass("".concat(params.bulletActiveClass, "-prev"));
+            } else {
+              setSideBullets($firstDisplayedBullet, -1);
+              setSideBullets($lastDisplayedBullet, 1);
+            }
+          } else {
+            setSideBullets($firstDisplayedBullet, -1);
+            setSideBullets($lastDisplayedBullet, 1);
+          }
+        }
+      }
+      if (params.dynamicBullets) {
+        var dynamicBulletsLength = Math.min(bullets.length, params.dynamicMainBullets + 4);
+        var bulletsOffset = (bulletSize * dynamicBulletsLength - bulletSize) / 2 - midIndex * bulletSize;
+        var offsetProp = rtl ? 'right' : 'left';
+        bullets.forEach(function (item) {
+          item.setCss((0, _defineProperty2.default)({}, swiper.isHorizontal() ? offsetProp : 'top', "".concat(bulletsOffset, "px")));
+        });
+        // bullets.css(swiper.isHorizontal() ? offsetProp : 'top', `${bulletsOffset}px`);
+      }
+    }
+
+    if (params.type === 'fraction') {
+      // $el
+      // 	.find(classesToSelector(params.currentClass))
+      // 	.text(params.formatFractionCurrent(current + 1));
+      swiper.native.paginationContent.text = params.formatFractionCurrent(current + 1);
+      swiper.native.paginationContent.total = params.formatFractionTotal(total);
+      swiper.native.updateData({
+        paginationContent: swiper.native.paginationContent
+      });
+      // $el.find(classesToSelector(params.totalClass)).text(params.formatFractionTotal(total));
+    }
+
+    if (params.type === 'progressbar') {
+      var progressbarDirection;
+      if (params.progressbarOpposite) {
+        progressbarDirection = swiper.isHorizontal() ? 'vertical' : 'horizontal';
+      } else {
+        progressbarDirection = swiper.isHorizontal() ? 'horizontal' : 'vertical';
+      }
+      var scale = (current + 1) / total;
+      var scaleX = 1;
+      var scaleY = 1;
+      if (progressbarDirection === 'horizontal') {
+        scaleX = scale;
+      } else {
+        scaleY = scale;
+      }
+      // $el
+      // .find(classesToSelector(params.progressbarFillClass))
+      swiper.native.paginationContent.transform("translate3d(0,0,0) scaleX(".concat(scaleX, ") scaleY(").concat(scaleY, ")"));
+      swiper.native.paginationContent.transition(swiper.params.speed);
+      swiper.native.updateData({
+        paginationContent: swiper.native.paginationContent
+      });
+    }
+    if (params.type === 'custom' && params.renderCustom) {
+      $el.html(params.renderCustom(swiper, current + 1, total));
+      emit('paginationRender', $el[0]);
+    } else {
+      emit('paginationUpdate', $el[0]);
+    }
+    if (swiper.params.watchOverflow && swiper.enabled) {
+      swiper.$wrapperEl[swiper.isLocked ? 'addPaginationClass' : 'removePaginationClass'](params.lockClass);
+    }
+  }
+  function render() {
+    // Render Container
+    var params = swiper.params.pagination;
+    if (isPaginationDisabled()) return;
+    var slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.slides.length;
+    var $el = swiper.pagination.$el;
+    var paginationHTML = 0;
+    if (params.type === 'bullets') {
+      var numberOfBullets = swiper.params.loop ? Math.ceil((slidesLength - swiper.loopedSlides * 2) / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
+      if (swiper.params.freeMode && swiper.params.freeMode.enabled && !swiper.params.loop && numberOfBullets > slidesLength) {
+        numberOfBullets = slidesLength;
+      }
+      for (var i = 0; i < numberOfBullets; i += 1) {
+        if (params.renderBullet) {
+          paginationHTML += params.renderBullet.call(swiper, i, params.bulletClass);
+        }
+        // else {
+        // 	paginationHTML +=
+        // 		`<${params.bulletElement} class="${params.bulletClass}"></${params.bulletElement}>`;
+        // }
+        // paginationHTML += 1;
+        else {
+          swiper.native.paginationType = "bullets";
+          swiper.native.paginationContent.push({
+            index: i,
+            outerWidth: 16,
+            outerHeight: 16,
+            classContent: [params.bulletClass],
+            styleContent: {},
+            addPaginationItemClass: function addPaginationItemClass(value) {
+              this.classContent = Array.from(new Set([].concat((0, _toConsumableArray2.default)(this.classContent), (0, _toConsumableArray2.default)(value.split(" ")))));
+            },
+            removePaginationItemClass: function removePaginationItemClass(value) {
+              this.classContent = this.classContent.filter(function (item) {
+                return !value.split(" ").includes(item);
+              });
+            },
+            setCss: function setCss(value) {
+              var _this = this;
+              // vueNative['itemStyle'] = {
+              // 	...vueNative['itemStyle'],
+              // 	...value
+              // };Object.keys(value).forEach((item) => {
+              Object.keys(value).forEach(function (item) {
+                // this.$set(this.itemStyle, item, value[item])
+                _this.styleContent[item] = value[item];
+              });
+
+              // this.$set(this.itemStyle, item, value[item])
+            }
+          });
+
+          swiper.native.updateData({
+            paginationType: swiper.native.paginationType,
+            paginationContent: swiper.native.paginationContent
+          });
+        }
+      }
+      // $el.html(paginationHTML);
+
+      // swiper.$wrapperEl.addPaginationItemClass(params.bulletClass)
+
+      // swiper.pagination.bullets = $el.find(classesToSelector(params.bulletClass));
+      swiper.pagination.bullets = swiper.native.paginationContent;
+    }
+    if (params.type === 'fraction') {
+      if (params.renderFraction) {
+        paginationHTML = params.renderFraction.call(swiper, params.currentClass, params.totalClass);
+      } else {
+        swiper.native.paginationType = "fraction";
+        // paginationHTML =
+        // 	`<span class="${params.currentClass}"></span>` +
+        // 	' / ' +
+        // 	`<span class="${params.totalClass}"></span>`;
+        swiper.native.paginationContent = {
+          currentClass: params.currentClass,
+          totalClass: params.totalClass
+        };
+        swiper.native.updateData({
+          paginationType: swiper.native.paginationType,
+          paginationContent: swiper.native.paginationContent
+        });
+      }
+    }
+    if (params.type === 'progressbar') {
+      if (params.renderProgressbar) {
+        paginationHTML = params.renderProgressbar.call(swiper, params.progressbarFillClass);
+      } else {
+        swiper.native.paginationType = "progressbar";
+        // paginationHTML = `<span class="${params.progressbarFillClass}"></span>`;
+        swiper.native.paginationContent = {
+          progressbarFillClass: params.progressbarFillClass,
+          styleContent: {
+            transform: '',
+            transitionDuration: ''
+          },
+          transition: function transition(value) {
+            this.styleContent.transitionDuration = "".concat(value, "ms");
+          },
+          transform: function transform(value) {
+            this.styleContent.transform = value;
+          }
+        };
+        swiper.native.updateData({
+          paginationType: swiper.native.paginationType,
+          paginationContent: swiper.native.paginationContent
+        });
+      }
+      // $el.html(paginationHTML);
+    }
+
+    if (params.type !== 'custom') {
+      emit('paginationRender', swiper.pagination.$el[0]);
+    }
+  }
+  function init() {
+    var params = swiper.params.pagination;
+    if (!params.el) return;
+    // swiper.native.showIndicators = true;
+    swiper.native.updateData({
+      showIndicators: true
+    });
+    var $el = params.el;
+    if (params.type === 'bullets' && params.clickable) {
+      swiper.$wrapperEl.addPaginationClass(params.clickableClass);
+    }
+    swiper.$wrapperEl.addPaginationClass(params.modifierClass + params.type);
+    swiper.$wrapperEl.addPaginationClass(params.modifierClass + swiper.params.direction);
+    if (params.type === 'bullets' && params.dynamicBullets) {
+      swiper.$wrapperEl.addPaginationClass("".concat(params.modifierClass).concat(params.type, "-dynamic"));
+      dynamicBulletIndex = 0;
+      if (params.dynamicMainBullets < 1) {
+        params.dynamicMainBullets = 1;
+      }
+    }
+    if (params.type === 'progressbar' && params.progressbarOpposite) {
+      swiper.$wrapperEl.addPaginationClass(params.progressbarOppositeClass);
+    }
+    if (params.clickable) {
+      swiper.on('paginationItemClick', function onClick(_s, itemIndex) {
+        var index = itemIndex * swiper.params.slidesPerGroup;
+        if (swiper.params.loop) index += swiper.loopedSlides;
+        swiper.slideTo(index);
+      });
+    }
+    Object.assign(swiper.pagination, {
+      $el: $el,
+      el: $el
+    });
+    if (!swiper.enabled) {
+      swiper.$wrapperEl.addPaginationClass(params.lockClass);
+    }
+  }
+  function destroy() {
+    var params = swiper.params.pagination;
+    if (isPaginationDisabled()) return;
+    var $el = swiper.pagination.$el;
+    if (params.clickable) {
+      swiper.off('paginationItemClick', (0, _classesToSelector.default)(params.bulletClass));
+    }
+  }
+  on('init update', function () {
+    if (swiper.native.paginationContent) {
+      swiper.native.updateData({
+        paginationContent: []
+      });
+    }
+    // swiper.native.paginationContent = [];
+    init();
+    render();
+    update();
+  });
+  on('activeIndexChange', function () {
+    if (swiper.params.loop) {
+      update();
+    } else if (typeof swiper.snapIndex === 'undefined') {
+      update();
+    }
+  });
+  on('snapIndexChange', function () {
+    if (!swiper.params.loop) {
+      update();
+    }
+  });
+  on('slidesLengthChange', function () {
+    if (swiper.params.loop) {
+      render();
+      update();
+    }
+  });
+  on('snapGridLengthChange', function () {
+    if (!swiper.params.loop) {
+      render();
+      update();
+    }
+  });
+  on('destroy', function () {
+    destroy();
+  });
+  on('enable disable', function () {
+    var $el = swiper.pagination.$el;
+    if ($el) {
+      swiper.$wrapperEl[swiper.enabled ? 'removePaginationClass' : 'addPaginationClass'](swiper.params.pagination.lockClass);
+    }
+  });
+  on('lock unlock', function () {
+    update();
+  });
+  on('click', function (_s, e) {
+    var targetEl = e.target;
+    var $el = swiper.pagination.$el;
+    if (swiper.params.pagination.el && swiper.params.pagination.hideOnClick && $el.length > 0 && !$(targetEl).hasClass(swiper.params.pagination.bulletClass)) {
+      if (swiper.navigation && (swiper.navigation.nextEl && targetEl === swiper.navigation.nextEl || swiper.navigation.prevEl && targetEl === swiper.navigation.prevEl)) return;
+      var isHidden = $el.hasClass(swiper.params.pagination.hiddenClass);
+      if (isHidden === true) {
+        emit('paginationShow');
+      } else {
+        emit('paginationHide');
+      }
+      $el.toggleClass(swiper.params.pagination.hiddenClass);
+    }
+  });
+  Object.assign(swiper.pagination, {
+    render: render,
+    update: update,
+    init: init,
+    destroy: destroy
+  });
+}
+
+/***/ }),
+/* 194 */
+/*!**********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/shared/classes-to-selector.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = classesToSelector;
+function classesToSelector() {
+  var classes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  return ".".concat(classes.trim().replace(/([\.:!\/])/g, '\\$1') // eslint-disable-line
+  .replace(/ /g, '.'));
+}
+
+/***/ }),
+/* 195 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/thumbs/thumbs.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Thumb;
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+// import $ from '../../shared/dom.js';
+
+function Thumb(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    thumbs: {
+      swiper: null,
+      multipleActiveThumbs: true,
+      autoScrollOffset: 0,
+      slideThumbActiveClass: 'swiper-slide-thumb-active',
+      thumbsContainerClass: 'swiper-thumbs'
+    }
+  });
+  var initialized = false;
+  var swiperCreated = false;
+  swiper.thumbs = {
+    swiper: null
+  };
+  function onThumbClick() {
+    var thumbsSwiper = swiper.thumbs.swiper;
+    if (!thumbsSwiper) return;
+    var clickedIndex = thumbsSwiper.clickedIndex;
+    var clickedSlide = thumbsSwiper.clickedSlide;
+    if (clickedSlide && clickedSlide.hasClass(swiper.params.thumbs.slideThumbActiveClass)) return;
+    if (typeof clickedIndex === 'undefined' || clickedIndex === null) return;
+    var slideToIndex;
+    if (thumbsSwiper.params.loop) {
+      slideToIndex = parseInt($(thumbsSwiper.clickedSlide).attr('data-swiper-slide-index'), 10);
+    } else {
+      slideToIndex = clickedIndex;
+    }
+    if (swiper.params.loop) {
+      var currentIndex = swiper.activeIndex;
+      if (swiper.slides.eq(currentIndex).hasClass(swiper.params.slideDuplicateClass)) {
+        swiper.loopFix();
+        // eslint-disable-next-line
+        swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
+        currentIndex = swiper.activeIndex;
+      }
+      var prevIndex = swiper.slides.eq(currentIndex).prevAll("[data-swiper-slide-index=\"".concat(slideToIndex, "\"]")).eq(0).index();
+      var nextIndex = swiper.slides.eq(currentIndex).nextAll("[data-swiper-slide-index=\"".concat(slideToIndex, "\"]")).eq(0).index();
+      if (typeof prevIndex === 'undefined') slideToIndex = nextIndex;else if (typeof nextIndex === 'undefined') slideToIndex = prevIndex;else if (nextIndex - currentIndex < currentIndex - prevIndex) slideToIndex = nextIndex;else slideToIndex = prevIndex;
+    }
+    swiper.slideTo(slideToIndex);
+  }
+  function init() {
+    var thumbsParams = swiper.params.thumbs;
+    if (initialized) return false;
+    initialized = true;
+    var SwiperClass = swiper.constructor;
+    if (thumbsParams.swiper instanceof SwiperClass) {
+      swiper.thumbs.swiper = thumbsParams.swiper;
+      Object.assign(swiper.thumbs.swiper.originalParams, {
+        watchSlidesProgress: true,
+        slideToClickedSlide: false
+      });
+      Object.assign(swiper.thumbs.swiper.params, {
+        watchSlidesProgress: true,
+        slideToClickedSlide: false
+      });
+    } else if ((0, _utils.isObject)(thumbsParams.swiper)) {
+      var thumbsSwiperParams = Object.assign({}, thumbsParams.swiper);
+      Object.assign(thumbsSwiperParams, {
+        watchSlidesProgress: true,
+        slideToClickedSlide: false
+      });
+      swiper.thumbs.swiper = new SwiperClass(thumbsSwiperParams);
+      swiperCreated = true;
+    }
+    swiper.thumbs.swiper.$el && swiper.thumbs.swiper.$el.addClass(swiper.params.thumbs.thumbsContainerClass);
+    swiper.thumbs.swiper.on('slideClick', onThumbClick);
+    return true;
+  }
+  function update(initial) {
+    var thumbsSwiper = swiper.thumbs.swiper;
+    if (!thumbsSwiper) return;
+    var slidesPerView = thumbsSwiper.params.slidesPerView === 'auto' ? thumbsSwiper.slidesPerViewDynamic() : thumbsSwiper.params.slidesPerView;
+    var autoScrollOffset = swiper.params.thumbs.autoScrollOffset;
+    var useOffset = autoScrollOffset && !thumbsSwiper.params.loop;
+    if (swiper.realIndex !== thumbsSwiper.realIndex || useOffset) {
+      var currentThumbsIndex = thumbsSwiper.activeIndex;
+      var newThumbsIndex;
+      var direction;
+      if (thumbsSwiper.params.loop) {
+        if (thumbsSwiper.slides.eq(currentThumbsIndex).hasClass(thumbsSwiper.params.slideDuplicateClass)) {
+          thumbsSwiper.loopFix();
+          // eslint-disable-next-line
+          thumbsSwiper._clientLeft = thumbsSwiper.$wrapperEl[0].clientLeft;
+          currentThumbsIndex = thumbsSwiper.activeIndex;
+        }
+        // Find actual thumbs index to slide to
+        var prevThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).prevAll("[data-swiper-slide-index=\"".concat(swiper.realIndex, "\"]")).eq(0).index();
+        var nextThumbsIndex = thumbsSwiper.slides.eq(currentThumbsIndex).nextAll("[data-swiper-slide-index=\"".concat(swiper.realIndex, "\"]")).eq(0).index();
+        if (typeof prevThumbsIndex === 'undefined') {
+          newThumbsIndex = nextThumbsIndex;
+        } else if (typeof nextThumbsIndex === 'undefined') {
+          newThumbsIndex = prevThumbsIndex;
+        } else if (nextThumbsIndex - currentThumbsIndex === currentThumbsIndex - prevThumbsIndex) {
+          newThumbsIndex = thumbsSwiper.params.slidesPerGroup > 1 ? nextThumbsIndex : currentThumbsIndex;
+        } else if (nextThumbsIndex - currentThumbsIndex < currentThumbsIndex - prevThumbsIndex) {
+          newThumbsIndex = nextThumbsIndex;
+        } else {
+          newThumbsIndex = prevThumbsIndex;
+        }
+        direction = swiper.activeIndex > swiper.previousIndex ? 'next' : 'prev';
+      } else {
+        newThumbsIndex = swiper.realIndex;
+        direction = newThumbsIndex > swiper.previousIndex ? 'next' : 'prev';
+      }
+      if (useOffset) {
+        newThumbsIndex += direction === 'next' ? autoScrollOffset : -1 * autoScrollOffset;
+      }
+      if (thumbsSwiper.visibleSlidesIndexes && thumbsSwiper.visibleSlidesIndexes.indexOf(newThumbsIndex) < 0) {
+        if (thumbsSwiper.params.centeredSlides) {
+          if (newThumbsIndex > currentThumbsIndex) {
+            newThumbsIndex = newThumbsIndex - Math.floor(slidesPerView / 2) + 1;
+          } else {
+            newThumbsIndex = newThumbsIndex + Math.floor(slidesPerView / 2) - 1;
+          }
+        } else if (newThumbsIndex > currentThumbsIndex && thumbsSwiper.params.slidesPerGroup === 1) {
+          // newThumbsIndex = newThumbsIndex - slidesPerView + 1;
+        }
+        thumbsSwiper.slideTo(newThumbsIndex, initial ? 0 : undefined);
+      }
+    }
+
+    // Activate thumbs
+    var thumbsToActivate = 1;
+    var thumbActiveClass = swiper.params.thumbs.slideThumbActiveClass;
+    if (swiper.params.slidesPerView > 1 && !swiper.params.centeredSlides) {
+      thumbsToActivate = swiper.params.slidesPerView;
+    }
+    if (!swiper.params.thumbs.multipleActiveThumbs) {
+      thumbsToActivate = 1;
+    }
+    thumbsToActivate = Math.floor(thumbsToActivate);
+    // thumbsSwiper.slides.removeClass(thumbActiveClass);
+    thumbsSwiper.slides.forEach(function (item) {
+      item.addClass(swiper.params.slideThumbsClass);
+      item.removeClass(thumbActiveClass);
+    });
+    if (thumbsSwiper.params.loop || thumbsSwiper.params.virtual && thumbsSwiper.params.virtual.enabled) {
+      for (var i = 0; i < thumbsToActivate; i += 1) {
+        thumbsSwiper.$wrapperEl.children("[data-swiper-slide-index=\"".concat(swiper.realIndex + i, "\"]")).addClass(thumbActiveClass);
+      }
+    } else {
+      for (var _i = 0; _i < thumbsToActivate; _i += 1) {
+        thumbsSwiper.slides[swiper.realIndex + _i].addClass(thumbActiveClass);
+      }
+    }
+  }
+  on('beforeInit', function () {
+    var thumbs = swiper.params.thumbs;
+    if (!thumbs || !thumbs.swiper) return;
+    init();
+    update(true);
+  });
+  on('slideChange update resize observerUpdate', function () {
+    if (!swiper.thumbs.swiper) return;
+    update();
+  });
+  on('setTransition', function (_s, duration) {
+    var thumbsSwiper = swiper.thumbs.swiper;
+    if (!thumbsSwiper) return;
+    thumbsSwiper.setTransition(duration);
+  });
+  on('beforeDestroy', function () {
+    var thumbsSwiper = swiper.thumbs.swiper;
+    if (!thumbsSwiper) return;
+    if (swiperCreated && thumbsSwiper) {
+      thumbsSwiper.destroy();
+    }
+  });
+  Object.assign(swiper.thumbs, {
+    init: init,
+    update: update
+  });
+}
+
+/***/ }),
+/* 196 */
+/*!***********************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/scrollbar/scrollbar.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Scrollbar;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+var _utils = __webpack_require__(/*! ../../shared/utils.js */ 125);
+function Scrollbar(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on,
+    emit = _ref.emit;
+  var isTouched = false;
+  var timeout = null;
+  var dragTimeout = null;
+  var dragStartPos;
+  var dragSize;
+  var trackSize;
+  var divider;
+  extendParams({
+    scrollbar: {
+      el: null,
+      dragSize: 'auto',
+      hide: false,
+      draggable: false,
+      snapOnRelease: true,
+      lockClass: 'swiper-scrollbar-lock',
+      dragClass: 'swiper-scrollbar-drag'
+    }
+  });
+  swiper.scrollbar = {
+    el: null,
+    dragEl: null,
+    $el: null,
+    $dragEl: null
+  };
+  function setTranslate() {
+    if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
+    var scrollbar = swiper.scrollbar,
+      rtl = swiper.rtlTranslate,
+      progress = swiper.progress;
+    var params = swiper.params.scrollbar;
+    var newSize = dragSize;
+    var newPos = (trackSize - dragSize) * progress;
+    if (rtl) {
+      newPos = -newPos;
+      if (newPos > 0) {
+        newSize = dragSize - newPos;
+        newPos = 0;
+      } else if (-newPos + dragSize > trackSize) {
+        newSize = trackSize + newPos;
+      }
+    } else if (newPos < 0) {
+      newSize = dragSize + newPos;
+      newPos = 0;
+    } else if (newPos + dragSize > trackSize) {
+      newSize = trackSize - newPos;
+    }
+    if (swiper.isHorizontal()) {
+      swiper.$wrapperEl.scrollbarItemTransform("translate3d(".concat(newPos, "px, 0, 0)"));
+      swiper.$wrapperEl.scrollbarItemCss({
+        width: "".concat(newSize, "px")
+      });
+    } else {
+      swiper.$wrapperEl.scrollbarItemTransform("translate3d(0px, ".concat(newPos, "px, 0)"));
+      swiper.$wrapperEl.scrollbarItemCss({
+        height: "".concat(newSize, "px")
+      });
+    }
+    if (params.hide) {
+      clearTimeout(timeout);
+      swiper.$wrapperEl.scrollbarCss({
+        opacity: 1
+      });
+      timeout = setTimeout(function () {
+        swiper.$wrapperEl.scrollbarCss({
+          opacity: 0
+        });
+        swiper.$wrapperEl.scrollbarTransition(400);
+      }, 1000);
+    }
+  }
+  function setTransition(duration) {
+    if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
+    swiper.$wrapperEl.scrollbarItemTransition(duration);
+  }
+  function updateSize() {
+    return _updateSize.apply(this, arguments);
+  }
+  function _updateSize() {
+    _updateSize = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+      var scrollbar, $el, methods, rectInfo;
+      return _regenerator.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!(!swiper.params.scrollbar.el || !swiper.scrollbar.el)) {
+                _context2.next = 2;
+                break;
+              }
+              return _context2.abrupt("return");
+            case 2:
+              scrollbar = swiper.scrollbar;
+              $el = scrollbar.$el, methods = scrollbar.methods;
+              swiper.$wrapperEl.scrollbarItemCss({
+                width: '',
+                height: ''
+              });
+              _context2.next = 7;
+              return swiper.native.getRectScrollbar();
+            case 7:
+              rectInfo = _context2.sent;
+              methods.offset = function () {
+                return rectInfo;
+              };
+              trackSize = swiper.isHorizontal() ? rectInfo.width : rectInfo.height;
+              divider = swiper.size / (swiper.virtualSize + swiper.params.slidesOffsetBefore - (swiper.params.centeredSlides ? swiper.snapGrid[0] : 0));
+              if (swiper.params.scrollbar.dragSize === 'auto') {
+                dragSize = trackSize * divider;
+              } else {
+                dragSize = parseInt(swiper.params.scrollbar.dragSize, 10);
+              }
+              if (swiper.isHorizontal()) {
+                swiper.$wrapperEl.scrollbarItemCss({
+                  width: "".concat(dragSize, "px")
+                });
+              } else {
+                swiper.$wrapperEl.scrollbarItemCss({
+                  height: "".concat(dragSize, "px")
+                });
+              }
+              if (divider >= 1) {
+                swiper.$wrapperEl.scrollbarCss({
+                  display: 'none'
+                });
+              } else {
+                swiper.$wrapperEl.scrollbarCss({
+                  display: ''
+                });
+              }
+              if (swiper.params.scrollbar.hide) {
+                swiper.$wrapperEl.scrollbarCss({
+                  opacity: 0
+                });
+              }
+              if (swiper.params.watchOverflow && swiper.enabled) {
+                swiper.$wrapperEl[swiper.isLocked ? 'addScrollbarClass' : 'removeScrollbarClass'](swiper.params.scrollbar.lockClass);
+              }
+            case 16:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _updateSize.apply(this, arguments);
+  }
+  function getPointerPosition(e) {
+    if (swiper.isHorizontal()) {
+      return e.type === 'touchstart' || e.type === 'touchmove' || 'touchStart' || e.type === 'touchMove' ? e.touches[0].clientX : e.clientX;
+    }
+    return e.type === 'touchstart' || e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+  }
+  function setDragPosition(e) {
+    var scrollbar = swiper.scrollbar,
+      rtl = swiper.rtlTranslate;
+    var $el = scrollbar.$el,
+      methods = scrollbar.methods;
+    var positionRatio;
+    positionRatio = (getPointerPosition(e) - methods.offset()[swiper.isHorizontal() ? 'left' : 'top'] - (dragStartPos !== null ? dragStartPos : dragSize / 2)) / (trackSize - dragSize);
+    positionRatio = Math.max(Math.min(positionRatio, 1), 0);
+    if (rtl) {
+      positionRatio = 1 - positionRatio;
+    }
+    var position = swiper.minTranslate() + (swiper.maxTranslate() - swiper.minTranslate()) * positionRatio;
+    swiper.updateProgress(position);
+    swiper.setTranslate(position);
+    swiper.updateActiveIndex();
+    swiper.updateSlidesClasses();
+  }
+  function onDragStart(_s, e) {
+    var params = swiper.params.scrollbar;
+    var scrollbar = swiper.scrollbar,
+      $wrapperEl = swiper.$wrapperEl;
+    isTouched = true;
+    dragStartPos =
+    // e.target ===
+    //  $dragEl[0] || e.target === $dragEl ?
+    // getPointerPosition(e) -
+    // e.target.getBoundingClientRect()[swiper.isHorizontal() ? 'left' : 'top'] :
+    null;
+    // e.preventDefault();
+    // e.stopPropagation();
+
+    $wrapperEl.transition(100);
+    swiper.$wrapperEl.scrollbarItemTransition(100);
+    // $dragEl.transition(100);
+    setDragPosition(e);
+    clearTimeout(dragTimeout);
+    swiper.$wrapperEl.scrollbarTransition(0);
+    if (params.hide) {
+      swiper.$wrapperEl.scrollbarCss({
+        opacity: 1
+      });
+    }
+    if (swiper.params.cssMode) {
+      swiper.$wrapperEl.css({
+        'scroll-snap-type': 'none'
+      });
+    }
+    emit('scrollbarDragStart', e);
+  }
+  function onDragMove(_s, e) {
+    var scrollbar = swiper.scrollbar,
+      $wrapperEl = swiper.$wrapperEl;
+    if (!isTouched) return;
+    setDragPosition(e);
+    $wrapperEl.transition(0);
+    swiper.$wrapperEl.scrollbarTransition(0);
+    swiper.$wrapperEl.scrollbarItemTransition(0);
+    emit('scrollbarDragMove', e);
+  }
+  function onDragEnd(_s, e) {
+    var params = swiper.params.scrollbar;
+    var scrollbar = swiper.scrollbar,
+      $wrapperEl = swiper.$wrapperEl;
+    var $el = scrollbar.$el;
+    if (!isTouched) return;
+    isTouched = false;
+    if (swiper.params.cssMode) {
+      swiper.$wrapperEl.css({
+        'scroll-snap-type': ''
+      });
+      $wrapperEl.transition('');
+    }
+    if (params.hide) {
+      clearTimeout(dragTimeout);
+      dragTimeout = (0, _utils.nextTick)(function () {
+        swiper.$wrapperEl.scrollbarCss({
+          opacity: 0
+        });
+        swiper.$wrapperEl.scrollbarTransition(400);
+      }, 1000);
+    }
+    emit('scrollbarDragEnd', e);
+    if (params.snapOnRelease) {
+      swiper.slideToClosest();
+    }
+  }
+  function events(method) {
+    var scrollbar = swiper.scrollbar,
+      touchEventsTouch = swiper.touchEventsTouch,
+      touchEventsDesktop = swiper.touchEventsDesktop,
+      params = swiper.params,
+      support = swiper.support;
+    var $el = scrollbar.$el;
+    var target = $el;
+    var activeListener = support.passiveListener && params.passiveListeners ? {
+      passive: false,
+      capture: false
+    } : false;
+    var passiveListener = support.passiveListener && params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
+    if (!target) return;
+    var eventMethod = method === 'on' ? 'on' : 'off';
+    if (!support.touch) {
+      swiper[eventMethod]('touchStartScrollbar', onDragStart, activeListener);
+      swiper[eventMethod]('touchMoveScrollbar', onDragMove, activeListener);
+      swiper[eventMethod]('touchEndScrollbar', onDragEnd, passiveListener);
+    } else {
+      swiper[eventMethod]('touchStartScrollbar', onDragStart, activeListener);
+      swiper[eventMethod]('touchMoveScrollbar', onDragMove, activeListener);
+      swiper[eventMethod]('touchEndScrollbar', onDragEnd, passiveListener);
+    }
+  }
+  function enableDraggable() {
+    if (!swiper.params.scrollbar.el) return;
+    events('on');
+  }
+  function disableDraggable() {
+    if (!swiper.params.scrollbar.el) return;
+    events('off');
+  }
+  function init() {
+    var scrollbar = swiper.scrollbar;
+    var params = swiper.params.scrollbar;
+    if (!params.el) return;
+    // swiper.native.updateData({
+    // 	scrollbarShow: true
+    // })
+    var $el = params.el;
+    Object.assign(scrollbar, {
+      $el: $el,
+      el: $el,
+      methods: {}
+    });
+    if (params.draggable) {
+      enableDraggable();
+    }
+    swiper.$wrapperEl[swiper.enabled ? 'removeScrollbarClass' : 'addScrollbarClass'](swiper.params.scrollbar.lockClass);
+    return true;
+  }
+  function destroy() {
+    disableDraggable();
+  }
+  on('init', /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return init();
+          case 2:
+            updateSize();
+            setTranslate();
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  })));
+  on('update resize observerUpdate lock unlock', function () {
+    updateSize();
+  });
+  on('setTranslate', function () {
+    setTranslate();
+  });
+  on('setTransition', function (_s, duration) {
+    setTransition(duration);
+  });
+  on('enable disable', function () {
+    var $el = swiper.scrollbar.$el;
+    if ($el) {
+      $el[swiper.enabled ? 'removeClass' : 'addClass'](swiper.params.scrollbar.lockClass);
+    }
+  });
+  on('destroy', function () {
+    destroy();
+  });
+  Object.assign(swiper.scrollbar, {
+    updateSize: updateSize,
+    setTranslate: setTranslate,
+    init: init,
+    destroy: destroy
+  });
+}
+
+/***/ }),
+/* 197 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/virtual/virtual.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Virtual;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+function Virtual(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  extendParams({
+    virtual: {
+      enabled: false,
+      slides: [],
+      cache: true,
+      renderSlide: null,
+      renderExternal: null,
+      renderExternalUpdate: true,
+      addSlidesBefore: 0,
+      addSlidesAfter: 0
+    }
+  });
+  var cssModeTimeout;
+  swiper.virtual = {
+    cache: {},
+    from: undefined,
+    to: undefined,
+    slides: [],
+    offset: 0,
+    slidesGrid: []
+  };
+  function renderSlide(slide, index) {
+    var params = swiper.params.virtual;
+    if (params.cache && swiper.virtual.cache[index]) {
+      return swiper.virtual.cache[index];
+    }
+    // const $slideEl = params.renderSlide ?
+    // 	$(params.renderSlide.call(swiper, slide, index)) :
+    // 	$(
+    // 		`<div class="${swiper.params.slideClass}" data-swiper-slide-index="${index}">${slide}</div>`,
+    // 	);
+    // if (!$slideEl.attr('data-swiper-slide-index')) $slideEl.attr('data-swiper-slide-index', index);
+    // if (params.cache) swiper.virtual.cache[index] = $slideEl;
+    // return $slideEl;
+  }
+
+  function onRendered() {
+    swiper.updateSlides();
+    swiper.updateProgress();
+    swiper.updateSlidesClasses();
+    if (swiper.lazy && swiper.params.lazy.enabled) {
+      swiper.lazy.load();
+    }
+  }
+  function update(_x) {
+    return _update.apply(this, arguments);
+  }
+  function _update() {
+    _update = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(force) {
+      var _swiper$params, slidesPerView, slidesPerGroup, centeredSlides, _swiper$params$virtua, addSlidesBefore, addSlidesAfter, _swiper$virtual, previousFrom, previousTo, slides, previousSlidesGrid, previousOffset, activeIndex, offsetProp, slidesAfter, slidesBefore, from, to, offset, onRendered, prependIndexes, appendIndexes, _loop, i, _i2;
+      return _regenerator.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              onRendered = function _onRendered() {
+                swiper.updateSlides();
+                swiper.updateProgress();
+                swiper.updateSlidesClasses();
+                if (swiper.lazy && swiper.params.lazy.enabled) {
+                  swiper.lazy.load();
+                }
+              };
+              _swiper$params = swiper.params, slidesPerView = _swiper$params.slidesPerView, slidesPerGroup = _swiper$params.slidesPerGroup, centeredSlides = _swiper$params.centeredSlides;
+              _swiper$params$virtua = swiper.params.virtual, addSlidesBefore = _swiper$params$virtua.addSlidesBefore, addSlidesAfter = _swiper$params$virtua.addSlidesAfter;
+              _swiper$virtual = swiper.virtual, previousFrom = _swiper$virtual.from, previousTo = _swiper$virtual.to, slides = _swiper$virtual.slides, previousSlidesGrid = _swiper$virtual.slidesGrid, previousOffset = _swiper$virtual.offset;
+              if (!swiper.params.cssMode) {
+                swiper.updateActiveIndex();
+              }
+              activeIndex = swiper.activeIndex || 0;
+              if (swiper.rtlTranslate) offsetProp = 'right';else offsetProp = swiper.isHorizontal() ? 'left' : 'top';
+              if (centeredSlides) {
+                slidesAfter = Math.floor(slidesPerView / 2) + slidesPerGroup + addSlidesAfter;
+                slidesBefore = Math.floor(slidesPerView / 2) + slidesPerGroup + addSlidesBefore;
+              } else {
+                slidesAfter = slidesPerView + (slidesPerGroup - 1) + addSlidesAfter;
+                slidesBefore = slidesPerGroup + addSlidesBefore;
+              }
+              from = Math.max((activeIndex || 0) - slidesBefore, 0);
+              to = Math.min((activeIndex || 0) + slidesAfter, slides.length - 1);
+              offset = (swiper.slidesGrid[from] || 0) - (swiper.slidesGrid[0] || 0);
+              Object.assign(swiper.virtual, {
+                from: from,
+                to: to,
+                offset: offset,
+                slidesGrid: swiper.slidesGrid
+              });
+              if (!(previousFrom === from && previousTo === to && !force)) {
+                _context2.next = 16;
+                break;
+              }
+              if (swiper.slidesGrid !== previousSlidesGrid && offset !== previousOffset) {
+                swiper.slides.css(offsetProp, "".concat(offset, "px"));
+              }
+              swiper.updateProgress();
+              return _context2.abrupt("return");
+            case 16:
+              if (!swiper.params.virtual.renderExternal) {
+                _context2.next = 20;
+                break;
+              }
+              swiper.params.virtual.renderExternal.call(swiper, {
+                offset: offset,
+                from: from,
+                to: to,
+                slides: function getSlides() {
+                  var slidesToRender = [];
+                  if (swiper.params.virtual.type == 'keep') {
+                    for (var i = 0; i < from; i += 1) {
+                      slidesToRender.push("");
+                    }
+                  }
+                  for (var _i = from; _i <= to; _i += 1) {
+                    slidesToRender.push(slides[_i]);
+                  }
+                  return slidesToRender;
+                }()
+              });
+              if (swiper.params.virtual.renderExternalUpdate) {
+                onRendered();
+              }
+              return _context2.abrupt("return");
+            case 20:
+              prependIndexes = [];
+              appendIndexes = [];
+              if (force) {
+                swiper.$wrapperEl.find(".".concat(swiper.params.slideClass)).remove();
+              } else {
+                _loop = function _loop(i) {
+                  if (i < from || i > to) {
+                    swiper.virtualList.splice(swiper.virtualList.findIndex(function (item) {
+                      return item == slides[i];
+                    }), 1);
+                    swiper.virtualIndexList.splice(swiper.virtualIndexList.findIndex(function (item) {
+                      return item == i;
+                    }), 1);
+                    // swiper.slides[i].virtualShow = false;
+                  }
+                };
+                for (i = previousFrom; i <= previousTo; i += 1) {
+                  _loop(i);
+                }
+              }
+              for (_i2 = 0; _i2 < slides.length; _i2 += 1) {
+                if (_i2 >= from && _i2 <= to) {
+                  if (typeof previousTo === 'undefined' || force) {
+                    appendIndexes.push(_i2);
+                  } else {
+                    if (_i2 > previousTo) appendIndexes.push(_i2);
+                    if (_i2 < previousFrom) prependIndexes.push(_i2);
+                  }
+                }
+              }
+              // let list = [];
+              appendIndexes.forEach(function (index) {
+                // if (swiper.slides[index]) {
+                // 	swiper.slides[index].virtualShow = true;
+                // } else {
+                swiper.virtualList.push(slides[index]);
+                swiper.virtualIndexList.push(index);
+                // }
+
+                // renderSlide(slides[index], index)
+                // renderSlide(slides[index], index)
+                // swiper.$wrapperEl.append(renderSlide(slides[index], index));
+              });
+
+              prependIndexes.sort(function (a, b) {
+                return b - a;
+              }).forEach(function (index) {
+                // swiper.slides[index].virtualShow = true;
+                swiper.virtualList.unshift(slides[index]);
+                swiper.virtualIndexList.unshift(index);
+
+                // swiper.$wrapperEl.prepend(renderSlide(slides[index], index));
+              });
+
+              swiper.native.emit("input", [swiper.virtualList]);
+              onRendered();
+            case 28:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _update.apply(this, arguments);
+  }
+  function appendSlide(slides) {
+    if ((0, _typeof2.default)(slides) === 'object' && 'length' in slides) {
+      for (var i = 0; i < slides.length; i += 1) {
+        if (slides[i]) swiper.virtual.slides.push(slides[i]);
+      }
+    } else {
+      swiper.virtual.slides.push(slides);
+    }
+    update(true);
+  }
+  function prependSlide(slides) {
+    var activeIndex = swiper.activeIndex;
+    var newActiveIndex = activeIndex + 1;
+    var numberOfNewSlides = 1;
+    if (Array.isArray(slides)) {
+      for (var i = 0; i < slides.length; i += 1) {
+        if (slides[i]) swiper.virtual.slides.unshift(slides[i]);
+      }
+      newActiveIndex = activeIndex + slides.length;
+      numberOfNewSlides = slides.length;
+    } else {
+      swiper.virtual.slides.unshift(slides);
+    }
+    if (swiper.params.virtual.cache) {
+      var cache = swiper.virtual.cache;
+      var newCache = {};
+      Object.keys(cache).forEach(function (cachedIndex) {
+        var $cachedEl = cache[cachedIndex];
+        var cachedElIndex = $cachedEl.attr('data-swiper-slide-index');
+        if (cachedElIndex) {
+          $cachedEl.attr('data-swiper-slide-index', parseInt(cachedElIndex, 10) + numberOfNewSlides);
+        }
+        newCache[parseInt(cachedIndex, 10) + numberOfNewSlides] = $cachedEl;
+      });
+      swiper.virtual.cache = newCache;
+    }
+    update(true);
+    swiper.slideTo(newActiveIndex, 0);
+  }
+  function removeSlide(slidesIndexes) {
+    if (typeof slidesIndexes === 'undefined' || slidesIndexes === null) return;
+    var activeIndex = swiper.activeIndex;
+    if (Array.isArray(slidesIndexes)) {
+      for (var i = slidesIndexes.length - 1; i >= 0; i -= 1) {
+        swiper.virtual.slides.splice(slidesIndexes[i], 1);
+        if (swiper.params.virtual.cache) {
+          delete swiper.virtual.cache[slidesIndexes[i]];
+        }
+        if (slidesIndexes[i] < activeIndex) activeIndex -= 1;
+        activeIndex = Math.max(activeIndex, 0);
+      }
+    } else {
+      swiper.virtual.slides.splice(slidesIndexes, 1);
+      if (swiper.params.virtual.cache) {
+        delete swiper.virtual.cache[slidesIndexes];
+      }
+      if (slidesIndexes < activeIndex) activeIndex -= 1;
+      activeIndex = Math.max(activeIndex, 0);
+    }
+    update(true);
+    swiper.slideTo(activeIndex, 0);
+  }
+  function removeAllSlides() {
+    swiper.virtual.slides = [];
+    if (swiper.params.virtual.cache) {
+      swiper.virtual.cache = {};
+    }
+    update(true);
+    swiper.slideTo(0, 0);
+  }
+  on('beforeInit', function () {
+    if (!swiper.params.virtual.enabled) return;
+    swiper.virtual.slides = swiper.params.virtual.slides;
+    swiper.classNames.push("".concat(swiper.params.containerModifierClass, "virtual"));
+    swiper.params.watchSlidesProgress = true;
+    swiper.originalParams.watchSlidesProgress = true;
+    if (!swiper.params.initialSlide) {
+      update();
+    }
+  });
+  // on('beforeUpdate', () => {
+  // 	if (!swiper.params.virtual.enabled) return;
+  // 	let offsetProp;
+  // 	if (swiper.rtlTranslate) offsetProp = 'right';
+  // 	else offsetProp = swiper.isHorizontal() ? 'left' : 'top';
+  // 	swiper.slides.forEach((item, index) => {
+  // 		item.dataSwiperSlideIndex = swiper.virtualIndexList[index];
+  // 		item.css({
+  // 			[offsetProp]: `${swiper.virtual.offset}px`
+  // 		})
+  // 	})
+  // })
+  on('setTranslate', /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (swiper.params.virtual.enabled) {
+              _context.next = 2;
+              break;
+            }
+            return _context.abrupt("return");
+          case 2:
+            if (swiper.params.cssMode && !swiper._immediateVirtual) {
+              clearTimeout(cssModeTimeout);
+              cssModeTimeout = setTimeout(function () {
+                update();
+              }, 100);
+            } else {
+              console.log("update==========");
+              clearTimeout(cssModeTimeout);
+              cssModeTimeout = setTimeout(function () {
+                update();
+              }, 100);
+              // update();
+            }
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  })));
+  Object.assign(swiper.virtual, {
+    appendSlide: appendSlide,
+    prependSlide: prependSlide,
+    removeSlide: removeSlide,
+    removeAllSlides: removeAllSlides,
+    update: update
+  });
+}
+
+/***/ }),
+/* 198 */
+/*!***************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/modules/will-change/will-change.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = WillChange;
+function WillChange(_ref) {
+  var swiper = _ref.swiper,
+    extendParams = _ref.extendParams,
+    on = _ref.on;
+  on('setTransition', function (s, duration) {
+    if (!swiper.params.willChange) return;
+    if (swiper.params.effect == "slide" || swiper.params.effect == "cube" || swiper.params.effect == "coverflow" || swiper.params.effect == "panorama") {
+      swiper.$wrapperEl.willChange("transform");
+    }
+  });
+  on('transitionEnd', function (s, duration) {
+    if (!swiper.params.willChange) return;
+    swiper.$wrapperEl.willChange("auto");
+    swiper.slides.forEach(function (item) {
+      item.$itemEl.willChange("auto");
+    });
+  });
+}
+
+/***/ }),
+/* 199 */
+/*!***********************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/utils.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.extend = extend;
+exports.isObject = isObject;
+exports.needsNavigation = needsNavigation;
+exports.needsPagination = needsPagination;
+exports.needsScrollbar = needsScrollbar;
+exports.uniqueClasses = uniqueClasses;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function isObject(o) {
+  return (0, _typeof2.default)(o) === 'object' && o !== null && o.constructor && Object.prototype.toString.call(o).slice(8, -1) === 'Object';
+}
+function extend(target, src) {
+  var noExtend = ['__proto__', 'constructor', 'prototype'];
+  Object.keys(src).filter(function (key) {
+    return noExtend.indexOf(key) < 0;
+  }).forEach(function (key) {
+    if (typeof target[key] === 'undefined') target[key] = src[key];else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
+      if (src[key].__swiper__) target[key] = src[key];else extend(target[key], src[key]);
+    } else {
+      target[key] = src[key];
+    }
+  });
+}
+function needsNavigation() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return props.navigation && typeof props.navigation.nextEl === 'undefined' && typeof props.navigation.prevEl === 'undefined';
+}
+function needsPagination() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return props.pagination && typeof props.pagination.el === 'undefined';
+}
+function needsScrollbar() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return props.scrollbar;
+}
+function uniqueClasses() {
+  var classNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var classes = classNames.split(' ').map(function (c) {
+    return c.trim();
+  }).filter(function (c) {
+    return !!c;
+  });
+  var unique = [];
+  classes.forEach(function (c) {
+    if (unique.indexOf(c) < 0) unique.push(c);
+  });
+  return unique.join(' ');
+}
+
+/***/ }),
+/* 200 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/params-list.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.paramsList = void 0;
+/* underscore in name -> watch for changes */
+var paramsList = ['modules', 'init', '_direction', 'touchEventsTarget', 'initialSlide', '_speed', 'cssMode', 'updateOnWindowResize', 'resizeObserver', 'nested', 'focusableElements', '_enabled', '_width', '_height', 'preventInteractionOnTransition', 'userAgent', 'url', '_edgeSwipeDetection', '_edgeSwipeThreshold', '_freeMode', '_autoHeight', 'setWrapperSize', 'virtualTranslate', '_effect', 'breakpoints', '_spaceBetween', '_slidesPerView', 'maxBackfaceHiddenSlides', '_grid', '_slidesPerGroup', '_slidesPerGroupSkip', '_slidesPerGroupAuto', '_centeredSlides', '_centeredSlidesBounds', '_slidesOffsetBefore', '_slidesOffsetAfter', 'normalizeSlideIndex', '_centerInsufficientSlides', '_watchOverflow', 'roundLengths', 'touchRatio', 'touchAngle', 'simulateTouch', '_shortSwipes', '_longSwipes', 'longSwipesRatio', 'longSwipesMs', '_followFinger', 'allowTouchMove', '_threshold', 'touchMoveStopPropagation', 'touchStartPreventDefault', 'touchStartForcePreventDefault', 'touchReleaseOnEdges', 'uniqueNavElements', '_resistance', '_resistanceRatio', '_watchSlidesProgress', '_grabCursor', 'preventClicks', 'preventClicksPropagation', '_slideToClickedSlide', '_preloadImages', 'updateOnImagesReady', '_loop', '_loopAdditionalSlides', '_loopedSlides', '_loopFillGroupWithBlank', 'loopPreventsSlide', '_rewind', '_allowSlidePrev', '_allowSlideNext', '_swipeHandler', '_noSwiping', 'noSwipingClass', 'noSwipingSelector', 'passiveListeners', 'containerModifierClass', 'slideClass', 'slideBlankClass', 'slideActiveClass', 'slideDuplicateActiveClass', 'slideVisibleClass', 'slideDuplicateClass', 'slideNextClass', 'slideDuplicateNextClass', 'slidePrevClass', 'slideDuplicatePrevClass', 'wrapperClass', 'runCallbacksOnInit', 'observer', 'observeParents', 'observeSlideChildren',
+// modules
+'a11y', '_autoplay', '_controller', 'coverflowEffect', 'cubeEffect', 'fadeEffect', 'flipEffect', 'creativeEffect', 'cardsEffect', 'panorama', 'hashNavigation', 'history', 'keyboard', 'lazy', 'mousewheel', '_navigation', '_pagination', 'parallax', '_scrollbar', '_thumbs', '_virtual', 'zoom'];
+exports.paramsList = paramsList;
+
+/***/ }),
+/* 201 */
+/*!*****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/init-swiper.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initSwiper = initSwiper;
+exports.mountSwiper = mountSwiper;
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../index.js */ 123));
+var _utils = __webpack_require__(/*! ./utils.js */ 199);
+function initSwiper(swiperParams, native) {
+  return new _index.default(swiperParams, native);
+}
+function mountSwiper(_ref, swiperParams) {
+  var el = _ref.el,
+    nextEl = _ref.nextEl,
+    prevEl = _ref.prevEl,
+    paginationEl = _ref.paginationEl,
+    scrollbarEl = _ref.scrollbarEl,
+    swiper = _ref.swiper;
+  if ((0, _utils.needsNavigation)(swiperParams) && nextEl && prevEl) {
+    swiper.params.navigation.nextEl = nextEl;
+    swiper.originalParams.navigation.nextEl = nextEl;
+    swiper.params.navigation.prevEl = prevEl;
+    swiper.originalParams.navigation.prevEl = prevEl;
+  }
+  if ((0, _utils.needsPagination)(swiperParams) && paginationEl) {
+    swiper.params.pagination.el = paginationEl;
+    swiper.originalParams.pagination.el = paginationEl;
+  }
+  if ((0, _utils.needsScrollbar)(swiperParams) && scrollbarEl) {
+    swiper.params.scrollbar.el = scrollbarEl;
+    swiper.originalParams.scrollbar.el = scrollbarEl;
+  }
+  swiper.init(el);
+}
+
+/***/ }),
+/* 202 */
+/*!**********************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/loop.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.calcLoopedSlides = calcLoopedSlides;
+exports.renderLoop = renderLoop;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../index.js */ 123));
+function calcLoopedSlides(slides, swiperParams) {
+  var slidesPerViewParams = swiperParams.slidesPerView;
+  if (swiperParams.breakpoints) {
+    var breakpoint = _index.default.prototype.getBreakpoint(swiperParams.breakpoints);
+    var breakpointOnlyParams = breakpoint in swiperParams.breakpoints ? swiperParams.breakpoints[breakpoint] : undefined;
+    if (breakpointOnlyParams && breakpointOnlyParams.slidesPerView) {
+      slidesPerViewParams = breakpointOnlyParams.slidesPerView;
+    }
+  }
+  var loopedSlides = Math.ceil(parseFloat(swiperParams.loopedSlides || slidesPerViewParams, 10));
+  loopedSlides += swiperParams.loopAdditionalSlides;
+  if (loopedSlides > slides.length) {
+    loopedSlides = slides.length;
+  }
+  return loopedSlides;
+}
+function renderLoop(native, swiperParams, data) {
+  var modifiedValue = data;
+  if (swiperParams.loopFillGroupWithBlank) {
+    var blankSlidesNum = swiperParams.slidesPerGroup - modifiedValue.length % swiperParams.slidesPerGroup;
+    if (blankSlidesNum !== swiperParams.slidesPerGroup) {
+      for (var i = 0; i < blankSlidesNum; i += 1) {
+        var blankSlide = h('div', {
+          class: "".concat(swiperParams.slideClass, " ").concat(swiperParams.slideBlankClass)
+        });
+        modifiedValue.push(blankSlide);
+      }
+    }
+  }
+  if (swiperParams.slidesPerView === 'auto' && !swiperParams.loopedSlides) {
+    swiperParams.loopedSlides = modifiedValue.length;
+  }
+  var loopedSlides = calcLoopedSlides(modifiedValue, swiperParams);
+  var prependSlides = [];
+  var appendSlides = [];
+  var prependValue = [];
+  var appendValue = [];
+  modifiedValue.forEach(function (child, index) {
+    if (index < loopedSlides) {
+      if (!native.loopUpdateData) {
+        appendValue.push(child);
+      }
+    }
+    if (index < modifiedValue.length && index >= modifiedValue.length - loopedSlides) {
+      if (!native.loopUpdateData) {
+        prependValue.push(child);
+      }
+    }
+  });
+  if (native) {
+    if (!native.originalDataList) native.originalDataList = [];
+    native.originalDataList = [].concat(prependValue, (0, _toConsumableArray2.default)(modifiedValue), appendValue);
+  }
+  return {
+    data: [].concat(prependValue, (0, _toConsumableArray2.default)(modifiedValue), appendValue)
+  };
+}
+
+/***/ }),
+/* 203 */
+/*!************************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/get-changed-params.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getChangedParams = getChangedParams;
+var _paramsList = __webpack_require__(/*! ./params-list.js */ 200);
+var _utils = __webpack_require__(/*! ./utils.js */ 199);
+function getChangedParams(swiperParams, oldParams, children, oldChildren) {
+  var keys = [];
+  if (!oldParams) return keys;
+  var addKey = function addKey(key) {
+    if (keys.indexOf(key) < 0) keys.push(key);
+  };
+  var oldChildrenKeys = oldChildren.map(function (child) {
+    return child.props && child.props.key;
+  });
+  var childrenKeys = children.map(function (child) {
+    return child.props && child.props.key;
+  });
+  if (oldChildrenKeys.join('') !== childrenKeys.join('')) keys.push('children');
+  if (oldChildren.length !== children.length) keys.push('children');
+  var watchParams = _paramsList.paramsList.filter(function (key) {
+    return key[0] === '_';
+  }).map(function (key) {
+    return key.replace(/_/, '');
+  });
+  watchParams.forEach(function (key) {
+    if (key in swiperParams && key in oldParams) {
+      if ((0, _utils.isObject)(swiperParams[key]) && (0, _utils.isObject)(oldParams[key])) {
+        var newKeys = Object.keys(swiperParams[key]);
+        var oldKeys = Object.keys(oldParams[key]);
+        if (newKeys.length !== oldKeys.length) {
+          addKey(key);
+        } else {
+          newKeys.forEach(function (newKey) {
+            if (swiperParams[key][newKey] !== oldParams[key][newKey]) {
+              addKey(key);
+            }
+          });
+          oldKeys.forEach(function (oldKey) {
+            if (swiperParams[key][oldKey] !== oldParams[key][oldKey]) addKey(key);
+          });
+        }
+      } else if (swiperParams[key] !== oldParams[key]) {
+        addKey(key);
+      }
+    } else if (key in swiperParams && !(key in oldParams)) {
+      addKey(key);
+    } else if (!(key in swiperParams) && key in oldParams) {
+      addKey(key);
+    }
+  });
+  return keys;
+}
+
+/***/ }),
+/* 204 */
+/*!*******************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/update-swiper.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateSwiper = updateSwiper;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 66));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 68));
+var _utils = __webpack_require__(/*! ./utils.js */ 199);
+function updateSwiper(_x) {
+  return _updateSwiper.apply(this, arguments);
+}
+function _updateSwiper() {
+  _updateSwiper = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {
+    var swiper, slides, passedParams, changedParams, nextEl, prevEl, paginationEl, scrollbarEl, updateParams, currentParams, pagination, navigation, scrollbar, virtual, thumbs, needThumbsInit, needControllerInit, needPaginationInit, needScrollbarInit, needNavigationInit, destroyModule, initialized;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            swiper = _ref.swiper, slides = _ref.slides, passedParams = _ref.passedParams, changedParams = _ref.changedParams, nextEl = _ref.nextEl, prevEl = _ref.prevEl, paginationEl = _ref.paginationEl, scrollbarEl = _ref.scrollbarEl;
+            updateParams = changedParams.filter(function (key) {
+              return key !== 'children' && key !== 'direction';
+            });
+            currentParams = swiper.params, pagination = swiper.pagination, navigation = swiper.navigation, scrollbar = swiper.scrollbar, virtual = swiper.virtual, thumbs = swiper.thumbs;
+            if (changedParams.includes('thumbs') && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper) {
+              needThumbsInit = true;
+            }
+            if (changedParams.includes('controller') && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control) {
+              needControllerInit = true;
+            }
+            if (changedParams.includes('pagination') && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === false) && pagination && !pagination.el) {
+              needPaginationInit = true;
+            }
+            if (changedParams.includes('scrollbar') && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === false) && scrollbar && !scrollbar.el) {
+              needScrollbarInit = true;
+            }
+            if (changedParams.includes('navigation') && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === false) && navigation && !navigation.prevEl && !navigation.nextEl) {
+              needNavigationInit = true;
+            }
+            destroyModule = function destroyModule(mod) {
+              if (!swiper[mod]) return;
+              swiper[mod].destroy();
+              if (mod === 'navigation') {
+                currentParams[mod].prevEl = undefined;
+                currentParams[mod].nextEl = undefined;
+                swiper[mod].prevEl = undefined;
+                swiper[mod].nextEl = undefined;
+              } else {
+                currentParams[mod].el = undefined;
+                swiper[mod].el = undefined;
+              }
+            };
+            updateParams.forEach(function (key) {
+              if ((0, _utils.isObject)(currentParams[key]) && (0, _utils.isObject)(passedParams[key])) {
+                (0, _utils.extend)(currentParams[key], passedParams[key]);
+              } else {
+                var newValue = passedParams[key];
+                if ((newValue === true || newValue === false) && (key === 'navigation' || key === 'pagination' || key === 'scrollbar')) {
+                  if (newValue === false) {
+                    destroyModule(key);
+                  }
+                } else {
+                  currentParams[key] = passedParams[key];
+                }
+              }
+            });
+            // if (changedParams.includes('virtual') && virtual && currentParams.virtual.enabled) {
+            // 	virtual.update();
+            // }
+            if (changedParams.includes('children') && virtual && currentParams.virtual.enabled) {
+              // virtual.slides = slides;
+              virtual.update(true);
+            } else if (changedParams.includes('children') && swiper.lazy && swiper.params.lazy.enabled) {
+              swiper.lazy.load();
+            }
+            if (needThumbsInit) {
+              initialized = thumbs.init();
+              if (initialized) thumbs.update(true);
+            }
+            if (needControllerInit) {
+              swiper.controller.control = currentParams.controller.control;
+            }
+            if (needPaginationInit) {
+              if (paginationEl) currentParams.pagination.el = paginationEl;
+              pagination.init();
+              pagination.render();
+              pagination.update();
+            }
+            if (needScrollbarInit) {
+              if (scrollbarEl) currentParams.scrollbar.el = scrollbarEl;
+              scrollbar.init();
+              scrollbar.updateSize();
+              scrollbar.setTranslate();
+            }
+            if (needNavigationInit) {
+              if (nextEl) currentParams.navigation.nextEl = nextEl;
+              if (prevEl) currentParams.navigation.prevEl = prevEl;
+              navigation.init();
+              navigation.update();
+            }
+            if (changedParams.includes('allowSlideNext')) {
+              swiper.allowSlideNext = passedParams.allowSlideNext;
+            }
+            if (changedParams.includes('allowSlidePrev')) {
+              swiper.allowSlidePrev = passedParams.allowSlidePrev;
+            }
+            if (changedParams.includes('direction')) {
+              swiper.changeDirection(passedParams.direction, false);
+            }
+            swiper.update();
+          case 20:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _updateSwiper.apply(this, arguments);
+}
+
+/***/ }),
+/* 205 */
+/*!*************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/vue2/virtual.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderVirtual = renderVirtual;
+exports.updateOnVirtualData = updateOnVirtualData;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// import { h } from 'vue';
+
+function updateOnVirtualData(swiper) {
+  if (!swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled) return;
+  swiper.updateSlides();
+  swiper.updateProgress();
+  swiper.updateSlidesClasses();
+  if (swiper.lazy && swiper.params.lazy.enabled) {
+    swiper.lazy.load();
+  }
+  if (swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled) {
+    swiper.parallax.setTranslate();
+  }
+}
+function renderVirtual(swiperRef, slides, virtualData) {
+  if (!virtualData) return null;
+  var style = swiperRef.isHorizontal() ? (0, _defineProperty2.default)({}, swiperRef.rtlTranslate ? 'right' : 'left', "".concat(virtualData.offset, "px")) : {
+    top: "".concat(virtualData.offset, "px")
+  };
+  return slides.filter(function (slide, index) {
+    return index >= virtualData.from && index <= virtualData.to;
+  }).map(function (slide) {
+    if (!slide.props) slide.props = {};
+    if (!slide.props.style) slide.props.style = {};
+    slide.props.swiperRef = swiperRef;
+    slide.props.style = style;
+    return h(slide.type, _objectSpread({}, slide.props), slide.children);
+  });
+}
+
+/***/ }),
+/* 206 */
+/*!****************************************************************************************!*\
+  !*** E:/Github/Desertation-2022/Demo/uni_modules/zebra-swiper/libs/mixins/relation.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ChildrenMixin = ChildrenMixin;
+exports.ParentMixin = ParentMixin;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ChildrenMixin(parent) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var indexKey = options.indexKey || 'index';
+  return {
+    inject: (0, _defineProperty2.default)({}, parent, {
+      default: null
+    }),
+    mounted: function mounted() {
+      this.parent = this[parent];
+      this.bindRelation();
+    },
+    beforeDestroy: function beforeDestroy() {
+      var _this = this;
+      if (this.parent) {
+        this.parent.children = this.parent.children.filter(function (item) {
+          return item !== _this;
+        });
+        uni.$emit("childrenReady" + this.parent._uid, this);
+      }
+    },
+    methods: {
+      bindRelation: function bindRelation() {
+        if (!this.parent || this.parent.children.indexOf(this) !== -1) {
+          return;
+        }
+        var children = [].concat((0, _toConsumableArray2.default)(this.parent.children), [this]);
+        this.parent.children = children;
+        this.index = this.parent.children.indexOf(this);
+        uni.$emit("childrenReady" + this.parent._uid, this);
+      }
+    }
+  };
+}
+function ParentMixin(parent) {
+  return {
+    provide: function provide() {
+      return (0, _defineProperty2.default)({}, parent, this);
+    },
+    created: function created() {
+      this.children = [];
+    },
+    beforeDestroy: function beforeDestroy() {
+      uni.$off("childrenReady" + this._uid);
+    }
+  };
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

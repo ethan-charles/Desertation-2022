@@ -1,54 +1,94 @@
 <template>
 	<view class="recipePage">
 		<view class="title">Recipe Details</view>
+		
+		<view class="demo-swiper">
+				<z-swiper v-model="list" :options="optionsAutoplay">
+					<z-swiper-item v-for="(item,index) in list" :key="index">
+						<image class="image" :src="item" mode="aspectFill">
+						</image>
+					</z-swiper-item>
+				</z-swiper>
+		</view>
 		<view>
 			<view class="food">
 				<view class="uni-px-5 uni-pb-5">
-					<view class="text">You Need to Prepare:</view>
+					<view class="text">
+						<uni-icons type="cart-filled" size="25"></uni-icons> You Need to Prepare:</view>
 					<uni-data-checkbox selectedColor="green" multiple v-model="checkbox1" :localdata="process1">
 					</uni-data-checkbox>
 				</view>
 			</view>
-			<view class="text">Follow the Steps:</view>
+			<view class="text">
+				<uni-icons type="list" size="25"></uni-icons>Follow the Steps:</view>
 			<view class="uni-px-5 uni-pb-5">
-				<view class="text">多选选中：{{JSON.stringify(checkbox2)}}</view>
+				<!-- <view class="text">多选选中：{{JSON.stringify(checkbox2)}}</view> -->
 				<uni-data-checkbox selectedColor="green" multiple v-model="checkbox2" :localdata="process2">
 				</uni-data-checkbox>
 			</view>
 		</view>
 		<button class="player"></button>
-		<button class="back">
-		    Click me
-		</button>
+		
+		<div class="card">
+		<div class="card-image"></div>
+		  <div class="card-description">
+		    <p class="text-title"> Feedback</p>
+		    <p class="text-body">Your feedback is important to us. Let us know what you think.</p>
+		  </div>
+		</div>
+		
+		<view class="bottom">
+			<button class="item" @click="retry()"> <uni-icons type="reload" size="25"></uni-icons></button>
+			<button class="item"> <uni-icons type="heart" size="25"></uni-icons></button>
+			<button class="item"> <uni-icons type="hand-up" size="25"></uni-icons></button>
+		</view>
 	</view>
 </template>
 
 <script>
 	export default {
-		data() {
-			return {
-				foodlist:"111,222,333",
-				recipelist:"-aaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbb-fdddddddddd-sssssssssssssss-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender.-Add noodles and water and cook until noodles are tender.-Add soy sauce and pepper.",
-				food:[],
-				recipes:[],
-				checkbox1: [],
-				checkbox2: [],
-				process1: [],
-				process2:[],
-			}
-		},
+			data() {
+				return {
+					foodlist:"111,222,333",
+					recipelist:"-aaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbb-fdddddddddd-sssssssssssssss-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender.-Add noodles and water and cook until noodles are tender.-Add soy sauce and pepper.",
+					food:[],
+					recipes:[],
+					checkbox1: [],
+					checkbox2: [],
+					process1: [],
+					process2:[],
+					
+					optionsAutoplay: {
+						effect: 'cube',
+						cubeEffect: {
+							shadow: true,
+							slideShadows: true,
+							shadowOffset: 10,
+							shadowScale: 0.94,
+						},
+						autoplay: true
+					},
+					
+					list: [
+						'/static/swiper1.jpg',
+						'/static/swiper2.jpg',
+						'/static/swiper3.jpg',
+						'/static/swiper4.jpg',
+						'/static/swiper5.jpg',
+						'/static/swiper6.jpg',
+					],
+				}
+			},
 		onLoad() {
 			//get recipe from memory
-			// this.food = uni.getStorageSync('food')
-			// let recipeList = uni.getStorageSync('recipe')
-			// this.recipes = recipeList.split('-')
-			// this.recipes.shift()
-			
-		
 			let that = this
+			
+			that.recipelist = uni.getStorageSync('recipe')
+			that.foodlist = uni.getStorageSync('food')
 			that.recipes = that.recipelist.split('-')
 			that.food = that.foodlist.split(',')
 			that.recipes.shift()
+			
 			let stepnum = that.recipes.length
 			let foodnum = that.food.length
 			var step;
@@ -68,7 +108,11 @@
 			
 		},
 		methods: {
-			
+			retry(){
+				uni.navigateTo({
+					url: '/pages/upload/upload'
+				});
+			}
 		}
 	}
 </script>
@@ -85,9 +129,9 @@
 		color: #333;
 		text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
 		height: 20%;
-		-webkit-box-shadow:0px 10px 39px 30px rgba(62,66,66,0.22);
-		-moz-box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22);
-		box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22);
+		/* -webkit-box-shadow:0px 10px 39px 30px rgba(62,66,66,0.22); */
+		/* -moz-box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
+		/* box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
 	}
 	
 	.text {
@@ -126,21 +170,86 @@
 	  border-radius: 100%;
 	  box-shadow: inset 0px 0px 10px 0px rgb(240, 237, 237);
 	}
-	.back {
-	  border: none;
-	  outline: none;
-	  background-color: #6c5ce7;
-	  padding: 10px 20px;
-	  font-size: 12px;
-	  font-weight: 700;
-	  color: #fff;
-	  border-radius: 5px;
-	  transition: all ease 0.1s;
-	  box-shadow: 0px 5px 0px 0px #a29bfe;
+	
+	.image {
+		height: 300rpx;
+		width: 100%;
 	}
 	
-	.back:active {
-	  transform: translateY(5px);
-	  box-shadow: 0px 0px 0px 0px #a29bfe;
+	.bottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px;
+		width: 100%;
+		height: auto;
+		bottom: 0%;
+		position: fixed
 	}
+	
+	.item {
+	  flex: 1;
+	  height: 30px;
+	  line-height: 30px;
+	  text-align: center;
+	  color: black;
+	  margin: 0 5px;
+	}
+	
+	
+	.card {
+	 height: 250rpx;
+	 width: 100%;
+	 position: relative;
+	 transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+	 border-radius: 1em;
+	 box-shadow: 0 0 20px 8px #d0d0d0;
+	 margin-top: 10%;
+	 margin-bottom: 20%;
+	}
+	
+	 /*Image*/
+	.card-image {
+	 height: 100%;
+	 width: 100%;
+	 position: absolute;
+	 transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+	 background: #0a3394;
+	 background: linear-gradient(to top, #0a3394, #4286f4);
+	}
+	
+	/*Description */
+	.card-description {
+	 display: flex;
+	 position: absolute;
+	 gap: 1em;
+	 flex-direction: column;
+	 background-color: #f5f5f5;
+	 height: 70%;
+	 bottom: 0;
+	 border-radius: 1em 1em 0 0;
+	 transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+	 padding: 1rem;
+	}
+	
+	/*Text*/
+	.text-title {
+	 font-size: 1.4em;
+	 font-weight: 700;
+	}
+	
+	.text-body {
+	 font-size: 1em;
+	 line-height: 150%;
+	}
+	
+	
+	/* Hover states */
+	
+	.card:hover .card-description {
+	 transform: translateY(100%);
+	}
+	
+
 </style>

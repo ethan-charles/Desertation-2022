@@ -2,6 +2,9 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "z-swiper": "/uni_modules/zebra-swiper/components/z-swiper/z-swiper",
+    "z-swiper-item": "/uni_modules/zebra-swiper/components/z-swiper-item/z-swiper-item",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
     "uni-data-checkbox": "/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox"
   }
 }
