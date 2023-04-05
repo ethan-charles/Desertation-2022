@@ -5,10 +5,10 @@
 				<image src="../../static/text1.png" class="textimage"></image>
 				<view class="buttonbox">
 					<button @click="gofood()" class="cssbuttons-io-button">
-					<span>Upload Ingredient</span>
+					<span>+ Ingredient</span>
 					</button>
 					<button @click="godish()" class="cssbuttons-io-button">
-					<span>Upload Dishes</span>
+					<span>+ Dishes</span>
 					</button>
 				</view>
 			</view>
@@ -153,9 +153,9 @@
 	 align-items: center;
 	 justify-content: center;
 	 font-family: inherit;
-	 font-weight: 500;
-	 font-size: 20px;
-	 padding: 0.8em 1.5em 0.8em 1.2em;
+	 font-weight: 650;
+	 font-size: 25px;
+	 padding: 0.8em 1.2em 0.8em 1.0em;
 	 color: white;
 	 background: #ad5389;
 	 background: linear-gradient(0deg, rgba(85, 170, 0, 1.0) 0%, rgba(114, 254, 243, 1.0) 100%);
@@ -163,7 +163,7 @@
 	 box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
 	 letter-spacing: 0.05em;
 	 border-radius: 20em;
-	 margin-top: 0.8em;
+	 margin-top: 10%;
 	 
 	}
 	

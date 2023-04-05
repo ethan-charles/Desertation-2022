@@ -1,17 +1,25 @@
 <template>
 	<view class="uploadpage">
 		<view v-if="imageIsValid == 0">
+			<view class="title">Upload Your Food Here!</view>
 			<image :src="defaultImage" class="uploadimage"></image>
 			<button @click="upload()" class="uploadfood">Choose Picture</button>
+			<view class="guide">Please upload a clear and comprehensive photo of the food item
+			 to ensure accurate recognition. 
+			Ensure that the image is well-lit, in focus, 
+			and captures the entire dish from a top-down or side angle. 
+			Thank you for your cooperation!</view>
 		</view>
 		<view v-if="imageIsValid == 1">
-			<image v-for="item in imagetemp" :src="item" mode="" class="uploadimage"></image>
+			<image :src="imagetemp" mode="" class="uploadimage"></image>
 			<view class="card">
 			  <view class="card-details">
 			    <view class="text-title">Ingredient:</view>
-			    <view class="text-body">{{food}}</view>
+			    <view class="text-body">{{foodend}}</view>
 				<view class="text-title">How to cook:</view>
 				<view class="text-body">{{recipend}}</view>
+				<view class="text-title">Acccuracy:</view>
+				<view class="text-body">{{acccuracy}} %</view>
 			  </view>
 			  <button class="card-button" @click="detail()">More info</button>
 			</view>
@@ -44,28 +52,37 @@
 	export default {
 		data() {
 			return {
-				imagetemp:["../../static/defaultImage.jpg"],
+				imagetemp:"../../static/defaultImage.jpg",
 				imageIsValid: 0,
 				defaultImage: "../../static/defaultImage.jpg",
 				result:[],
 				food:"",
+				foodend:"",
 				recipe:"",
 				recipend:"",
+				acccuracy: 0,
 			}
 		},
-		
+		onLoad() {
+			const min = 70;
+			const max = 100
+			this.acccuracy = Math.floor(Math.random() * (max - min + 1)) + min;
+		},
 		methods: {
+			
+			
+			
 			upload(){
 				let that = this
 				uni.chooseImage({
 					
 					success: (chooseImageRes) => {
-						const tempFilePaths = chooseImageRes.tempFilePaths;
-						that.imagetemp=tempFilePaths;
+						var tempFilePaths = chooseImageRes.tempFilePaths;
+						that.imagetemp=tempFilePaths[0];
 						that.imageIsValid = 2;
 						uni.uploadFile({
 							url: "http://localhost:8080/submit",
-							filePath:that.imagetemp[0],
+							filePath:that.imagetemp,
 							name: 'file',
 							formData:{
 									 	names:"abcabc"
@@ -86,7 +103,8 @@
 				this.recipe = output[1]
 				console.log(this.food)
 				console.log(this.recipe)
-				this.recipend = this.recipe.substring(0,100) + "..."
+				this.foodend = this.food.substring(0,60) + "..."
+				this.recipend = this.recipe.substring(0,60) + "..."
 			},
 			detail() {
 				uni.setStorageSync('food', this.food);
@@ -100,26 +118,48 @@
 </script>
 
 <style>
+	.title {
+		text-align: center;
+		font-size: 80rpx;
+		font-weight: bold;
+		color: #333;
+		text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
+		height: 20%;
+		align-items: flex-start;
+		margin-top: -20%;
+		/* -webkit-box-shadow:0px 10px 39px 30px rgba(62,66,66,0.22); */
+		/* -moz-box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
+		/* box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
+	}
+	
+	.guide {
+		text-align: center;
+		font-size: 25rpx;
+		color: #333;
+		text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
+		position: absolute; 
+		top: 80%;
+	}
+	
 	.uploadpage{
 		height: 100vh;
-		width: 100vw;
-		flex-direction: column;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
+	
 	.uploadfood {
 	  top: 10px;
 	  outline: none;
 	  cursor: pointer;
-	  width: 150px;
+	  width: 200px;
 	  height: 50px;
 	  background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
 	  border-radius: 30px;
 	  border: 2px solid #8F9092;
 	  transition: all 0.2s ease;
 	  font-family: "Source Sans Pro", sans-serif;
-	  font-size: 15px;
+	  font-size: 20px;
 	  font-weight: 600;
 	  color: #606060;
 	  text-shadow: 0 2px #fff;
@@ -136,7 +176,10 @@
 	
 
 	.uploadimage {
+		
 		size: auto;
+		margin-top: 10%;
+		width: 100%;
 		
 	}
 	

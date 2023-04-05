@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/recipe/recipe",
     "pages/index/index",
-    "pages/upload/upload"
+    "pages/upload/upload",
+    "pages/recipe/recipe"
   ],
   "subPackages": [],
   "window": {

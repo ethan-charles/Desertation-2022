@@ -1,8 +1,27 @@
 
+.title {
+	text-align: center;
+	font-size: 80rpx;
+	font-weight: bold;
+	color: #333;
+	text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
+	height: 20%;
+	align-items: flex-start;
+	margin-top: -20%;
+	/* -webkit-box-shadow:0px 10px 39px 30px rgba(62,66,66,0.22); */
+	/* -moz-box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
+	/* box-shadow: 0px 10px 39px 30px rgba(62,66,66,0.22); */
+}
+.guide {
+	text-align: center;
+	font-size: 25rpx;
+	color: #333;
+	text-shadow: rgba(62,66,66,0.4) 0px 7px 24px;
+	position: absolute; 
+	top: 80%;
+}
 .uploadpage{
 	height: 100vh;
-	width: 100vw;
-	flex-direction: column;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,14 +30,14 @@
   top: 10px;
   outline: none;
   cursor: pointer;
-  width: 150px;
+  width: 200px;
   height: 50px;
   background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
   border-radius: 30px;
   border: 2px solid #8F9092;
   transition: all 0.2s ease;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
   color: #606060;
   text-shadow: 0 2px #fff;
@@ -30,7 +49,10 @@
   box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 .uploadimage {
+	
 	size: auto;
+	margin-top: 10%;
+	width: 100%;
 }
 .card {
  top: 5px;
@@ -70,11 +92,13 @@
 .text-body {
  color: rgb(134, 134, 134);
 }
+
 /*Text*/
 .text-title {
  font-size: 1.5em;
  font-weight: bold;
 }
+
 /*Click*/
 .card:hover {
  border-color: #008bf8;
@@ -266,6 +290,7 @@
    background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
  		linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
 }
+
 /* Animations */
 @-webkit-keyframes hamster {
 from, to {
