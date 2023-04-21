@@ -1,3 +1,2 @@
 
-@import "./index.wxss";
-@import 'index-magic-navigation-bar-text-wxa-auto-dark.wxss'
+@import "./index.wxss"

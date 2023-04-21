@@ -10,6 +10,7 @@
 					</z-swiper-item>
 				</z-swiper>
 		</view>
+		
 		<view>
 			<view class="food">
 				<view class="uni-px-5 uni-pb-5">
@@ -19,23 +20,24 @@
 					</uni-data-checkbox>
 				</view>
 			</view>
+			
 			<view class="text">
 				<uni-icons type="list" size="25"></uni-icons>Follow the Steps:</view>
 			<view class="uni-px-5 uni-pb-5">
-				<!-- <view class="text">多选选中：{{JSON.stringify(checkbox2)}}</view> -->
 				<uni-data-checkbox selectedColor="green" multiple v-model="checkbox2" :localdata="process2">
 				</uni-data-checkbox>
 			</view>
 		</view>
+		
 		<button class="player"></button>
 		
-		<div class="card">
-		<div class="card-image"></div>
-		  <div class="card-description">
-		    <p class="text-title"> Feedback</p>
-		    <p class="text-body">Your feedback is important to us. Let us know what you think.</p>
-		  </div>
-		</div>
+		<view class="card">
+			<view class="card-image"></view>
+				<view class="card-description">
+				<view class="text-title"> Feedback</view>
+				<view class="text-body">Your feedback is important to us. Let us know what you think.</view>
+			</view>
+		</view>
 		
 		<view class="bottom">
 			<button class="item" @click="retry()"> <uni-icons type="reload" size="25"></uni-icons></button>
@@ -49,8 +51,8 @@
 	export default {
 			data() {
 				return {
-					foodlist:"111,222,333",
-					recipelist:"-aaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbb-fdddddddddd-sssssssssssssss-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender.-Add noodles and water and cook until noodles are tender.-Add soy sauce and pepper.",
+					foodlist:"",
+					recipelist:"",
 					food:[],
 					recipes:[],
 					checkbox1: [],
@@ -105,8 +107,8 @@
 					value: i
 					}
 			}
-			
 		},
+		
 		methods: {
 			retry(){
 				uni.navigateTo({

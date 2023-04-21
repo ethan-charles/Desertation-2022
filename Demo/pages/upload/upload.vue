@@ -5,11 +5,12 @@
 			<image :src="defaultImage" class="uploadimage"></image>
 			<button @click="upload()" class="uploadfood">Choose Picture</button>
 			<view class="guide">Please upload a clear and comprehensive photo of the food item
-			 to ensure accurate recognition. 
+			to ensure accurate recognition. 
 			Ensure that the image is well-lit, in focus, 
 			and captures the entire dish from a top-down or side angle. 
 			Thank you for your cooperation!</view>
 		</view>
+		
 		<view v-if="imageIsValid == 1">
 			<image :src="imagetemp" mode="" class="uploadimage"></image>
 			<view class="card">
@@ -21,28 +22,29 @@
 				<view class="text-title">Acccuracy:</view>
 				<view class="text-body">{{acccuracy}} %</view>
 			  </view>
-			  <button class="card-button" @click="detail()">More info</button>
+			  <button class="card-button" @click="detail()">More Info</button>
 			</view>
 		</view>
+		
 		<view id="loaderpage" v-if="imageIsValid == 2">
-		    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
-		    	<div class="wheel"></div>
-		    	<div class="hamster">
-		    		<div class="hamster__body">
-		    			<div class="hamster__head">
-		    				<div class="hamster__ear"></div>
-		    				<div class="hamster__eye"></div>
-		    				<div class="hamster__nose"></div>
-		    			</div>
-		    			<div class="hamster__limb hamster__limb--fr"></div>
-		    			<div class="hamster__limb hamster__limb--fl"></div>
-		    			<div class="hamster__limb hamster__limb--br"></div>
-		    			<div class="hamster__limb hamster__limb--bl"></div>
-		    			<div class="hamster__tail"></div>
-		    		</div>
-		    	</div>
-		    	<div class="spoke"></div>
-		    </div>
+		    <view aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+		    	<view class="wheel"></view>
+		    	<view class="hamster">
+		    		<view class="hamster__body">
+		    			<view class="hamster__head">
+		    				<view class="hamster__ear"></view>
+		    				<view class="hamster__eye"></view>
+		    				<view class="hamster__nose"></view>
+		    			</view>
+		    			<view class="hamster__limb hamster__limb--fr"></view>
+		    			<view class="hamster__limb hamster__limb--fl"></view>
+		    			<view class="hamster__limb hamster__limb--br"></view>
+		    			<view class="hamster__limb hamster__limb--bl"></view>
+		    			<view class="hamster__tail"></view>
+		    		</view>
+		    	</view>
+		    	<view class="spoke"></view>
+		    </view>
 			<view class="loader">Loading...</view>
 		</view>
 	</view>
@@ -262,7 +264,7 @@
 	 
 	 .wheel,
 	 .hamster,
-	 .hamster div,
+	 .hamster view,
 	 .spoke {
 	   position: absolute;
 	 }

@@ -217,12 +217,7 @@ var _default = {
       console.log(index, item);
       this.index = index;
     },
-    onClickDelAll: function onClickDelAll() {
-      console.log('[父级接收事件]：删除全部搜索记录');
-    },
-    onSearchName: function onSearchName(e) {
-      console.log('[父级接收事件]：点击搜索:' + e);
-    },
+    onSearchName: function onSearchName() {},
     gofood: function gofood() {},
     godish: function godish() {
       uni.navigateTo({

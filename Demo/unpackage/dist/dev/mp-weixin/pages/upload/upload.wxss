@@ -128,7 +128,7 @@
 }
 .wheel,
  .hamster,
- .hamster ._div,
+ .hamster view,
  .spoke {
    position: absolute;
 }

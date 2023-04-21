@@ -220,11 +220,13 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
-      foodlist: "111,222,333",
-      recipelist: "-aaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbb-fdddddddddd-sssssssssssssss-In a large skillet, heat oil over medium heat.-Add garlic and onion and cook until tender.-Add noodles and water and cook until noodles are tender.-Add soy sauce and pepper.",
+      foodlist: "",
+      recipelist: "",
       food: [],
       recipes: [],
       checkbox1: [],
