@@ -1,0 +1,90 @@
+/* 
+此文件为开发者工具生成，生成时间: 2023/4/19下午9:08:50
+使用方法：
+在 index.wxss 文件末尾引入样式
+```
+@import "./index-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .title {
+        color: rgb(17, 17, 17);
+        text-shadow: rgb(0, 0, 0);
+    }
+
+    .cssbuttons-io-button {
+        font-family: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+        background: rgb(197, 105, 159);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .cssbuttons-io-button:active {
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .searchpage {
+        background: rgb(0, 0, 0);
+    }
+
+    .my-theme-bg {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .formpage {
+        background: rgb(0, 0, 0);
+    }
+
+    .form {
+        background-color: rgb(247, 247, 247);
+    }
+
+    #heading {
+        color: rgb(17, 17, 17);
+    }
+
+    .field {
+        color: rgb(17, 17, 17);
+        background-color: rgb(247, 247, 247);
+    }
+
+    .input-icon {
+        fill: rgb(17, 17, 17);
+    }
+
+    .input-field {
+        color: rgb(49, 49, 49);
+    }
+
+    .button1 {
+        background-color: rgb(247, 247, 247);
+        color: rgb(17, 17, 17);
+    }
+
+    .button1:active {
+        background-color: rgb(255, 255, 255);
+        color: rgb(17, 17, 17);
+    }
+
+    .button2 {
+        background-color: rgb(247, 247, 247);
+        color: rgb(17, 17, 17);
+    }
+
+    .button2:active {
+        background-color: rgb(255, 255, 255);
+        color: rgb(17, 17, 17);
+    }
+
+    .button3 {
+        background-color: rgb(247, 247, 247);
+        color: rgb(17, 17, 17);
+    }
+
+    .button3:active {
+        background-color: rgb(122, 122, 122);
+        color: rgb(17, 17, 17);
+    }
+}

@@ -167,4 +167,5 @@
   background-color: gray;
   color: white;
 }
+@import 'index-wxa-auto-dark.wxss'
 
