@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "index-magic-navigation-bar-text": "/pages/index/index-magic-navigation-bar-text",
+    "d-search-log": "/uni_modules/d-search-log/components/d-search-log/d-search-log",
+    "magic-navigation-bar": "/uni_modules/jorbin-MagicNavigationBar/components/jorbin-MagicNavigationBar/jorbin-MagicNavigationBar"
+  }
+}
