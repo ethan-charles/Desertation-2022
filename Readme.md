@@ -1,6 +1,6 @@
 # Food Image Recognition Recipe Generator
-Here is the[ Report]()
-![image]()
+Here is the[ Report](https://github.com/ethan-charles/Desertation-2022/blob/main/Dissertation_final_report.pdf)
+![image](https://github.com/ethan-charles/Desertation-2022/blob/main/Software%20Screenshot/index%E2%80%98%E2%80%99.png)
 
 Welcome to the Food Image Recognition Recipe Generator! This software uses advanced machine learning techniques to recognize the ingredients and dishes in your food images and then generates delicious recipes based on the identified ingredients. With our user-friendly interface and seamless integration, you can now easily find the perfect recipe for any dish you have in mind!
 
